@@ -1,9 +1,11 @@
-.logo{
-
+.logo i, 
+.logo h4{
+    color: blue;
+    font-size: 2rem;
 }
 
 .shop-button{
-    
+
 }
 
 
