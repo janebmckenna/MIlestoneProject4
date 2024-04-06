@@ -12,9 +12,12 @@
     {% block extra_meta %}
     {% endblock%}
 
-    {% block corecss%}
+    {% block corecss %}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Mono:wght@100..700&display=swap">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -34,17 +37,43 @@
   <body>
     <header class="container-fluid fixed-top">
         <div class="row">
-            <div class="col-12 col-lg-4 my-auto py1 py-lg-0 text-center text-lg-left">
+            <div class="col-12 col-lg-4 my-auto py1 py-lg-0 text-center text-lg-left text-uppercase">
                 <a href="{% url 'home' %}" class="nav-link logo">
-                    <i class="fa-solid fa-volleyball"></i><h4 class="d-inline"> The Club</h4>
+                    <i class="fa-solid fa-volleyball fa-lg"></i><h4 class="d-inline"> The Club</h4>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                {% block search %}
-                {% endblock %}
+            <div class="col-12 col-lg-2 my-auto py-1 py-lg-0">
+                <!-- {% block search %}
+                {% endblock %} -->
             </div>
-            <div class="col-12 col-lg-4 my-auto py1 py-lg-0">
+            <div class="col-12 col-lg-6 my-auto py1 py-lg-0 text-uppercase">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                    <li class="list-inline-item">
+                        <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fa-solid fa-store fa-lg"></i></div>
+                                <p class="my-0">Shop</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            <a href="#" class="dropdown-item">Shop - Club Kit</a>
+                            <a href="#" class="dropdown-item">Pay - Club Subs</a>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fa-solid fa-volleyball fa-lg"></i></div>
+                                <p class="my-0">Fixtures</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            <a href="#" class="dropdown-item">Senior Men</a>
+                            <a href="#" class="dropdown-item">Senior Women</a>
+                            <a href="#" class="dropdown-item">U16 Men</a>
+                            <a href="#" class="dropdown-item">U16 Women</a>
+                        </div>
+                    </li>
                     <li class="list-inline-item dropdown">
                         <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
