@@ -167,7 +167,10 @@ To follow best practice wireframes were developed for Mobile followed by tablet 
 
 **Colour Palette**
 
+https://color.adobe.com/create/image
 
+https://mycolor.space/
+background-image: linear-gradient(to bottom, #266b73, #157877, #0d8476, #218f70, #3d9a66, #42955a, #47904e, #4c8b42, #3a7735, #286429, #16521d, #014011);
 
 **Fonts**
 

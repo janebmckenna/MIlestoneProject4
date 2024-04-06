@@ -9,6 +9,10 @@ body {
     font-family: "Oswald", sans-serif;
 }
 
+.heading{
+    color: #266B73;
+    font-size: 4rem;
+}
 .logo i, 
 .logo h4{
     color: white;
@@ -20,8 +24,14 @@ body {
     font-size: 1rem;
 }
 
-.shop-button{
-
+.overlay{
+    height: 98vh;
+    width: 98vw;
+    top: auto;
+    left: 15px;
+    position: fixed;
+    background: whitesmoke;
+    z-index: -1;
 }
 
 
@@ -33,14 +43,14 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .header-container{
         padding-top: 164px;
     }
 }
 
 @media (min-width: 992px) {
-.header-container{
-    padding-top: 164px;
-}
+    .header-container{
+        padding-top: 164px;
+    }
 }

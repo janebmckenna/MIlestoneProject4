@@ -4,7 +4,7 @@ from django.db import models
 class News_Category(models.Model):
 
     class Meta:
-        verbose_name_plural = 'News_Categories'
+        verbose_name_plural = 'News Categories'
         
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
