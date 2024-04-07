@@ -33,7 +33,18 @@ body {
     background: whitesmoke;
     z-index: -1;
 }
+.product-filters{
+    list-style: none;
+}
 
+#all-products-link,
+#clothing-link,
+.product-item{
+    display: inline-block;
+    list-style-type: none;
+    color: #266B73;
+    font-size: 1.5rem;
+}
 
 
 /* ----- MEDIA QUERIES ----- */
