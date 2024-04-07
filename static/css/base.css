@@ -46,6 +46,25 @@ body {
     font-size: 1.5rem;
 }
 
+.sort-dropdown,
+.sort-dropdown a{
+    background-color: #266B73;
+    color: white;
+}
+
+.product-card,
+.product-card p{
+    background-color: #266B73;
+    color: white;
+}
+
+.card-body p{
+    font-size: 1.5rem;
+}
+
+.category-link{
+    color: #01260E;
+}
 
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {

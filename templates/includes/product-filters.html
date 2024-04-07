@@ -3,9 +3,9 @@
         <ul class="product-filters list-inline list-unstyled text-center mx-auto">
             <li class="product-item dropdown list-inline-item mx-auto">
                 <a class="mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    All Products
+                    Sort By
                 </a>
-                <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <div class="dropdown-menu border-0 sort-dropdown" aria-labelledby="all-products-link">
                     <a href="{% url 'kit' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                     <a href="{% url 'kit' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                     <a href="{% url 'kit' %}" class="dropdown-item">All Products</a>
@@ -15,7 +15,7 @@
                 <a class="mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Occassion
                 </a>
-                <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+                <div class="dropdown-menu border-0 sort-dropdown" aria-labelledby="clothing-link">
                     <a href="{% url 'kit' %}?category=game_kit" class="dropdown-item">Match Kit</a>
                     <a href="{% url 'kit' %}?category=training_kit" class="dropdown-item">Training Kit</a>
                     <a href="{% url 'kit' %}?category=supporters_kit" class="dropdown-item">Supporters Kit</a>
