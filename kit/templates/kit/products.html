@@ -13,12 +13,16 @@
 
 {% block content %}
     <div class="overlay container-fluid"></div>
-    {% include 'includes/product-filters.html' %}
     <div class="continer-fluid">
-        <div class="row">
-            <div class="col text-center mt-3">
-                <h2 class="heading text-uppercase">Club Kit</h2>
-                <hr class="w-50 mb-2">
+        <div class="product-title">
+            <div class="row">
+                {% include 'includes/product-filters.html' %}
+            </div>
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <h2 class="heading text-uppercase">Club Kit</h2>
+                    <hr class="w-50 mb-2">
+                </div>
             </div>
         </div>
         <div class="row">

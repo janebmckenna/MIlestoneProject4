@@ -34,6 +34,14 @@
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
                 {% endif %}
+                {% if request.user.is_authenticated %}
+                    <a href="#" class="btn rounded-0 btn-lg btn-outline-dark">
+                        <span>
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Add Subs Payment</span>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ body {
 
 .main-content{
     height: calc(100vh-214px);
-    margin-top: 164px;
+    /* margin-top: 164px; */
     margin-bottom: 60px;
 }
 
@@ -36,9 +36,9 @@ body {
 
 .overlay{
     height: 98vh;
-    width: 98vw;
+    width: 96vw;
     top: auto;
-    left: 1vw;
+    left: 2vw;
     position: fixed;
     background: whitesmoke;
     z-index: -1;
@@ -124,6 +124,12 @@ body {
     width: 20%;
 }
 
+.btn-dark:hover{
+    color: #343A40;
+    background-color: white;
+
+}
+
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
@@ -139,6 +145,6 @@ body {
 
 @media (min-width: 992px) {
     .header-container{
-        margin-bottom: 164px;
+        margin-bottom: 82px;
     }
 }
