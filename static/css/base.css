@@ -103,7 +103,9 @@ body {
     color: white;
 }
 
-.btt-link{
+.btt-link,
+.remove-link,
+.update-link{
     cursor: pointer;
     color: white;
 }
