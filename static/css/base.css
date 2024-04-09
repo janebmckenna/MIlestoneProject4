@@ -132,6 +132,21 @@ body {
 
 }
 
+.message-container{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 9999999;
+}
+
+.custom-toast{
+    overflow: visible;
+}
+
+.toast-topper{
+    height: 3px;
+}
+
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
