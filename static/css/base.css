@@ -104,7 +104,7 @@ body {
 }
 
 .btt-link,
-.remove-link,
+.remove-item,
 .update-link{
     cursor: pointer;
     color: white;
