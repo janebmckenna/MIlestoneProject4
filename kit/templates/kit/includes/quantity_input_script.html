@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    window.onload = function() {
+        if (window.jQuery) {  
+            // jQuery is loaded  
+            alert("jQuery is loaded!");
+        } else {
+            // jQuery is not loaded
+            alert("jQuery is not loaded");
+        }
+    }
+    // Switches off the quantity so that it cannot go below 1 or above 99
+    function handleDisbale(itemId){
+        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        var minusDisabled = currentValue < 2;
+        var plusDisabled = currentValue > 98;
+        $(`decrease-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`increase-qty_${itemId}`).prop('disabled', plusDisabled);
+    };
+
+    // Increases the quantity by one
+    $('.increase-qty').click(function(e){
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        var currentValue = parseInt($(closestInput).val());
+        $(closestInput).val(currentValue + 1);
+        var itemId = $(this).data('item_id');
+        handleDisbale(itemId);
+    });
+
+    // Decreases the quantity by one
+    $('.decrease-qty').click(function(e){
+        e.preventDefault();
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        var currentValue = parseInt($(closestInput).val());
+        $(closestInput).val(currentValue - 1);
+        var itemId = $(this).data('item_id');
+        handleDisbale(itemId);
+    });
+</script>
