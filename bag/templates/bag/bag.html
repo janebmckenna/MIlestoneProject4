@@ -156,24 +156,27 @@
                 alert("jQuery is not loaded");
             }
         };
-        // Update bag quantity on click
-        $('.update-link').click(function(e) {
-            var form = $(this).closest('td').find('.update-form');
-            form.submit();
+        $(document).ready(function(){
+            // Update bag quantity on click
+            $('.update-link').click(function(e) {
+                var form = $(this).closest('td').find('.update-form');
+                form.submit();
+            })
+
+            // Remove item from bag on click
+            $('.remove-item').click(function(e) {
+                var csrfToken = "{{ csrf_token }}";
+                var itemId = $(this).attr('id').split('remove_')[1];
+                var size = $(this).data('product_size');
+                var url = `/bag/remove/${itemId}/`;
+                var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+
+                $.post(url, data)
+                 .done(function() {
+                    location.reload();
+                 });
+            })
         })
-
-        // Remove item from bag on click
-        $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('product_size');
-        var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+        
     </script>
 {% endblock %}
