@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -85,7 +86,7 @@
                                             <a class="update-link text-info text-uppercase float-right"><small>Update</small></a>
                                         </td>
                                         <td class="py-3">
-                                            <p class="my-0">{{ item.product.price }}</p>
+                                            <p class="my-0">{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -147,15 +148,6 @@
     {% include 'kit/includes/quantity_input_script.html' %}
 
     <script type="text/javascript">
-        window.onload = function() {
-            if (window.jQuery) {  
-                // jQuery is loaded  
-                alert("jQuery is loaded!");
-            } else {
-                // jQuery is not loaded
-                alert("jQuery is not loaded");
-            }
-        };
         $(document).ready(function(){
             // Update bag quantity on click
             $('.update-link').click(function(e) {
