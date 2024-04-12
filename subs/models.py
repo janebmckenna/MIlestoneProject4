@@ -1,6 +1,7 @@
 from django.db import models
 
 from kit.models import Product
+from checkout.models import Order
 
 
 class Team(models.Model):
@@ -21,9 +22,10 @@ class Team_subs(models.Model):
         verbose_name_plural = 'Team Subs'
 
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
-    team = models.ForeignKey('Team', null=False, blank=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='subs', default=0)
+    team = models.ForeignKey('Team', null=False, blank=False, on_delete=models.CASCADE, default=0)
     player_name = models.CharField(max_length=80, null=True, blank=True)
-    period = models.DecimalField(max_digits=2, decimal_places=0)
+    period = models.DecimalField(max_digits=2, decimal_places=0, default=0)
 
     def __str__(self):
         return self.name

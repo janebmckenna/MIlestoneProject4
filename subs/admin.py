@@ -9,9 +9,9 @@ class TeamAdmin(admin.ModelAdmin):
     )
 
 
-class Team_subsInline(admin.TabularInline):
-    model = Team_subs
-    readonly_fields = ('product')
+class Team_subsAdmin(admin.ModelAdmin):
+    readonly_fields = ('product',)
 
 
 admin.site.register(Team, TeamAdmin)
+admin.site.register(Team_subs, Team_subsAdmin)
