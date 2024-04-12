@@ -10,7 +10,11 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 class Team_subsAdmin(admin.ModelAdmin):
-    readonly_fields = ('product',)
+    list_display = (
+        'team',
+        'player_name',
+        'period',
+    )
 
 
 admin.site.register(Team, TeamAdmin)
