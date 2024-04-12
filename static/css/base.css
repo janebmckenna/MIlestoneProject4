@@ -147,6 +147,12 @@ body {
     height: 3px;
 }
 
+.bag-notification-wrapper{
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
