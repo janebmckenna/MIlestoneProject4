@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Team, Team_subs
 
-# Register your models here.
+
