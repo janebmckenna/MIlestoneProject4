@@ -6,7 +6,7 @@ from kit.models import Product
 class Team(models.Model):
 
     team_name = models.CharField(max_length=254)
-    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    friendly_team_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.team_name
@@ -21,13 +21,9 @@ class Team_subs(models.Model):
         verbose_name_plural = 'Team Subs'
 
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
-    team = models.ForeignKey('Team', null=True, blank=True, on_delete=models.SET_NULL)
-    name = models.CharField(max_length=254, null=True, blank=True)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    is_sub = models.BooleanField(default=False, null=True, blank=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    team = models.ForeignKey('Team', null=False, blank=False, on_delete=models.CASCADE)
+    player_name = models.CharField(max_length=80, null=True, blank=True)
+    period = models.DecimalField(max_digits=2, decimal_places=0)
 
     def __str__(self):
         return self.name
