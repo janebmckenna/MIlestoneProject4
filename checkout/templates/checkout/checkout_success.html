@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay container-fluid"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="mb-2 text-uppercase heading">Thank you</h2>
+                <hr>
+                <p class="text-uppercase">Thank you for your order and supporting your local club. A confirmation email will be sent to {{ order.email }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-7"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-7 text-right text-uppercase">
+                <h4>Keep up to date with the Club</h4>
+                <a href="" class="btn btn-dark my-2">
+                    <span class="icon mr-2">
+                        <i class="fa-regular fa-newspaper"></i>
+                    </span>
+                    <span>Club News</span>
+                </a>
+                <a href="" class="btn btn-dark my-2">
+                    <span class="icon mr-2">
+                        <i class="fa-solid fa-volleyball"></i>
+                    </span>
+                    <span>Upcoming Fixtures</span>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
