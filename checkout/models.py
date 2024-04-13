@@ -18,7 +18,7 @@ class Order(models.Model):
     street = models.CharField(max_length=80, null=False, blank=False)
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
     county = models.CharField(max_length=80, null=True, blank=True)
-    country = models.CharField(max_length=40, null=True, blank=True)
+    country = models.CharField(max_length=40, null=False, blank=False)
     postcode = models.CharField(max_length=20, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
@@ -36,8 +36,8 @@ class Order(models.Model):
         Update the grand total every time a line item is added,
         including delivery cost.
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-        if self.order_total < setting.FREE_DELIVERY_THRESHOLD:
+        self.order_total = self.lineitems.aggregate(Sum('line_item_total'))['line_item_total__sum'] or 0
+        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
