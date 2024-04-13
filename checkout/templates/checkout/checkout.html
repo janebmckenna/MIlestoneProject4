@@ -108,9 +108,9 @@
                         <legend class="fieldset-label small px-2 w-auto text-uppercase text-muted">Payment Information</legend>
                         <!-- ----- Used to display the stripe element ----- -->
                         <div class="mb-3" id="card-element"></div>
-
                         <!-- ----- Used to display errors ----- -->
                         <div class="mb-3 text-danger text-uppercase" id="card-errors" role="alert"></div>
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <div class="submit-button text-right text-uppercase mt-5 mb-2">
                         <a href="{% url 'view_bag' %}" class="btn btn-outline-dark text-uppercase">
@@ -138,7 +138,7 @@
         </div>
     </div>
     <div id="loading-overlay">
-        <h1 class="text-light logo-spinner">
+        <h1 class="text-light logo-spinner loading-spinner">
             <span class="icon">
                 <i class="fa-solid fa-spinner fa-spin-pulse"></i>
             </span>
