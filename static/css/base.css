@@ -129,7 +129,6 @@ body {
 .btn-dark:hover{
     color: #343A40;
     background-color: white;
-
 }
 
 .message-container{
@@ -153,6 +152,44 @@ body {
     overflow-y: scroll;
 }
 
+.all-auth{
+    text-transform: uppercase;
+}
+
+.all-auth label:not([for='id_remember']){
+    display: none;
+}
+
+.all-auth input::placeholder{
+    text-transform: uppercase;
+    color: black;
+}
+
+.all-auth a:not(.home){
+    color: black;
+    text-decoration: underline;
+}
+
+.all-auth button{
+    float: right;
+    text-transform: uppercase;
+    border-radius: 0 !important;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+.all-auth button:hover{
+    color: white;
+    background-color: #343A40;
+}
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
