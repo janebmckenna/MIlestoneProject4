@@ -1,0 +1,12 @@
+#profile_update_form select,
+#profile_update_form  input:not([value = ""]){
+    color: black;
+    text-transform: uppercase;
+}
+
+.order-history{
+    max-height: 416px;
+    overflow-y: scroll;
+}
+
+#profile_update_form input::placeholder

@@ -70,3 +70,7 @@ select option{
   margin: 0;
   height: 100%;
 }
+
+#order_heading{
+  cursor: pointer;
+}

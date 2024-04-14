@@ -78,6 +78,7 @@
 |**Bug**|**Resolution**|
 |-----|-----|
 
+trailing , resulting in a tuple on the save_info WH
 
 
 [Return to README](README.md)

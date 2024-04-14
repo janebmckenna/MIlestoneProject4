@@ -39,7 +39,7 @@
   <body>
     <header class="container-fluid fixed-top header-container">
         <div class="row">
-            <div class="col-12 col-lg-3 my-auto py1 py-lg-0 text-center text-lg-left text-uppercase">
+            <div class="col-10 col-lg-3 my-auto py1 py-lg-0 text-center text-lg-left text-uppercase">
                 <a href="{% url 'home' %}" class="nav-link logo">
                     <i class="fa-solid fa-volleyball fa-lg"></i><h4 class="d-inline"> The Club</h4>
                 </a>
@@ -76,15 +76,16 @@
         {% block content %}
         {% endblock %}
     </div>
-
-    <footer class="footer">
-        <p class="footer-copyright">Sean McDermotts © 2024</p>
-    </footer>
-
-    {% block postloadjs %}
-        <script type="text/javascript">
-            $('.toast').toast('show');
-        </script>
-    {% endblock %}
   </body>
+  <footer class="footer mt-auto">
+    <div class="container-fluid m-0 p-0">
+        <p class="footer-copyright float-right pr-1">Sean McDermotts © 2024.</p>
+    </div>
+  </footer>
+
+  {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+  {% endblock %}
 </html>
