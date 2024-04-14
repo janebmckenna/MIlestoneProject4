@@ -1,0 +1,32 @@
+Hello {{ order.full_name }}
+
+Thank you for your support of your local Club. 
+
+This is confirmation of your order number {{ order.order_number }}.
+
+Order Information:
+
+Order Date: {{ order.date }}
+
+Items on your order:
+{% for item in order.lineitems.all %}
+    {{ item.product.name}}
+        {% if item.product_size %}Size: {{ item.product_size|upper }}{% endif %} x {{ item.quantity }} @ £{{ item.product.price }} each 
+{% endfor %}
+
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
+
+Delivery Address:
+{{ order.full_name }},
+{{ order.house_number }} {{ order.street }},
+{{ order.town_or_city }},
+{{ order.county }},
+{{ order.country }},
+{{ order.postcode }}.
+
+Thank you for your order,
+The Club.
+
+If you have any questions please feel free to contact us at {{ contact_email }}
