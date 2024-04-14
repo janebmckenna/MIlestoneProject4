@@ -81,6 +81,8 @@ def add_product(request):
         message.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
+    on_admin_page = True 
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -94,7 +96,7 @@ def add_product(request):
     template = 'kit/add_product.html'
     context ={
         'form': form,
-        'on_admin_page': True,
+        'on_admin_page': on_admin_page,
     }
 
     return render(request, template, context)
@@ -140,9 +142,9 @@ def delete_product(request, product_id):
     if not request.user.is_superuser:
         message.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
-        
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product has been deleted!')
 
-    return redirect(reverse('kit'))
+    return redirect(reverse('edit_delete_admin'))
