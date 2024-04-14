@@ -92,3 +92,30 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    """ 
+    Edit an exisiting product
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES,  instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'{product.name} successfully updated')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Product has not been updated, please check form is valid.')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    template = 'kit/edit_product.html'
+    context ={
+        'form': form,
+        'product': product,
+        'on_admin_page': True,
+    }
+
+    return render(request, template, context)
