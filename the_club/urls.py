@@ -14,5 +14,6 @@ urlpatterns = [
     path('subs/', include('subs.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
+    path('clubadmin/', include('clubadmin.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

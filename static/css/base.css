@@ -206,6 +206,10 @@ body {
     max-height: 100px;
     width: auto;
 }
+a:hover{
+    text-decoration: none;
+    color: white;
+}
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
