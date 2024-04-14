@@ -210,6 +210,27 @@ a:hover{
     text-decoration: none;
     color: white;
 }
+
+.edit-btn{
+    -webkit-text-stroke: 0.5px black;
+    color: #F9F871;
+}
+
+.delete-btn{
+    -webkit-text-stroke: 0.5px black;
+    color: #F9F871;
+}
+.edit-btn:hover{
+    color: red;
+}
+
+.delete-btn:hover{
+    color: red;
+}
+.detail-background{
+    background-color: #266B73;
+    padding: 5px;
+}
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
