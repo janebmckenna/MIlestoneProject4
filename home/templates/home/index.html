@@ -42,25 +42,7 @@
                          Club News
                     </h1>
                 </div>
-                <div class="row">
-                    {% for n in news %}
-                    <div class="card mx-5 mb-5" style="width: 18rem;">
-                        {% if n.image %}
-                            <img class="card-img-top img-fluid" src="{{ n.image.url }}" alt="{{ n.title }}">
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ n.title }}" class="card-img-top img-fluid">
-                        {% endif %}
-                        <div class="card-body">
-                        <h5 class="card-title">{{ n.title }}</h5>
-                        {% if n.team %}
-                            <h6 class="card-title">{{ n.team }}</h6>
-                        {% endif %}
-                        <p class="card-text">{{ n.news|truncatechars:50}}</p>
-                        <a href="#" class="btn btn-primary">Full Story</a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+                
             </div>
         </div>
     </div>
