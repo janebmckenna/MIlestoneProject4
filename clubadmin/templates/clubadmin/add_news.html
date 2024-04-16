@@ -26,17 +26,27 @@
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="text-right">
-                        <a href="{% url 'add_news' %}" class="btn rounded-0 btn-dark">
+                        <a href="{% url 'club_admin' %}" class="btn rounded-0 btn-dark">
                             <span>
                                 <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="text-uppercase">Cancel</span>
                         </a>
                         <button type="submit" class="btn rounded-0 btn-dark text-uppercase">
-                            Add Category
+                            Add News
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-right">
+                <a href="{% url 'club_admin' %}" class="btn rounded-0 btn-dark">
+                    <span>
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Back to Admin</span>
+                </a>
             </div>
         </div>
     </div>

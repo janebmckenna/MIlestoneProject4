@@ -119,3 +119,35 @@ def delete_news(request, news_id):
     messages.success(request, 'News Article has been deleted!')
 
     return redirect(reverse('clubadmin/edit_delete_news.html'))
+
+
+@login_required
+def edit_news(request, news_id):
+    """ 
+    Edit an exisiting news article
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    news = get_object_or_404(News, pk=news_id)
+    if request.method == 'POST':
+        form = NewsForm(request.POST, request.FILES,  instance=news)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'{news.title} successfully updated')
+            return redirect(reverse('manage_categories'))
+        else:
+            messages.error(request, 'This article has not been updated, please check form is valid.')
+    else:
+        form = NewsForm(instance=news)
+        messages.info(request, f'You are editing {news.title}')
+
+    template = 'clubadmin/edit_news.html'
+    context ={
+        'form': form,
+        'news': news,
+        'on_admin_page': True,
+    }
+
+    return render(request, template, context)
