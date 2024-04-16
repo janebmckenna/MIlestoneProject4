@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from .models import Product, Category
-from .forms import ProductForm
+from .forms import ProductForm, CategoryForm
 
 
 def all_products(request):
@@ -148,3 +148,81 @@ def delete_product(request, product_id):
     messages.success(request, 'Product has been deleted!')
 
     return redirect(reverse('edit_delete_admin'))
+
+
+@login_required
+def add_category(request):
+    """ 
+    Add a Product category
+    """
+    if not request.user.is_superuser:
+        message.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    on_admin_page = True 
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES)
+        if form.is_valid():
+            category = form.save()
+            messages.success(request, 'Category added successfully!')
+            return redirect(reverse('home'))
+        else:
+            messages.error(request, 'Category has not been added. Please check the form is valid')
+    else:
+        form = CategoryForm()
+    template = 'kit/add_category.html'
+    context ={
+        'form': form,
+        'on_admin_page': on_admin_page,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_category(request, category_id):
+    """ 
+    Delete an exisiting category
+    """
+    if not request.user.is_superuser:
+        message.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    category = get_object_or_404(Category, pk=category_id)
+    category.delete()
+    messages.success(request, 'Category has been deleted!')
+
+    return redirect(reverse('manage_categories'))
+
+
+@login_required
+def edit_category(request, category_id):
+    """ 
+    Edit an exisiting category
+    """
+    if not request.user.is_superuser:
+        message.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    category = get_object_or_404(Category, pk=category_id)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES,  instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'{category.name} successfully updated')
+            return redirect(reverse('manage_categories'))
+        else:
+            messages.error(request, 'Category has not been updated, please check form is valid.')
+    else:
+        form = CategoryForm(instance=category)
+        messages.info(request, f'You are editing {category.name}')
+
+    template = 'kit/edit_category.html'
+    context ={
+        'form': form,
+        'category': category,
+        'on_admin_page': True,
+    }
+
+    return render(request, template, context)

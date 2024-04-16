@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from kit.models import Product
+from kit.models import Product, Category
 
 
 @login_required
@@ -32,3 +32,22 @@ def edit_delete_admin(request):
         'on_admin_page': on_admin_page,
     }
     return render(request, 'clubadmin/edit_delete_admin.html', context)
+
+
+@login_required
+def manage_categories(request):
+    """ 
+    a view to manage categories
+    """
+    if not request.user.is_superuser:
+        message.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    categories = Category.objects.all()
+    on_admin_page = True
+    
+    context = {
+        "categories" : categories,
+        'on_admin_page': on_admin_page,
+    }
+    return render(request, 'clubadmin/manage_categories.html', context)
