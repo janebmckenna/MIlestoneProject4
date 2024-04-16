@@ -30,19 +30,27 @@
                                 <tr>
                                     <th scope="col">Title</th>
                                     <th scope="col">Category</th>
+                                    <th scope="col">Team</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Edit/Delete</th>
                                 </tr>
                                 {% for n in news %}
                                     <tr>
                                         <td class="py-3">
-                                            <p class="my-0">£{{ n.title }}</p>
+                                            <p class="my-0">{{ n.title }}</p>
                                         </td>
                                         <td class="py-3">
                                             <p class="my-0">{{ n.news_category }}</p>
                                         </td>
+                                        {% if n.team %}
                                         <td class="py-3">
-                                            <p class="my-0">£{{ n.date }}</p>
+                                            <p class="my-0">{{ n.team }}</p>
+                                        </td>
+                                        {% else %}
+                                        <td class="py-3"></td>
+                                        {% endif %}
+                                        <td class="py-3">
+                                            <p class="my-0">{{ n.date }}</p>
                                         </td>
                                         <td>
                                             <div class="ml-3 pt-3">

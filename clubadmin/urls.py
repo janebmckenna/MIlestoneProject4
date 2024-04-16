@@ -7,5 +7,6 @@ urlpatterns = [
     path('manage_categories', views.manage_categories, name='manage_categories'),
     path('add_news/', views.add_news, name='add_news'),
     path('edit_delete_news/', views.edit_delete_news, name='edit_delete_news'),
-    path('deletenews/', views.delete_news, name='delete_news'),
+    path('deletenews/<int:news_id>/', views.delete_news, name='delete_news'),
+    path('editnews/<int:news_id>/', views.edit_news, name='edit_news'),
 ]

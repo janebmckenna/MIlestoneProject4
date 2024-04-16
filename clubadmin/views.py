@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404)
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -119,7 +120,7 @@ def delete_news(request, news_id):
     news.delete()
     messages.success(request, 'News Article has been deleted!')
 
-    return redirect(reverse('clubadmin/edit_delete_news.html'))
+    return redirect(reverse('edit_delete_news'))
 
 
 @login_required
@@ -137,7 +138,7 @@ def edit_news(request, news_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'{news.title} successfully updated')
-            return redirect(reverse('manage_categories'))
+            return redirect(reverse('edit_delete_news'))
         else:
             messages.error(request, 'This article has not been updated, please check form is valid.')
     else:
