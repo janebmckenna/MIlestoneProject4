@@ -78,7 +78,7 @@ def add_product(request):
     Add a product to the shop
     """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
     on_admin_page = True 
@@ -108,7 +108,7 @@ def edit_product(request, product_id):
     Edit an exisiting product
     """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -140,7 +140,7 @@ def delete_product(request, product_id):
     Delete an exisiting product
     """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -156,7 +156,7 @@ def add_category(request):
     Add a Product category
     """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
     on_admin_page = True 
@@ -186,7 +186,7 @@ def delete_category(request, category_id):
     Delete an exisiting category
     """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
     category = get_object_or_404(Category, pk=category_id)
@@ -202,7 +202,7 @@ def edit_category(request, category_id):
     Edit an exisiting category
     """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, 'Sorry. This action requires club admin access')
         return redirect(reverse('home'))
 
     category = get_object_or_404(Category, pk=category_id)

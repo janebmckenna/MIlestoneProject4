@@ -233,6 +233,11 @@ a:hover{
     background-color: #266B73;
     padding: 5px;
 }
+
+.product-form input:hover{
+    cursor: pointer;
+}
+
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
