@@ -18,6 +18,9 @@ class Team(models.Model):
 
 class NewsCategory(models.Model):
 
+    class Meta:
+        verbose_name_plural = 'News Categories'
+
     news_name = models.CharField(max_length=50)
     friendly_news_name = models.CharField(max_length=50, null=True, blank=True)
 
@@ -30,6 +33,9 @@ class NewsCategory(models.Model):
 
 class News(models.Model):
 
+    class Meta:
+        verbose_name_plural = 'News'
+
     news_category = models.ForeignKey('NewsCategory', null=True, blank=True, on_delete=models.SET_NULL)
     team = models.ForeignKey('Team', null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=254, null=False, blank=False)
@@ -39,4 +45,4 @@ class News(models.Model):
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.title
