@@ -117,7 +117,7 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'{product.name} successfully updated')
-            return redirect(reverse('product_detail', args=[product.id]))
+            return redirect(reverse('club_admin'))
         else:
             messages.error(request, 'Product has not been updated, please check form is valid.')
     else:

@@ -16,7 +16,7 @@ class ProductForm(forms.ModelForm):
 
         self.fields['category'].choices = friendly_names
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'text-uppercase product-form'
+            field.widget.attrs['class'] = 'product-form'
 
 
 class CategoryForm(forms.ModelForm):
@@ -29,4 +29,4 @@ class CategoryForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'text-uppercase product-form'
+            field.widget.attrs['class'] = 'product-form'
