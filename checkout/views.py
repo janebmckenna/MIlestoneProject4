@@ -57,31 +57,41 @@ def checkout(request):
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
+                if 'subscription' in bag:
+                    for subscription in item_data['subscription']:
                         order_line_item = OrderLineItem(
                             order=order,
-                            product=product,
-                            quantity=item_data,
+                            player_name=subscription['player_name'],
+                            team_name=subscription['team_name'],
+                            period=subscription['period']
                         )
                         order_line_item.save()
-                    else:
-                        for size, quantity in item_data['items_by_size'].items():
+                else:
+                    try:
+                        product = Product.objects.get(id=item_id)
+                        if isinstance(item_data, int):
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
-                                quantity=quantity,
-                                product_size=size,
+                                quantity=item_data,
                             )
                             order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your bag wasn't found in our database."
-                        "Please contact us for assistance!")
-                    )
-                    order.delete()
-                    return redirect(reverse('view_bag'))
+                        else:
+                            for size, quantity in item_data['items_by_size'].items():
+                                order_line_item = OrderLineItem(
+                                    order=order,
+                                    product=product,
+                                    quantity=quantity,
+                                    product_size=size,
+                                )
+                                order_line_item.save()
+                    except Product.DoesNotExist:
+                        messages.error(request, (
+                            "One of the products in your bag wasn't found in our database."
+                            "Please contact us for assistance!")
+                        )
+                        order.delete()
+                        return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))

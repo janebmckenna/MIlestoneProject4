@@ -141,12 +141,14 @@ def add_subs_to_bag(request):
                 'team_name': team_name,
                 'period': period
             })
+            messages.success(request, 'Added subs to the bag')
         else:
             bag['subscription'] = [{
                 'player_name': player_name,
                 'team_name': team_name,
                 'period': period
             }]
+            messages.success(request, 'Added subs to the bag')
     
     request.session['bag'] = bag
     return redirect('subs')

@@ -27,6 +27,32 @@
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 <p class="text-muted text-uppercase">Order Summary({{ product_count }})</p>
+                <hr>
+                <h6>SUBSCRIPTIONS</h6>
+                <div class="row">
+                    <div class="col-7 offset-2">
+                        <p class="text-muted text-uppercase"><small>Subscription</small></p>
+                    </div>
+                    <div class="col-3">
+                        <p class="text-muted text-uppercase"><small>Subtotal</small></p>
+                    </div>
+                    {% for item in bag_items %}
+                        {% if item.item_id == 'subscription' %}
+                        <div class="col-7 offset-2">
+                            <p>Subscription for {{ item.player_name|upper }} {{ item.team }} - {{ item.period }} month(s)</p>
+                        </div>
+                        <div class="col-3">
+                            £{{ item.price }}
+                        </div>
+                            {% endif %}
+                    {% empty %}
+                    <div class="col-7 offset-2">
+                        <p class="text-muted text-uppercase">No Subscriptions</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <hr>
+                <h6>PRODUCTS</h6>
                 <div class="row">
                     <div class="col-7 offset-2">
                         <p class="mb-1 mt-0 small text-muted text-uppercase">Item</p>
@@ -36,29 +62,31 @@
                     </div>
                 </div>
                 {% for item in bag_items %}
-                    <div class="row">
-                        <div class="col-2 mb-1">
-                            <a href="{% url 'product_detail' item.product.id %}">
-                                {% if item.product.image %}
-                                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}"></img>
-                                {% else %}
-                                    <img src="{{ MEDIA_URL}}noimage.png" alt="{{ product.name }}" class="w-100">
+                    {% if item.item_id != 'subscription' %}
+                        <div class="row">
+                            <div class="col-2 mb-1">
+                                <a href="{% url 'product_detail' item.product.id %}">
+                                    {% if item.product.image %}
+                                        <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}"></img>
+                                    {% else %}
+                                        <img src="{{ MEDIA_URL}}noimage.png" alt="{{ product.name }}" class="w-100">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col-7 text-uppercase">
+                                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                                {% if item.product.has_sizes %}
+                                    <p class="my-0 small">
+                                        {{ item.size | upper }}
+                                    </p>
                                 {% endif %}
-                            </a>
+                                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p class="my-0 small text-muted">£ {{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            </div>
                         </div>
-                        <div class="col-7 text-uppercase">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            {% if item.product.has_sizes %}
-                                <p class="my-0 small">
-                                    {{ item.size | upper }}
-                                </p>
-                            {% endif %}
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                        </div>
-                        <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">£ {{ item.product.price | calc_subtotal:item.quantity }}</p>
-                        </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
                 <hr class="my-0">
                 <div class="row text-right text-uppercase">

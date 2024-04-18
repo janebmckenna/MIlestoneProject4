@@ -17,11 +17,13 @@ def bag_contents(request):
             for subscription in item_data:
                 subs_count += 1
                 total += subscription['period'] * 50  # Assuming subscription price is $50 per period
+                sub_price = subscription['period'] * 50
                 bag_items.append({
                     'item_id': 'subscription',
                     'player_name': subscription['player_name'],
                     'team_name': subscription['team_name'],
                     'period': subscription['period'],
+                    'price': sub_price
                 })
         else:
             if isinstance(item_data, int):
