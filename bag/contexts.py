@@ -9,29 +9,41 @@ def bag_contents(request):
     bag_items = []
     total = 0
     product_count = 0
+    subs_count = 0
     bag = request.session.get('bag', {})
 
     for item_id, item_data in bag.items():
-        if isinstance(item_data, int):
-            product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
-            product_count += item_data
-            bag_items.append({
-                'item_id' :item_id,
-                'quantity' : item_data,
-                'product' : product,
-            })
-        else:
-            product = get_object_or_404(Product, pk=item_id)
-            for size, quantity in item_data['items_by_size'].items():
-                total += quantity * product.price
-                product_count += quantity
+        if item_id == 'subscription':  # Handle subscriptions
+            for subscription in item_data:
+                subs_count += 1
+                total += subscription['period'] * 50  # Assuming subscription price is $50 per period
                 bag_items.append({
-                'item_id' :item_id,
-                'quantity' : quantity,
-                'product' : product,
-                'size' : size,
+                    'item_id': 'subscription',
+                    'player_name': subscription['player_name'],
+                    'team_name': subscription['team_name'],
+                    'period': subscription['period'],
                 })
+        else:
+            if isinstance(item_data, int):
+                product = get_object_or_404(Product, pk=item_id)
+                total += item_data * product.price
+                product_count += item_data
+                bag_items.append({
+                    'item_id' :item_id,
+                    'quantity' : item_data,
+                    'product' : product,
+                })
+            else:
+                product = get_object_or_404(Product, pk=item_id)
+                for size, quantity in item_data['items_by_size'].items():
+                    total += quantity * product.price
+                    product_count += quantity
+                    bag_items.append({
+                    'item_id' :item_id,
+                    'quantity' : quantity,
+                    'product' : product,
+                    'size' : size,
+                    })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE/100)
@@ -46,6 +58,7 @@ def bag_contents(request):
         'bag_items' : bag_items,
         'total' : total,
         'product_count' : product_count,
+        'subs_count': subs_count,
         'delivery' : delivery,
         'free_delivery_delta' : free_delivery_delta,
         'free_delivery_threshold' : settings.FREE_DELIVERY_THRESHOLD,

@@ -89,7 +89,6 @@ def adjust_bag(request, item_id):
         else:
             bag.pop(item_id)
             messages.success(request, f'Removed {product.name} from your bag')
-
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
@@ -123,3 +122,31 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
+
+
+def add_subs_to_bag(request):
+    """ 
+    Adds Subs form to the bag in the session
+    """
+    if request.method =='POST':
+        player_name = request.POST.get('player_name')
+        team_name = request.POST.get('team')
+        period = int(request.POST.get('period'))
+
+        bag = request.session.get('bag', {})
+        
+        if 'subscription' in bag:
+            bag['subscription'].append({
+                'player_name': player_name,
+                'team_name': team_name,
+                'period': period
+            })
+        else:
+            bag['subscription'] = [{
+                'player_name': player_name,
+                'team_name': team_name,
+                'period': period
+            }]
+    
+    request.session['bag'] = bag
+    return redirect('subs')

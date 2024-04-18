@@ -34,7 +34,11 @@
                                     <th scope="col">Subtotal</th>
                                 </tr>
                                 {% for item in bag_items %}
-                                    <tr>
+                                    {% if item.item_id == 'subscription' %}
+                                        <h4>SUBSCRIPTIONS</h4>
+                                        <p>Subscription for {{ item.player_name|upper }} - {{ item.period }} month(s)</p>
+                                    {% else %}
+                                        <tr>
                                         <td class="p3 w-25">
                                             {% if item.product.image %}
                                                 <img src="{{ item.product.image.url }}" alt="{{ item.product.friendly_name }}" class="img-fluid rounded bag-image">
@@ -93,6 +97,7 @@
                                             <p class="my-0">{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                         </td>
                                     </tr>
+                                    {% endif %}
                                 {% endfor %}
                                 <tr>
                                     <td class="pt-5 text-right" colspan="5">

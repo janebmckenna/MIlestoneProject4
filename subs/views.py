@@ -1,8 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404)
+from django.contrib import messages
+
+from .forms import SubsForm
+from .models import TeamSubs
+from clubadmin.models import Team, Player
+
 
 # Create your views here.
 def subs(request):
     """ 
-    A view to return an index page
+    View for add subs page
     """
-    return render(request, 'subs/subs.html')
+    teams = Team.objects.all()
+    players = Player.objects.all()
+
+    template = 'subs/subs.html'
+    context ={
+        'teams': teams,
+        'players': players
+    }
+
+    return render(request, template, context)
