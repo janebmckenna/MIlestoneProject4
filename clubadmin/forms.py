@@ -1,6 +1,7 @@
 from django import forms
 
-from .models import Team, NewsCategory, News
+from .models import Team, NewsCategory, News, Player
+from subs.models import TeamSubs
 from kit.models import Category
 
 
@@ -20,3 +21,18 @@ class NewsForm(forms.ModelForm):
         self.fields['news_category'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'news-form'
+
+class PlayerForm(forms.ModelForm):
+
+    class Meta:
+        model = Player
+        fields = "__all__"
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        teams = Team.objects.all()
+        friendly_names = [(t.id, t.get_friendly_name()) for t in teams]
+
+        self.fields['team'].choices = friendly_names
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'player-form'

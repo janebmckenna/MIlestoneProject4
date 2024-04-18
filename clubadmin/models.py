@@ -45,3 +45,16 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Player(models.Model):
+
+    team = models.ForeignKey('Team', null=False, blank=False, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, null=False, blank=False)
+    display_name = models.CharField(max_length=50, null=False, blank=False, default='display name')
+
+    def __str__(self):
+        return self.name
+
+    def get_display_name(self):
+        return self.display_name

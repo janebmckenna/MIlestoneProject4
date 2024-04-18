@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Team, News, NewsCategory
+from .models import Team, News, NewsCategory, Player
 
 
 class TeamAdmin(admin.ModelAdmin):
@@ -24,6 +24,15 @@ class NewsAdmin(admin.ModelAdmin):
     ordering = ('date',)
 
 
+class PlayerAdmin(admin.ModelAdmin):
+    list_display = (
+        'display_name',
+    )
+    ordering = ('display_name',)
+
+
+
 admin.site.register(Team, TeamAdmin)
 admin.site.register(News, NewsAdmin)
 admin.site.register(NewsCategory, NewsCategoryAdmin)
+admin.site.register(Player, PlayerAdmin)

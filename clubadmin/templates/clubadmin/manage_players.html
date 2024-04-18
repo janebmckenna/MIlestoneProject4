@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay container-fluid"></div>
+    <div class="continer-fluid">
+        <div class="product-title">
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <h2 class="heading text-uppercase">Manage Players</h2>
+                    <hr class="w-50 mb-2">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-4 col-lg-3 offset-lg-1 admin-btn">
+                <a href="{% url 'add_player' %}" class="btn btn-outline-dark">Add New Player</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-container col-10 offset-1">
+                <div class="row mt-1 mb-2">
+
+                </div>
+                <div class="row">
+                            <div class="col-12">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Player</th>
+                                            <th scope="col">Team</th>
+                                            <th scope="col">Edit/Delete</th>
+                                        </tr>
+                                        {% for player in players %}
+                                            <tr>
+                                                <td class="py-3">
+                                                    <p class="my-0">{{ player.display_name }}</p>
+                                                </td>
+                                                <td class="py-3">
+                                                    <p class="my-0">{{ player.team.get_friendly_name }}</p>
+                                                </td>
+                                                <td>
+                                                    <div class="ml-3 pt-3">
+                                                        <a href="{% url 'edit_player' player.id %}" class="edit-btn detail-background">Edit</a>
+                                                        <a href="{% url 'delete_player' player.id %}" class="delete-btn detail-background">Delete</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </thead>
+                                </table>
+                            </div>
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <a href="{% url 'club_admin' %}" class="btn rounded-0 btn-dark">
+                            <span>
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Back to Admin</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('.btt-link').click(function(e){
+            window.scrollTo(0,0)
+        })
+    </script>
+{% endblock %}

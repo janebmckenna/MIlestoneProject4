@@ -3,8 +3,8 @@ from django.shortcuts import (
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import News, NewsCategory, Team
-from .forms import NewsForm
+from .models import News, NewsCategory, Team, Player
+from .forms import NewsForm, PlayerForm
 from kit.models import Product, Category
 
 
@@ -179,3 +179,100 @@ def all_news(request):
         "news" : news,
     }
     return render(request, 'clubadmin/all_news.html', context)
+
+
+@login_required
+def add_player(request):
+    """ 
+    Add a Player
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    on_admin_page = True 
+
+    if request.method == 'POST':
+        form = PlayerForm(request.POST, request.FILES)
+        if form.is_valid():
+            player = form.save()
+            messages.success(request, 'Player added successfully!')
+            return redirect(reverse('manage_players'))
+        else:
+            messages.error(request, 'Player has not been added. Please check the form is valid')
+    else:
+        form = PlayerForm()
+    template = 'clubadmin/add_player.html'
+    context ={
+        'form': form,
+        'on_admin_page': on_admin_page,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def manage_players(request):
+    """ 
+    Admin screen for managing players
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    players = Player.objects.all()
+    on_admin_page = True
+    
+    context = {
+        "players" : players,
+        'on_admin_page': on_admin_page,
+    }
+    return render(request, 'clubadmin/manage_players.html', context)
+
+
+@login_required
+def delete_player(request, player_id):
+    """ 
+    Delete a Player
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    player = get_object_or_404(Player, pk=player_id)
+    player.delete()
+    messages.success(request, 'Player has been deleted!')
+
+    return redirect(reverse('manage_players'))
+
+
+@login_required
+def edit_player(request, player_id):
+    """ 
+    Edit an exisiting Player
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    player = get_object_or_404(Player, pk=player_id)
+    if request.method == 'POST':
+        form = PlayerForm(request.POST, request.FILES,  instance=player)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'{player.display_name} successfully updated')
+            return redirect(reverse('manage_players'))
+        else:
+            messages.error(request, 'Player has not been updated, please check form is valid.')
+    else:
+        form = PlayerForm(instance=player)
+        messages.info(request, f'You are editing {player.display_name}')
+
+    template = 'clubadmin/edit_player.html'
+    context ={
+        'form': form,
+        'player': player,
+        'on_admin_page': True,
+    }
+
+    return render(request, template, context)

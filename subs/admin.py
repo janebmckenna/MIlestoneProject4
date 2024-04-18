@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from .models import  Team_subs
+from .models import  TeamSubs
 from clubadmin.models import Team
 
 
-class Team_subsAdmin(admin.ModelAdmin):
+class TeamSubsAdmin(admin.ModelAdmin):
     list_display = (
-        'player_name',
+        'player',
         'period',
     )
 
 
-admin.site.register(Team_subs, Team_subsAdmin)
+admin.site.register(TeamSubs, TeamSubsAdmin)
