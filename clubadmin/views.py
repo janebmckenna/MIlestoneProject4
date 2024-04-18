@@ -166,3 +166,16 @@ def news_item(request, news_id):
         "news" : news,
     }
     return render(request, 'clubadmin/news_item.html', context)
+
+
+def all_news(request):
+    """ 
+    A view to show individual news pages with full stories
+    """
+
+    news = News.objects.all().order_by('-date')
+
+    context = {
+        "news" : news,
+    }
+    return render(request, 'clubadmin/all_news.html', context)

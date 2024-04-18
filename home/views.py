@@ -7,7 +7,7 @@ def index(request):
     """ 
     A view to return an index page
     """
-    news = News.objects.all()
+    news = News.objects.order_by('-date')[:10]
     context = {
         'news': news
     }

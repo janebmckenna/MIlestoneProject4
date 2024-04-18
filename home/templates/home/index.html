@@ -37,12 +37,14 @@
         </div>
         <div class="row h-100">
             <div class="col-12 col-md-10 offset-md-1 home-page-overlay">
-                <div class="row mb-2">
-                    <h1 class="display-4 logo-font text-white text-uppercase mb-2 font-weight-bold">
-                         Club News
-                    </h1>
-                    <hr>
-                </div>
+                <a class="nav-link mb-3" href="{% url 'all_news' %}">
+                    <div class="row mb-2">
+                        <h1 class="display-4 logo-font text-white text-uppercase mb-2 font-weight-bold">
+                             Club News
+                        </h1>
+                        <hr>
+                    </div>
+                </a>
                 <div class="row">
                     {% if news|length > 0 %}
                         {% for n in news %}

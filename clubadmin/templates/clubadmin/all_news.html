@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay container-fluid"></div>
+    <div class="continer-fluid">
+        <div class="product-title">
+            <div class="row">
+                <div class="col text-center mt-3">
+                    <h2 class="heading text-uppercase">Edit/Delete News Items</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-container col-10 offset-1">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Team</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Full Story</th>
+                                </tr>
+                                {% for n in news %}
+                                    <tr>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ n.title }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ n.news_category }}</p>
+                                        </td>
+                                        {% if n.team %}
+                                        <td class="py-3">
+                                            <p class="my-0">{{ n.team }}</p>
+                                        </td>
+                                        {% else %}
+                                        <td class="py-3"></td>
+                                        {% endif %}
+                                        <td class="py-3">
+                                            <p class="my-0">{{ n.date }}</p>
+                                        </td>
+                                        <td>
+                                            <div class="ml-3 pt-3">
+                                                <a href="{% url 'news_item' n.id %}" class="btn btn-dark">Full Story</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <a href="{% url 'home' %}" class="btn rounded-0 btn-dark">
+                            <span>
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('.btt-link').click(function(e){
+            window.scrollTo(0,0)
+        })
+    </script>
+{% endblock %}
