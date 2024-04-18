@@ -22,6 +22,7 @@
         </div>
         <div class="row">
             <div class="col">
+                <h4>SUBSCRIPTIONS</h4>
                 {% if bag_items %}
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
@@ -35,8 +36,8 @@
                                 </tr>
                                 {% for item in bag_items %}
                                     {% if item.item_id == 'subscription' %}
-                                        <h4>SUBSCRIPTIONS</h4>
                                         <p>Subscription for {{ item.player_name|upper }} - {{ item.period }} month(s)</p>
+                                        <a class="remove-subscription text-danger text-uppercase" id="remove_{{ item.item_id }}" data-csrf_token="{{ csrf_token }}"><small>Remove</small></a>
                                     {% else %}
                                         <tr>
                                         <td class="p3 w-25">
@@ -114,24 +115,24 @@
                                 <tr>
                                     <td class="pt-5 text-right" colspan="5">
                                         {% if request.user.is_authenticated %}
-                                            <a href="#" class="btn rounded-0 btn-lg btn-outline-dark">
+                                            <a href="{% url 'subs' %}" class="btn rounded-0 btn-lg btn-dark">
                                                 <span>
                                                     <i class="fas fa-chevron-left"></i>
                                                 </span>
                                                 <span class="text-uppercase">Add Subs Payment</span>
                                             </a>
                                         {% endif %}
-                                        <a href="{% url 'kit' %}" class="btn rounded-0 btn-lg btn-outline-dark">
+                                        <a href="{% url 'kit' %}" class="btn rounded-0 btn-lg btn-dark m-1">
                                             <span class="icon">
                                                 <i class="fas fa-chevron-left"></i>
                                             </span>
                                             <span class="text-uppercase">Keep Shopping</span>
                                         </a>
-                                        <a href="{% url 'checkout' %}" class="btn rounded-0 btn-lg btn-dark">
+                                        <a href="{% url 'checkout' %}" class="btn rounded-0 btn-lg btn-dark m-1">
                                             <span class="icon">
                                                 <i class="fas fa-lock"></i>
                                             </span>
-                                            <span class="text-uppercase">Secure Checkout</span>
+                                            <span class="text-uppercase m-1">Secure Checkout</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -177,6 +178,19 @@
                     location.reload();
                  });
             })
+            // Remove subscription from bag on click
+            $('.remove-subscription').click(function(e){
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var url = `/bag/removesubs/${itemId}/`;
+            console.log(itemId)
+            var csrfToken = $(this).data('csrf_token');
+            var data = {'csrfmiddlewaretoken': csrfToken};
+
+            $.post(url, data)
+             .done(function() {
+                location.reload();
+             });
+        });
         })
         
     </script>

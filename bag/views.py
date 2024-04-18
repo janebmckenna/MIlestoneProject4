@@ -150,3 +150,24 @@ def add_subs_to_bag(request):
     
     request.session['bag'] = bag
     return redirect('subs')
+
+
+def remove_subs_from_bag(request, item_id):
+    """ 
+    Removes subs from the bag
+    """
+    try:
+        bag = request.session.get('bag', {})
+        print(bag)
+
+        if item_id in bag:
+            del bag[item_id]
+            request.session['bag'] = bag
+            messages.success(request, 'Removed subs from bag')
+            return HttpResponse(status=200)
+        else:
+            messages.error(request, 'Subs not found in bag')
+            return HttpResponse(status=400)
+    except:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
