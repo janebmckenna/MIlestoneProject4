@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import timezone
 
 from .models import Team, NewsCategory, News, Player
 from subs.models import TeamSubs
@@ -21,6 +22,14 @@ class NewsForm(forms.ModelForm):
         self.fields['news_category'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'news-form'
+    
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        # Ensure that the date field is updated to the current date and time
+        instance.date = timezone.now()  # Import timezone if not already imported
+        if commit:
+            instance.save()
+        return instance
 
 class PlayerForm(forms.ModelForm):
 
