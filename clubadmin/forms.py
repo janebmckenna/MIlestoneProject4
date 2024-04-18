@@ -13,7 +13,7 @@ class NewsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         news_categories = NewsCategory.objects.all()
-        friendly_names = [(c.id, c.get_friendly_name()) for c in news_categories]
+        friendly_names = [(c.id, c.get_news_friendly_name()) for c in news_categories]
         teams = Team.objects.all()
         
 

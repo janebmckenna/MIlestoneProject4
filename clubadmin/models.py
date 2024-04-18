@@ -1,7 +1,6 @@
 from django.db import models
 
 from kit.models import Product
-from checkout.models import Order
 
 
 class Team(models.Model):
@@ -27,7 +26,7 @@ class NewsCategory(models.Model):
     def __str__(self):
         return self.news_name
 
-    def get_friendly_name(self):
+    def get_news_friendly_name(self):
         return self.friendly_news_name
 
 

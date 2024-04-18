@@ -80,5 +80,7 @@
 
 trailing , resulting in a tuple on the save_info WH
 
+production versus deployed DB - heroku comand line
+
 
 [Return to README](README.md)
