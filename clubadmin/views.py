@@ -153,3 +153,16 @@ def edit_news(request, news_id):
     }
 
     return render(request, template, context)
+
+
+def news_item(request, news_id):
+    """ 
+    A view to show individual news pages with full stories
+    """
+
+    news = get_object_or_404(News, pk=news_id)
+
+    context = {
+        "news" : news,
+    }
+    return render(request, 'clubadmin/news_item.html', context)

@@ -13,7 +13,7 @@
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-10 offset-1 col-md-5 home-page-overlay">
-                <h1 class="display-4 logo-font text-white text-uppercase">
+                <h1 class="display-4 logo-font text-white text-uppercase font-weight-bold">
                     Welcome to The Club
                 </h1>
                 <h4 class="text-white text-uppercase"> Founded 1661</h4>
@@ -36,31 +36,34 @@
             </div>
         </div>
         <div class="row h-100">
-            <div class="col-10 offset-1 col-md-10 home-page-overlay">
-                <div class="row">
-                    <h1 class="display-4 logo-font text-white text-uppercase">
+            <div class="col-12 col-md-10 offset-md-1 home-page-overlay">
+                <div class="row mb-2">
+                    <h1 class="display-4 logo-font text-white text-uppercase mb-2 font-weight-bold">
                          Club News
                     </h1>
+                    <hr>
                 </div>
                 <div class="row">
                     {% if news|length > 0 %}
-                    {% for n in news %}
-                    <div class="card mx-5 mb-5" style="width: 18rem;">
-                        {% if n.image %}
-                            <img class="card-img-top img-fluid" src="{{ n.image.url }}" alt="{{ n.title }}">
-                        {% else %}
-                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ n.title }}" class="card-img-top img-fluid">
-                        {% endif %}
-                        <div class="card-body">
-                        <h5 class="card-title">{{ n.title }}</h5>
-                        {% if n.team %}
-                            <h6 class="card-title">{{ n.team }}</h6>
-                        {% endif %}
-                        <p class="card-text">{{ n.news|truncatechars:50}}</p>
-                        <a href="#" class="btn btn-primary">Full Story</a>
+                        {% for n in news %}
+                            <div class="col-12 col-md-6">
+                            <div class="card mx-5 mb-5 news-image" >
+                                {% if n.image %}
+                                    <img class="card-img-top img-fluid" src="{{ n.image.url }}" alt="{{ n.title }}">
+                                {% else %}
+                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ n.title }}" class="card-img-top img-fluid">
+                                {% endif %}
+                                <div class="card-body">
+                                <h5 class="card-title">{{ n.title }}</h5>
+                                {% if n.team %}
+                                    <h6 class="card-title">{{ n.team.get_friendly_name }}</h6>
+                                {% endif %}
+                                <p class="card-text">{{ n.news|truncatechars:50}}</p>
+                                <a href="{% url 'news_item' n.id %}" class="btn btn-dark news-button">Full Story</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
                     {% endif %}
                 </div>
             </div>
