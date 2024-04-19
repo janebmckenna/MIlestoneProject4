@@ -82,5 +82,7 @@ trailing , resulting in a tuple on the save_info WH
 
 production versus deployed DB - heroku comand line
 
+datepicker https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django
+
 
 [Return to README](README.md)
