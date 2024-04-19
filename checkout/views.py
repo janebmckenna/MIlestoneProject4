@@ -57,10 +57,12 @@ def checkout(request):
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
+                product = Product.objects.get(id=item_id)
                 if 'subs' in item_data:  
                     for sub in item_data['subs']:
                         order_line_item = OrderLineItem(
                             order=order,
+                            product=product,
                             player_name=sub['player_name'],
                             team_name=sub['team_name'],
                             period=sub['period'],

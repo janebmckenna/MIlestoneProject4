@@ -72,12 +72,19 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(null=False, blank=False, default=0)
     line_item_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
+    player_name = models.CharField(max_length=50, null=True, blank=True)
+    team_name = models.CharField(max_length=50, null=True, blank=True)
+    period = models.IntegerField(null=True, blank=True)
+    
     def save(self, *args, **kwargs):
         """ 
         Overwrite the default save to set the line item total
         and update the order total
         """
-        self.line_item_total = self.product.price * self.quantity
+        if self.period:
+            self.line_item_total = self.period * settings.MONTHLY_SUBS
+        else:
+            self.line_item_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
