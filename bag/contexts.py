@@ -13,21 +13,22 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
 
     for item_id, item_data in bag.items():
-        if item_id == 'subscription':  # Handle subscriptions
-            for subscription in item_data:
-                subs_count += 1
-                total += subscription['period'] * 50  # Assuming subscription price is $50 per period
-                sub_price = subscription['period'] * 50
+        if 'subs' in item_data:  # Handle subscriptions
+            for sub in item_data['subs']:
+                subs_count += sub['quantity']
+                total += sub['period'] * 50  # Assuming subscription price is $50 per period
+                sub_price = sub['period'] * 50
                 bag_items.append({
-                    'item_id': 'subscription',
-                    'player_name': subscription['player_name'],
-                    'team_name': subscription['team_name'],
-                    'period': subscription['period'],
-                    'price': sub_price
+                    'item_id': item_id,
+                    'player_name': sub['player_name'],
+                    'team_name': sub['team_name'],
+                    'period': sub['period'],
+                    'price': sub_price,
+                    'quantity': 1
                 })
         else:
+            product = get_object_or_404(Product, pk=item_id)
             if isinstance(item_data, int):
-                product = get_object_or_404(Product, pk=item_id)
                 total += item_data * product.price
                 product_count += item_data
                 bag_items.append({

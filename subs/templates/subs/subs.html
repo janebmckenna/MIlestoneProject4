@@ -24,52 +24,56 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-                <form action="{% url 'add_subs_to_bag' %}" method="POST" class="form">
-                    {% csrf_token %}
-                    <div class="form-row">
-                        <div class="col-12">
-                            <label for="id_player_name" class="form-label mt-3"><strong>Player:</strong></label>
-                            <select name="player_name" id="id_player_name" class="form-control rounded-0 w-50">
-                                {% for player in players %}
-                                    <option value="{{ player.name }}">{{ player.display_name }}</option>
-                                {% endfor %}
-                            </select>
-                            <label for="id_team" class="form-label mt-3"><strong>Team:</strong></label>
-                            <select name="team" id="id_team" class="form-control rounded-0 w-50">
-                                {% for team in teams %}
-                                    <option value="{{ team.name }}">{{ team.friendly_team_name }}</option>
-                                {% endfor %}
-                            </select>
-                            <label for="id_period" class="form-label mt-3"><strong>Period:</strong></label>
-                            <select name="period" id="id_period" class="form-control rounded-0 w-50">
-                                <option value="1">1 Month</option>
-                                <option value="2">2 Months</option>
-                                <option value="3">3 Months</option>
-                                <option value="4">4 Months</option>
-                                <option value="5">5 Months</option>
-                                <option value="6">6 Months</option>
-                                <option value="7">7 Months</option>
-                                <option value="8">8 Months</option>
-                                <option value="9">9 Months</option>
-                                <option value="10">10 Months</option>
-                                <option value="11">11 Months</option>
-                                <option value="12">1 Year</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12 mt-5">
-                        <a href="{% url 'subs' %}" class="btn rounded-0 btn-lg btn-outline-dark">
-                            <span>
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="text-uppercase">Cancel</span>
-                        </a>
-                        <input type="submit" class="btn rounded-0 btn-lg btn-dark text-uppercase" value="Add to Bag">
-                    </div>
-                </form>
+                {% for product in products %}
+                    {% if product.is_sub == True %}
+                        <form action="{% url 'add_subs_to_bag' product.id %}" method="POST" class="form">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-12">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    <label for="id_player_name" class="form-label mt-3"><strong>Player:</strong></label>
+                                    <select name="player_name" id="id_player_name" class="form-control rounded-0 w-50">
+                                        {% for player in players %}
+                                            <option value="{{ player.name }}">{{ player.display_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="id_team" class="form-label mt-3"><strong>Team:</strong></label>
+                                    <select name="team" id="id_team" class="form-control rounded-0 w-50">
+                                        {% for team in teams %}
+                                            <option value="{{ team.name }}">{{ team.friendly_team_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="id_period" class="form-label mt-3"><strong>Period:</strong></label>
+                                    <select name="period" id="id_period" class="form-control rounded-0 w-50">
+                                        <option value="1">1 Month</option>
+                                        <option value="2">2 Months</option>
+                                        <option value="3">3 Months</option>
+                                        <option value="4">4 Months</option>
+                                        <option value="5">5 Months</option>
+                                        <option value="6">6 Months</option>
+                                        <option value="7">7 Months</option>
+                                        <option value="8">8 Months</option>
+                                        <option value="9">9 Months</option>
+                                        <option value="10">10 Months</option>
+                                        <option value="11">11 Months</option>
+                                        <option value="12">1 Year</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-5">
+                                <a href="{% url 'subs' %}" class="btn rounded-0 btn-lg btn-outline-dark">
+                                    <span>
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="text-uppercase">Cancel</span>
+                                </a>
+                                <input type="submit" class="btn rounded-0 btn-lg btn-dark text-uppercase" value="Add to Bag">
+                            </div>
+                        </form>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
-
-
 {% endblock %}

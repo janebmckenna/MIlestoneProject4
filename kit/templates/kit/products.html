@@ -32,58 +32,60 @@
                 </div>
                 <div class="row">
                     {% for product in products %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                <div class="card h-100 border-2 product-card">
-                                    {% if product.image %}
-                                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                    {% else %}
-                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="card-img-top img-fluid">
-                                    {% endif %}
-                                    <div class="card-body pb-0">
-                                        <p class="mb-0">{{ product.name }}</p>
-                                    </div>
-                                    <div class="card-footer pt-0 border-0 text-left">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                                {% if product.category %}
-                                                    <p class="small">
-                                                        <a href="{% url 'kit' %}?category={{ product.category.name }}" class="category-link">
-                                                            <i class="fa-solid fa-shirt"></i> {{ product.category.friendly_name }}
-                                                        </a>
-                                                    </p>
-                                                {% endif %}
-                                                {% if request.user.is_superuser %}
-                                                    <small class="ml-3">
-                                                        <a href="{% url 'edit_product' product.id %}" class="edit-btn">Edit</a>
-                                                        <a href="{% url 'delete_product' product.id %}" class="delete-btn">Delete</a>
-                                                    </small>
-                                                {% endif %}
+                        {% if product.is_sub == False %}
+                            <a href="{% url 'product_detail' product.id %}">
+                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                    <div class="card h-100 border-2 product-card">
+                                        {% if product.image %}
+                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        {% else %}
+                                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="card-img-top img-fluid">
+                                        {% endif %}
+                                        <div class="card-body pb-0">
+                                            <p class="mb-0">{{ product.name }}</p>
+                                        </div>
+                                        <div class="card-footer pt-0 border-0 text-left">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                                                    {% if product.category %}
+                                                        <p class="small">
+                                                            <a href="{% url 'kit' %}?category={{ product.category.name }}" class="category-link">
+                                                                <i class="fa-solid fa-shirt"></i> {{ product.category.friendly_name }}
+                                                            </a>
+                                                        </p>
+                                                    {% endif %}
+                                                    {% if request.user.is_superuser %}
+                                                        <small class="ml-3">
+                                                            <a href="{% url 'edit_product' product.id %}" class="edit-btn">Edit</a>
+                                                            <a href="{% url 'delete_product' product.id %}" class="delete-btn">Delete</a>
+                                                        </small>
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {% if forloop.counter|divisibleby:1 %}
-                                <div class="col-12 d-sm-none mb-5">
-                                    <hr>
-                                </div>
-                            {% endif %}
-                            {% if forloop.counter|divisibleby:2 %}
-                                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                                    <hr>
-                                </div>
-                            {% endif %}
-                            {% if forloop.counter|divisibleby:3 %}
-                                <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-                                    <hr>
-                                </div>
-                            {% endif %}
-                            {% if forloop.counter|divisibleby:4 %}
-                                <div class="col-12 d-none d-xl-block mb-5">
-                                    <hr>
-                                </div>
+                                {% if forloop.counter|divisibleby:1 %}
+                                    <div class="col-12 d-sm-none mb-5">
+                                        <hr>
+                                    </div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:2 %}
+                                    <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                                        <hr>
+                                    </div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:3 %}
+                                    <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                                        <hr>
+                                    </div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:4 %}
+                                    <div class="col-12 d-none d-xl-block mb-5">
+                                        <hr>
+                                    </div>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     </a>

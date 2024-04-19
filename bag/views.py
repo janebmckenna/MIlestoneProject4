@@ -10,6 +10,8 @@ def view_bag(request):
     """ 
     A view that returns the shopping bag contents page
     """
+    bag = request.session.get('bag', {})
+    print(bag)
     return render(request, 'bag/bag.html')
 
 
@@ -29,6 +31,7 @@ def add_to_bag(request, item_id):
         if item_id in list(bag.keys()):
             if size in bag[item_id]['items_by_size'].keys():
                 bag[item_id]['items_by_size'][size] += quantity
+                print(bag)
                 messages.success(
                     request, f'''
                     Updated size {size.upper()} {product.name} 
@@ -52,6 +55,7 @@ def add_to_bag(request, item_id):
             messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
+    print(bag)
     return redirect(redirect_url)
 
 
@@ -124,44 +128,40 @@ def remove_from_bag(request, item_id):
         return HttpResponse(status=500)
 
 
-def add_subs_to_bag(request):
+def add_subs_to_bag(request, item_id):
     """ 
     Adds Subs form to the bag in the session
     """
+    
     if request.method =='POST':
-        product = get_object_or_404(Product, pk='9')
+        product = get_object_or_404(Product, pk=item_id)
+        quantity = int(request.POST.get('quantity'))
+        redirect_url = request.POST.get('redirect_url')
         player_name = request.POST.get('player_name')
         team_name = request.POST.get('team')
         period = int(request.POST.get('period'))
-        quantity = 1
-
-        subs = request.session.get('subs', {})
         bag = request.session.get('bag', {})
         
-        if product in list(bag.keys()):
-            bag['product'] += quantity
-        else:
-            bag['product'] = quantity
-        
-        if product in list(subs.keys()):
-            subs['product'].append({
+        if item_id in list(bag.keys()):
+            bag[item_id]['subs'].append({
                 'player_name': player_name,
                 'team_name': team_name,
-                'period': period
+                'period': period,
+                'quantity': quantity
             })
+            print(bag)
             messages.success(request, 'Added subs to the bag')
         else:
-            subs['product'] = [{
+            bag[item_id] = {'subs':[{
                 'player_name': player_name,
                 'team_name': team_name,
-                'period': period
-            }]
-            messages.success(request, 'Added subs to the bag')
+                'period': period,
+                'quantity': quantity
+            }]}
+            print(bag)
+            messages.success(request, 'Added Subs to your bag')
     
         request.session['bag'] = bag
-        print(bag)
-        request.session['subs'] = subs
-        print(subs)
         return redirect('subs')
 
 
@@ -169,22 +169,17 @@ def remove_subs_from_bag(request, item_id):
     """ 
     Removes subs from the bag
     """
-    product = get_object_or_404(Product, pk=item_id)
-
     try:
-        if 'player_name' in request.POST:
-            player = request.POST['player_name']
+        product = get_object_or_404(Product, pk=item_id)
+        player_name = request.POST.get('player_name')
         bag = request.session.get('bag', {})
-        print(bag)
-
-        if player:
-            del bag[item_id]['player']
-            messages.success(
-                request, f'Removed subs from your bag')
-
-        request.session['bag'] = bag
-        return HttpResponse(status=200)
+        
+        for sub in bag[item_id]['subs']:
+            if sub.get('player_name') == player_name:
+                bag[item_id]['subs'].remove(sub)
+                request.session['bag'] = bag  
+                return HttpResponse(status=200)
 
     except Exception as e:
-        messages.error(request, f'Error removing item: {e}')
+        messages.error(request, f'Error removing subs {e}')
         return HttpResponse(status=500)

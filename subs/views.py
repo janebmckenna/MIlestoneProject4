@@ -15,13 +15,13 @@ def subs(request):
     """
     teams = Team.objects.all()
     players = Player.objects.all()
-    product = get_object_or_404(Product, pk='9')
+    products = Product.objects.all()
 
     template = 'subs/subs.html'
     context ={
         'teams': teams,
         'players': players,
-        'product': product,
+        'products': products,
     }
 
     return render(request, template, context)

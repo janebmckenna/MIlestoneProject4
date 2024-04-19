@@ -30,7 +30,7 @@ SECRET_KEY = 'we50g=+8qzn5(nj%bi^d+aei^x2*hgoayp)isa*qaiud!0_83b'
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['the-club-77a7b1e1e156.herokuapp.com', 
-                 '8000-janebmckenn-milestonepr-ve73np5y8tz.ws-eu110.gitpod.io',]
+                 '8000-janebmckenn-milestonepr-79eldaln52x.ws-eu110.gitpod.io',]
 
 
 # Application definition

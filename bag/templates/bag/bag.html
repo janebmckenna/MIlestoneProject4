@@ -37,13 +37,13 @@
                             </thead>
                             <tbody>
                                 {% for item in bag_items %}
-                                    {% if item.item_id == '9' %}
+                                    {% if item.period == True %}
                                         <tr>
                                             <td class="p3 w-20">{{ item.player_name|upper }}</td>
                                             <td class="p3 w-20">{{ item.team }}</td>
                                             <td class="p3 w-20">{{ item.period }}</td>
                                             <td class="p3 w-20">£{{ item.price }}</td>
-                                            <td class="p3 w-20"><a class="remove-subscription text-danger text-uppercase" id="remove_{{ item.item_id }}" data-item_id="{{ item.item_id }}" data-csrf_token="{{ csrf_token }}"><small>Remove</small></a></td>
+                                            <td class="p3 w-20"><a class="remove-subscription text-danger text-uppercase" id="remove_{{ item.item_id }}" data-item_id="{{ item.item_id }}" data-csrf_token="{{ csrf_token }}" data-player_name="{{ item.player_name }}"><small>Remove</small></a></td>
                                         </tr>    
                                     {% endif %}
                                 {% empty %}
@@ -64,7 +64,7 @@
                                     <th scope="col">Subtotal</th>
                                 </tr>
                                 {% for item in bag_items %}
-                                    {% if item.item_id != '9' %}
+                                    {% if not item.period %}
                                         <tr>
                                         <td class="p3 w-25">
                                             {% if item.product.image %}
@@ -207,10 +207,15 @@
             // Remove subscription from bag on click
             $('.remove-subscription').click(function(e){
             var itemId = $(this).data('item_id');
+            var playerName = $(this).data('player_name');
             var url = `/bag/removesubs/${itemId}/`;
             console.log(itemId)
             var csrfToken = $(this).data('csrf_token');
-            var data = {'csrfmiddlewaretoken': csrfToken};
+            var data = {
+                'csrfmiddlewaretoken': csrfToken,
+                'player_name': playerName
+                };
+            
 
             $.post(url, data)
              .done(function() {
