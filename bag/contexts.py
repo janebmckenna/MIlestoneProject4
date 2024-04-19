@@ -16,7 +16,7 @@ def bag_contents(request):
         if 'subs' in item_data:  # Handle subscriptions
             for sub in item_data['subs']:
                 subs_count += sub['quantity']
-                total += sub['period'] * 50  # Assuming subscription price is $50 per period
+                total += sub['period'] * 50  
                 sub_price = sub['period'] * 50
                 bag_items.append({
                     'item_id': item_id,

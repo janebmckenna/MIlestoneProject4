@@ -37,7 +37,7 @@
                         <p class="text-muted text-uppercase"><small>Subtotal</small></p>
                     </div>
                     {% for item in bag_items %}
-                        {% if item.item_id == 'subscription' %}
+                        {% if item.period == True %}
                         <div class="col-7 offset-2">
                             <p>Subscription for {{ item.player_name|upper }} {{ item.team }} - {{ item.period }} month(s)</p>
                         </div>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 {% for item in bag_items %}
-                    {% if item.item_id != 'subscription' %}
+                    {% if not item.period %}
                         <div class="row">
                             <div class="col-2 mb-1">
                                 <a href="{% url 'product_detail' item.product.id %}">
