@@ -1,6 +1,7 @@
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404)
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .forms import SubsForm
 from .models import TeamSubs
@@ -25,3 +26,26 @@ def subs(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def all_subs(request):
+    """ 
+    Admin screen subs
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    players = Player.objects.all()
+    teams = Team.objects.all()
+    subs = TeamSubs.objects.all().order_by('date')
+    on_admin_page = True
+    
+    context = {
+        "players" : players,
+        "team": team,
+        "subs": subs,
+        'on_admin_page': on_admin_page,
+    }
+    return render(request, 'subs/all_subs.html', context)
