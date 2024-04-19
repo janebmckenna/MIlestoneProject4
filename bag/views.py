@@ -129,47 +129,62 @@ def add_subs_to_bag(request):
     Adds Subs form to the bag in the session
     """
     if request.method =='POST':
+        product = get_object_or_404(Product, pk='9')
         player_name = request.POST.get('player_name')
         team_name = request.POST.get('team')
         period = int(request.POST.get('period'))
+        quantity = 1
 
+        subs = request.session.get('subs', {})
         bag = request.session.get('bag', {})
         
-        if 'subscription' in bag:
-            bag['subscription'].append({
+        if product in list(bag.keys()):
+            bag['product'] += quantity
+        else:
+            bag['product'] = quantity
+        
+        if product in list(subs.keys()):
+            subs['product'].append({
                 'player_name': player_name,
                 'team_name': team_name,
                 'period': period
             })
             messages.success(request, 'Added subs to the bag')
         else:
-            bag['subscription'] = [{
+            subs['product'] = [{
                 'player_name': player_name,
                 'team_name': team_name,
                 'period': period
             }]
             messages.success(request, 'Added subs to the bag')
     
-    request.session['bag'] = bag
-    return redirect('subs')
+        request.session['bag'] = bag
+        print(bag)
+        request.session['subs'] = subs
+        print(subs)
+        return redirect('subs')
 
 
 def remove_subs_from_bag(request, item_id):
     """ 
     Removes subs from the bag
     """
+    product = get_object_or_404(Product, pk=item_id)
+
     try:
+        if 'player_name' in request.POST:
+            player = request.POST['player_name']
         bag = request.session.get('bag', {})
         print(bag)
 
-        if item_id in bag:
-            del bag[item_id]
-            request.session['bag'] = bag
-            messages.success(request, 'Removed subs from bag')
-            return HttpResponse(status=200)
-        else:
-            messages.error(request, 'Subs not found in bag')
-            return HttpResponse(status=400)
-    except:
+        if player:
+            del bag[item_id]['player']
+            messages.success(
+                request, f'Removed subs from your bag')
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+
+    except Exception as e:
         messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)

@@ -8,6 +8,7 @@ class TeamSubsAdmin(admin.ModelAdmin):
     list_display = (
         'player',
         'period',
+        'team',
     )
 
 

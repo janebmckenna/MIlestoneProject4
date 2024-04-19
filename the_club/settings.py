@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'clubadmin',
+    'fixtures',
 
     #Other
     'crispy_forms',

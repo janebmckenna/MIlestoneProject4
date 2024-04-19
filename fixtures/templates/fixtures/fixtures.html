@@ -17,7 +17,7 @@
         <div class="product-title">
             <div class="row">
                 <div class="col text-center mt-3">
-                    <h2 class="heading text-uppercase">Club News</h2>
+                    <h2 class="heading text-uppercase">All Fixtures</h2>
                 </div>
             </div>
         </div>
@@ -28,34 +28,24 @@
                         <table class="table table-sm">
                             <thead>
                                 <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Category</th>
                                     <th scope="col">Team</th>
+                                    <th scope="col">Opponent</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Full Story</th>
+                                    <th scope="col">Location</th>
                                 </tr>
-                                {% for n in news %}
+                                {% for f in fixtures %}
                                     <tr>
                                         <td class="py-3">
-                                            <p class="my-0">{{ n.title }}</p>
+                                            <p class="my-0">{{ n.team }} Versus</p>
                                         </td>
                                         <td class="py-3">
-                                            <p class="my-0">{{ n.news_category }}</p>
+                                            <p class="my-0">{{ n.opponent }}</p>
                                         </td>
-                                        {% if n.team %}
-                                        <td class="py-3">
-                                            <p class="my-0">{{ n.team }}</p>
-                                        </td>
-                                        {% else %}
-                                        <td class="py-3"></td>
-                                        {% endif %}
                                         <td class="py-3">
                                             <p class="my-0">{{ n.date }}</p>
                                         </td>
-                                        <td>
-                                            <div class="ml-3 pt-3">
-                                                <a href="{% url 'news_item' n.id %}" class="btn btn-dark">Full Story</a>
-                                            </div>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ n.location }}</p>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -76,13 +66,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('.btt-link').click(function(e){
-            window.scrollTo(0,0)
-        })
-    </script>
 {% endblock %}

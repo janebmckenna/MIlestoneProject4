@@ -26,7 +26,7 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        message.error(request, 'Sorry your payment cannot be processed at this time.\
+        messages.error(request, 'Sorry your payment cannot be processed at this time.\
              Please try again later.')
         return HttpResponse(content=e, status=400)
 
@@ -57,7 +57,7 @@ def checkout(request):
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
-                if 'subscription' in bag:
+                if 'subscription' in item_data:
                     for subscription in item_data['subscription']:
                         order_line_item = OrderLineItem(
                             order=order,
