@@ -10,8 +10,12 @@ Order Date: {{ order.date }}
 
 Items on your order:
 {% for item in order.lineitems.all %}
-    {{ item.product.name}}
-        {% if item.product_size %}Size: {{ item.product_size|upper }}{% endif %} x {{ item.quantity }} @ £{{ item.product.price }} each 
+    {% if item.period %}
+        Subs for: {{ item.player_name|upper }} for {{ item.period }}month(s) @ £{{ item.product.price }} per month
+    {% else %}
+        {{ item.product.name}}
+            {% if item.product_size %}Size: {{ item.product_size|upper }}{% endif %} x {{ item.quantity }} @ £{{ item.product.price }} each 
+    {% endif %}
 {% endfor %}
 
 Order Total: £{{ order.order_total }}
