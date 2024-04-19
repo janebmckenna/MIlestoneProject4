@@ -11,7 +11,7 @@ class TeamSubs(models.Model):
     class Meta:
         verbose_name_plural = 'Team Subs'
 
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE, related_name='subs', default=9)
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE, related_name='subs', default=1)
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='subs', default=0)
     player = models.ForeignKey(Player, null=False, blank=False, on_delete=models.CASCADE, related_name='subs', default=0)
     period = models.DecimalField(max_digits=2, decimal_places=0, default=0)

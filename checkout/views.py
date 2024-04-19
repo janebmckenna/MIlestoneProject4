@@ -8,6 +8,8 @@ from .models import Order, OrderLineItem
 from kit.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
+from subs.models import TeamSubs
+from clubadmin.models import Player, Team
 from bag.contexts import bag_contents
 
 import stripe
@@ -69,6 +71,17 @@ def checkout(request):
                             quantity=sub['quantity']
                         )
                         order_line_item.save()
+                        player = get_object_or_404(Player, name=sub['player_name'])
+                        team = get_object_or_404(Team, team_name=sub['team_name'] )
+                        team_subs = TeamSubs(
+                            product=product,
+                            order=order,
+                            player=player,
+                            period=sub['period'],
+                            team=team,
+                            is_paid=True,
+                        )
+                        team_subs.save()
                 else:
                     try:
                         product = Product.objects.get(id=item_id)
