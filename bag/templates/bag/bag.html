@@ -40,7 +40,7 @@
                                     {% if item.period == True %}
                                         <tr>
                                             <td class="p3 w-20">{{ item.player_name|upper }}</td>
-                                            <td class="p3 w-20">{{ item.team }}</td>
+                                            <td class="p3 w-20">{{ item.team_name }}</td>
                                             <td class="p3 w-20">{{ item.period }}</td>
                                             <td class="p3 w-20">£{{ item.price }}</td>
                                             <td class="p3 w-20"><a class="remove-subscription text-danger text-uppercase" id="remove_{{ item.item_id }}" data-item_id="{{ item.item_id }}" data-csrf_token="{{ csrf_token }}" data-player_name="{{ item.player_name }}"><small>Remove</small></a></td>
@@ -213,7 +213,7 @@
             var csrfToken = $(this).data('csrf_token');
             var data = {
                 'csrfmiddlewaretoken': csrfToken,
-                'player_name': playerName
+                'player_name': playerName,
                 };
             
 
