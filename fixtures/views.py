@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from datetime import date
+
 from .models import Fixture
 from .forms import FixtureForm
 
@@ -11,11 +13,12 @@ def fixtures(request):
     """ 
     Show all fixtures
     """
-
+    today = date.today()
     fixtures = Fixture.objects.all().order_by('date')
 
     context = {
         "fixtures" : fixtures,
+        'today': today,
     }
     return render(request, 'fixtures/fixtures.html', context)
 

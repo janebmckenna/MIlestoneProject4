@@ -32,26 +32,32 @@
                                     <th scope="col"></th>
                                     <th scope="col">Opponent</th>
                                     <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
                                     <th scope="col">Location</th>
                                 </tr>
                                 {% for f in fixtures %}
-                                    <tr>
-                                        <td class="py-3">
-                                            <p class="my-0">{{ f.team }}</p>
-                                        </td>
-                                        <td class="py-3">
-                                            <p class="my-0">Versus</p>
-                                        </td>
-                                        <td class="py-3">
-                                            <p class="my-0">{{ f.opponent }}</p>
-                                        </td>
-                                        <td class="py-3">
-                                            <p class="my-0">{{ f.date }}</p>
-                                        </td>
-                                        <td class="py-3">
-                                            <p class="my-0">{{ f.location }}</p>
-                                        </td>
-                                    </tr>
+                                    {% if f.date > today %}
+                                        <tr>
+                                            <td class="py-3">
+                                                <p class="my-0">{{ f.team }}</p>
+                                            </td>
+                                            <td class="py-3">
+                                                <p class="my-0">Versus</p>
+                                            </td>
+                                            <td class="py-3">
+                                                <p class="my-0">{{ f.opponent }}</p>
+                                            </td>
+                                            <td class="py-3">
+                                                <p class="my-0">{{ f.date }}</p>
+                                            </td>
+                                            <td class="py-3">
+                                                <p class="my-0">{{ f.time }}</p>
+                                            </td>
+                                            <td class="py-3">
+                                                <p class="my-0">{{ f.location }}</p>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
                                 {% endfor %}
                             </thead>
                         </table>
