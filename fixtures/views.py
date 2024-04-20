@@ -51,3 +51,71 @@ def add_fixture(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def manage_fixtures(request):
+    """ 
+    A simplified view for edit/delete fixtures
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    today = date.today()
+    fixtures = Fixture.objects.all().order_by('date')
+    on_admin_page = True
+    
+    context = {
+        "fixtures" : fixtures,
+        'today' : today,
+        'on_admin_page': on_admin_page,
+    }
+    return render(request, 'fixtures/fixtures_manage.html', context)
+
+
+@login_required
+def delete_fixture(request, fixture_id):
+    """ 
+    Delete a Fixture
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    fixture = get_object_or_404(Fixture, pk=fixture_id)
+    fixture.delete()
+    messages.success(request, 'Fixture has been deleted!')
+
+    return redirect(reverse('manage_fixtures'))
+
+
+@login_required
+def edit_fixture(request, fixture_id):
+    """ 
+    Edit an exisiting Fixture
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry. This action requires club admin access')
+        return redirect(reverse('home'))
+
+    fixture = get_object_or_404(Fixture, pk=fixture_id)
+    if request.method == 'POST':
+        form = FixtureForm(request.POST, request.FILES,  instance=fixture)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Fixture successfully updated')
+            return redirect(reverse('manage_fixtures'))
+        else:
+            messages.error(request, 'Fixture has not been updated, please check form is valid.')
+    else:
+        form = FixtureForm(instance=fixture)
+
+    template = 'fixtures/edit_fixture.html'
+    context ={
+        'form': form,
+        'fixture': fixture,
+        'on_admin_page': True,
+    }
+
+    return render(request, template, context)
