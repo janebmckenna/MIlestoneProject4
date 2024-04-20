@@ -8,12 +8,11 @@ from datetime import date
 from .models import Fixture
 from .forms import FixtureForm
 
-# Create your views here.
 
 def fixtures(request):
-    """ 
+    """
     Show all fixtures
-    """    
+    """
     today = date.today()
     fixtures = Fixture.objects.all().order_by('date')
 
@@ -24,11 +23,13 @@ def fixtures(request):
                 request, "You didn't enter any search parameters!")
             return redirect(reverse('fixtures'))
 
-        queries = Q(team__icontains=query) | Q(opponent__icontains=query)| Q(date__icontains=query)
+        queries = Q(
+            team__icontains=query) | Q(
+                opponent__icontains=query) | Q(date__icontains=query)
         fixtures = fixtures.filter(queries)
 
     context = {
-        "fixtures" : fixtures,
+        "fixtures": fixtures,
         'today': today,
     }
     return render(request, 'fixtures/fixtures.html', context)
@@ -36,14 +37,15 @@ def fixtures(request):
 
 @login_required
 def add_fixture(request):
-    """ 
+    """
     Add a Fixture
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
-    on_admin_page = True 
+    on_admin_page = True
 
     if request.method == 'POST':
         form = FixtureForm(request.POST, request.FILES)
@@ -52,11 +54,12 @@ def add_fixture(request):
             messages.success(request, 'Fixture added successfully!')
             return redirect(reverse('club_admin'))
         else:
-            messages.error(request, 'Fixture has not been added. Please check the form is valid')
+            messages.error(request, '''
+                Fixture has not been added. Please check the form is valid''')
     else:
         form = FixtureForm()
     template = 'fixtures/add_fixture.html'
-    context ={
+    context = {
         'form': form,
         'on_admin_page': on_admin_page,
     }
@@ -66,20 +69,21 @@ def add_fixture(request):
 
 @login_required
 def manage_fixtures(request):
-    """ 
+    """
     A simplified view for edit/delete fixtures
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     today = date.today()
     fixtures = Fixture.objects.all().order_by('date')
     on_admin_page = True
-    
+
     context = {
-        "fixtures" : fixtures,
-        'today' : today,
+        "fixtures": fixtures,
+        'today': today,
         'on_admin_page': on_admin_page,
     }
     return render(request, 'fixtures/fixtures_manage.html', context)
@@ -87,11 +91,12 @@ def manage_fixtures(request):
 
 @login_required
 def delete_fixture(request, fixture_id):
-    """ 
+    """
     Delete a Fixture
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
@@ -103,11 +108,12 @@ def delete_fixture(request, fixture_id):
 
 @login_required
 def edit_fixture(request, fixture_id):
-    """ 
+    """
     Edit an exisiting Fixture
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     fixture = get_object_or_404(Fixture, pk=fixture_id)
@@ -118,12 +124,13 @@ def edit_fixture(request, fixture_id):
             messages.success(request, 'Fixture successfully updated')
             return redirect(reverse('manage_fixtures'))
         else:
-            messages.error(request, 'Fixture has not been updated, please check form is valid.')
+            messages.error(request, '''
+                Fixture has not been updated, please check form is valid.''')
     else:
         form = FixtureForm(instance=fixture)
 
     template = 'fixtures/edit_fixture.html'
-    context ={
+    context = {
         'form': form,
         'fixture': fixture,
         'on_admin_page': True,

@@ -9,12 +9,13 @@ class MyDateInput(forms.widgets.DateInput):
 
 
 class FixtureForm(forms.ModelForm):
-    date = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}), required=True)
-    
+    date = forms.DateField(
+        widget=forms.TextInput(attrs={'type': 'date'}), required=True)
+
     class Meta:
         model = Fixture
         fields = '__all__'
-        
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
@@ -22,4 +23,3 @@ class FixtureForm(forms.ModelForm):
                 field.widget.attrs['input_type'] = 'date'
             else:
                 field.widget.attrs['class'] = 'fixture-form'
-
