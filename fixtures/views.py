@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 from datetime import date
 
@@ -15,6 +16,16 @@ def fixtures(request):
     """    
     today = date.today()
     fixtures = Fixture.objects.all().order_by('date')
+
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(
+                request, "You didn't enter any search parameters!")
+            return redirect(reverse('fixtures'))
+
+        queries = Q(team__icontains=query) | Q(opponent__icontains=query)| Q(date__icontains=query)
+        fixtures = fixtures.filter(queries)
 
     context = {
         "fixtures" : fixtures,
