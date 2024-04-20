@@ -1,8 +1,11 @@
-<div class=" container-fluid">
+<div class=" container-fluid mt-2">
     <div class="row product-filters">
         <ul class="product-filters list-inline list-unstyled text-center mx-auto">
             <li class="product-item dropdown list-inline-item mx-auto">
-                <a class="mr-3 text-uppercase" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="{% url 'kit' %}" class="mr-3 text-uppercase all-products-link">All Products</a>
+            </li>
+            <li class="product-item dropdown list-inline-item mx-auto">
+                <a class="mx-3 text-uppercase" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sort
                 </a>
                 <div class="dropdown-menu border-0 sort-dropdown" aria-labelledby="all-products-link">

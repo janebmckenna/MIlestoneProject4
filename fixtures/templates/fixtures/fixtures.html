@@ -29,6 +29,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Team</th>
+                                    <th scope="col"></th>
                                     <th scope="col">Opponent</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Location</th>
@@ -36,7 +37,10 @@
                                 {% for f in fixtures %}
                                     <tr>
                                         <td class="py-3">
-                                            <p class="my-0">{{ f.team }} Versus</p>
+                                            <p class="my-0">{{ f.team }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">Versus</p>
                                         </td>
                                         <td class="py-3">
                                             <p class="my-0">{{ f.opponent }}</p>

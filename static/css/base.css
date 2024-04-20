@@ -62,14 +62,27 @@ body {
     margin: 30px;
 }
 
-.home-page-news{
-    margin-top: 20px;
-}
-
 .home-page-overlay p{
     font-size: 1.25rem;
-
 }
+
+.footer{
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #01260E;
+    width: 100vw;
+    height: 30px;
+}
+
+.chrest{
+    padding: 10px;
+    margin: 20px;
+    height: auto;
+    width: 20%;
+}
+
 .dropdown-nav{
     background-color: #01260E; 
 }
@@ -77,6 +90,7 @@ body {
     list-style: none;
 }
 
+.all-products-link,
 #all-products-link,
 #clothing-link,
 .product-item{
@@ -98,8 +112,17 @@ body {
     color: white;
 }
 
+.bag-image{
+    max-height: 100px;
+    width: auto;
+}
+
+/* ----- News Section ----- */
+.home-page-news{
+    margin-top: 20px;
+}
 .card-body p{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 .news-image{
     background-color: #01260E;
@@ -143,36 +166,7 @@ body {
     background-color: #266B73;
     color: white;
 }
-
-.btt-link,
-.remove-item,
-.update-link{
-    cursor: pointer;
-    color: white;
-}
-
-.footer{
-    color: white;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: #01260E;
-    width: 100vw;
-    height: 30px;
-}
-
-.chrest{
-    padding: 10px;
-    margin: 20px;
-    height: auto;
-    width: 20%;
-}
-
-.btn-dark:hover{
-    color: #343A40;
-    background-color: white;
-}
-
+/*----- Notifications ----- */
 .message-container{
     position: fixed;
     bottom: 15px;
@@ -193,7 +187,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
+/* ----- All auth ----- */
 .all-auth{
     text-transform: uppercase;
 }
@@ -233,15 +227,22 @@ body {
     background-color: #343A40;
 }
 
-.bag-image{
-    max-height: 100px;
-    width: auto;
-}
+/* ----- Links and Buttons ----- */
 a:hover{
     text-decoration: none;
     color: white;
 }
+.btt-link,
+.remove-item,
+.update-link{
+    cursor: pointer;
+    color: white;
+}
 
+.btn-dark:hover{
+    color: #343A40;
+    background-color: white;
+}
 .edit-btn{
     -webkit-text-stroke: 0.5px black;
     color: #F9F871;
@@ -268,11 +269,35 @@ a:hover{
 .product-form input:hover{
     cursor: pointer;
 }
+.remove-subscription:hover{
+    cursor: pointer;
+}
 
 /* ----- MEDIA QUERIES ----- */
 @media (max-width: 576px) {
     .header-container{
         margin-bottom: 140px;
+    }
+    .heading{
+        font-size: 2rem;
+    }
+    /*----- Notifications ----- */
+    .message-container{
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        z-index: 9999999;
+    }
+    .custom-toast{
+        overflow: visible;
+    }
+    .toast-topper{
+        height: 3px;
+    }
+    .bag-notification-wrapper{
+        height: 50px;
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
 }
 

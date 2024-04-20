@@ -56,11 +56,11 @@
                                     <img src="{{ MEDIA_URL }}noimage.png" alt="{{ n.title }}" class="card-img-top img-fluid">
                                 {% endif %}
                                 <div class="card-body">
-                                <h5 class="card-title">{{ n.title }}</h5>
+                                <h5 class="card-title text-uppercase">{{ n.title }}</h5>
                                 {% if n.team %}
                                     <h6 class="card-title">{{ n.team.get_friendly_name }}</h6>
                                 {% endif %}
-                                <p class="card-text">{{ n.news|truncatechars:50}}</p>
+                                <p class="card-text">{{ n.news|truncatechars:100}}</p>
                                 <a href="{% url 'news_item' n.id %}" class="btn btn-dark news-button">Full Story</a>
                                 </div>
                             </div>
