@@ -26,9 +26,16 @@ The goal of the project is to provide a one stop shop for the local community to
 
 **Developer Goals**
 
-- Build portfolio.
-- Develop my technical skills.
-- Deliver a real world project which I will be able to give to my community club. 
+- **Build portfolio:** Building my portfolio is crucial for showcasing my skills, projects, and achievements to potential employers or clients. It serves as a demonstration of my expertise and capabilities in web development.
+- **Develop my technical skills:** Continuously improving my technical skills is essential for staying competitive in the field of web development and advancing my career. It involves learning new languages, frameworks, tools, and best practices.
+- **Deliver a real world project:** Contributing to my community club by delivering a real-world project not only benefits the organization but also provides me with valuable experience, exposure, and satisfaction. It allows me to make a meaningful impact and give back to my community
+- **Build a Functional Website:** Develop a fully functional website that meets the requirements outlined in the project scope, including features like user authentication, product management, news publishing, and event management.
+- **Implement Responsive Design:** Ensure that the website is responsive and displays correctly on various devices and screen sizes, including desktops, tablets, and smartphones. Test the website's responsiveness across different browsers to guarantee a consistent user experience.
+- **Utilize Django Framework Effectively:** Leverage the Django framework's features and best practices to streamline development, enhance security, and optimize performance. Follow Django conventions for project structure, URL routing, template rendering, and database interactions.
+- **Integrate Stripe Payment Gateway:** Successfully integrate the Stripe payment gateway to enable online payments for club membership fees/player subscriptions, and merchandise purchases. Implement secure payment processing and handle transactions seamlessly within the website.
+- **Provide User-Friendly Admin Interface:** Develop an intuitive and user-friendly admin interface for managing website content, including club news, events, products, and user accounts. Enable administrators to easily add, edit, or delete content without requiring extensive technical knowledge.
+- **Conduct Thorough Testing:** Conduct comprehensive testing of the website to identify and address any bugs, errors, or usability issues. Perform unit testing, integration testing, and user acceptance testing to ensure that all features work as intended and deliver a seamless user experience.
+
 
 **User Stories**
 
@@ -63,6 +70,8 @@ _As an admin of the site I want to be able to:_
 - Manage Fixtures (add, edit, delete)
 - Manage Players (add, edit, delete)
 - Manage Subs (view and add)
+
+Further administrative features are provided by the built in Django Admin Panel. 
 
 ## UX-scope
 
@@ -142,6 +151,7 @@ _**404/500 Error Pages:**_
 **Future Improvements**
 
 - User commenting on News
+- Training schedules
 
 ## UX-structure
 
@@ -149,13 +159,21 @@ _**404/500 Error Pages:**_
 
 - _Search Feature_: searches the club kit items for sale with placeholder text of 'shop club kit' for user clarity. 
 
-- _Menu Items_: Navigation menu items allwo the user to navigate intuitively through the site. 
+- _Menu Items_: Navigation menu items allow the user to navigate intuitively through the site. 
 
 - _News Section_: The news section of the home page displays the 10 most recent news articles (with most recent first). The Club News heading is a clickable link with eye catching hover css to ensure clear user understanding. 
 
+- _Club Shop and Shop Items_: Accessed via the Nav or through an inital search I have included buttons to navigate to the individual product pages, add items to the bag and keep shopping button for ease of navigation. When a superuser is logged in there are additionally edit and delete buttons to allow the superuser to manage the products. 
+
 - _Bag Page_: This is broken up to display subs section and products seperately. with appropriate details and buttons for both. The products quantity can be updated or deleted while the individual subs lines can be removed from the bag. 
 
-- 
+- _Checkout Page_: Here the user either inputs their address and contact details or it is pre-populated if they have an account and details saved. Bag items are displayed and well seperated between subscriptions and items for delivery. If the user isnt login there are optional links to login or registar otherwise theres a checkbox to save the information provided. To process payment I make use of the stripe widget and functionality. 
+
+- _Fixtures_: Accessed via the navigation I have included search funcitonality to make finding fixtures easier as well as and all fixtures button to remove search filters and a home button. 
+
+- _Account_: Depending on status appropriate navigation is displayed for club admin, login, logout, register, my profile.
+
+- _Back to top button_: Where I envisaged the length of the page could become long I included a back to top button on those pages. 
 
 
 **Data Structure**
@@ -164,6 +182,11 @@ _**404/500 Error Pages:**_
 
 **Security**
 
+Some of the advantages of using Django are the built in security features. Django built in security documentation can be found [here](https://docs.djangoproject.com/en/5.0/topics/security/) including the use of csrf_token.
+
+Some of the additional defensive choices I made during coding this project were using:
+- @login_required decorator
+- defensive redirects
 
 ## UX-skeleton
 
@@ -181,26 +204,29 @@ To follow best practice wireframes were developed for Mobile followed by tablet 
 
 **Colour Palette**
 
-https://color.adobe.com/create/image
+I some key colours from my background home image and used their hex values as the colour pallette for the site. 
+![colors](media/doc-images/colors.png)
 
-https://mycolor.space/
-background-image: linear-gradient(to bottom, #266b73, #157877, #0d8476, #218f70, #3d9a66, #42955a, #47904e, #4c8b42, #3a7735, #286429, #16521d, #014011);
 
 **Fonts**
 
-I used [Google Fonts](https://fonts.google.com/) to choose 
+I used [Google Fonts](https://fonts.google.com/) to choose Oswald font for my project
+
+**Images**
+
+I would like to thank my brother in law Ashley Maguire who is treasurer of the club who inspired this project for providing all the images with the exception of the background home image which I [created using AI](https://color.adobe.com/create/image)
 
 
 **Responsiveness**
 
-
-
+I replied heavily on a combination bootstrap and media queries to ensure the site was visually appealing and well laid out on all screens.
 
 # Technologies-used
 - **Libraries:** jQuery, Bootstrap 
 - **Python Framework:** Django
 - **Languages:** HTML, CSS, JavaScript, Python
-- **Database Management:** MongoDB
+- **Database Management:** Elephant SQL, AWS
+- **Payment Services:** Stripe
 - **Version Control:** Git
 - **Gitpod:** used as a cloud code editor.
 - **GitHub:** used as a cloud based code repository.
@@ -277,6 +303,13 @@ You can fork this repository by using the following steps:
 
 # Credits
 **Content**
+- I used [autoprefixer](https://autoprefixer.github.io/) to parse and and vendor prefixes to my CSS
+- Icons were sourced from [Font Awesome](https://fontawesome.com)
+- My fonts were taken from [Google Fonts](https://fonts.google.com/)
+- [Bootstrap Version 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- Wireframes were created using [Balsamiq](https://balsamiq.com/)
+- I used [favicon.io](https://favicon.io/) to generate my favicon for the site
+- [djecrety](https://djecrety.ir/) was used to generate a new secret key for deployment.
 
 
 
@@ -305,11 +338,6 @@ In truth none of it worked and I reversed back and started from scratch breaking
 - I tried many variations of template tags to finese the display of my bag/checkout items I found [this](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#) very useful.
 
 - I took my 404 and 500 pages from my previous Milestone Project 3 and amended them 
-
-
-**Images**
-
-I would like to thank my brother in law Ashley Maguire who is treasurer of the club who inspired this project for providing all the images. 
 
 **Advice**
 
