@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<!-- 404 error message -->
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l6 offset-l3">
+      <div class="card card-border">
+        <div class="card-content">
+          <h2 class="form-title red-text center-align"><strong>404</strong></h2>
+          <p class="center-align">Sorry this page cannot be found.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  // Five second timeout to return to home page
+  setTimeout(function() {
+      window.location.href = "/";}, 5000); 
+</script>
+{% endblock %}
