@@ -144,7 +144,7 @@ The Navigation bar collapses into a hamburger icon which users are familiar with
 
 **Data Structure**
 
-![Data Structure]()
+![Data Structure](media/wireframes/data-model/seansdb.png)
 
 
 
