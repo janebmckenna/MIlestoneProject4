@@ -197,8 +197,8 @@ I used [Google Fonts](https://fonts.google.com/) to choose
 
 
 # Technologies-used
-- **Libraries:** jQuery, Materialize 
-- **Python Framework:** Flask
+- **Libraries:** jQuery, Bootstrap 
+- **Python Framework:** Django
 - **Languages:** HTML, CSS, JavaScript, Python
 - **Database Management:** MongoDB
 - **Version Control:** Git
@@ -303,6 +303,8 @@ Some of the articles
 In truth none of it worked and I reversed back and started from scratch breaking the code and fixing it as I went step by step. Truthfully I have probably subconciously taken inspiration from code I learnt as I researched and havent documented but I implimented the final fixes by breaking and fixing the code as I worked through it step by step. 
 
 - I tried many variations of template tags to finese the display of my bag/checkout items I found [this](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#) very useful.
+
+- I took my 404 and 500 pages from my previous Milestone Project 3 and amended them 
 
 
 **Images**
