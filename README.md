@@ -4,7 +4,7 @@
 
 The Club is the online home of The Seans GAA Club Threemilehouse. The club allows users, players and members of the community to purchase club gear, pay player subs, catch up on club and community news and view upcoming fixtures. The admin views also allow the managers and board of the club to manage and view sub payments, list games, news etc. 
 
-![Mock Up](static/Images/mockup.png)
+![Mock Up](media/doc-images/mockup.png)
 
 - [Blog Website](#blog-website)
 - [User Experience UX](#user-experience-ux)
@@ -30,9 +30,6 @@ The goal of the project is to provide a one stop shop for the local community to
 - Develop my technical skills.
 - Deliver a real world project which I will be able to give to my community club. 
 
-**User Goals**
-
-
 **User Stories**
 
 [Full User Stories](https://docs.google.com/spreadsheets/d/1QvcKgmC9WbiC6ZFg4j-qCKpRea_9rqwP6MOy0nx6mpA/edit?usp=sharing)
@@ -57,16 +54,15 @@ _As a RETURNING user of the site I want to be able to:_
 
 **Admins**
 
-I considered that there may be two types of admin for a site such as this. Community volenteers, coaches etc and then admin of the overall site. I wanted to create an easy UI for more casual administrators making it easy for them to administer everyday tasks on the site without utilising the built in Django admin. 
+I considered that due to the nature of the Club there may be two types of admin for a site such as this. Community volenteers, coaches etc and then admin of the overall site. I wanted to create an easy UI for more casual administrators making it easy for them to administer everyday tasks on the site without utilising the built in Django admin. 
 
 _As an admin of the site I want to be able to:_
+- Manage Product Categories (add, edit, delete)
+- Manage Products (add, edit, delete)
 - Manage News (add, edit, delete)
 - Manage Fixtures (add, edit, delete)
 - Manage Players (add, edit, delete)
-- Manage Subs (add, edit, delete)
-
-
-
+- Manage Subs (view and add)
 
 ## UX-scope
 
@@ -137,10 +133,6 @@ _Admin_
 
 ![new shop item]()
 
-**Commenting on Club News**
-
-![comments]()
-
 _**404/500 Error Pages:**_
 
 - A 404 error page will display if a user tries to navigate to a page that doesn't exist. 
@@ -149,30 +141,26 @@ _**404/500 Error Pages:**_
 
 **Future Improvements**
 
+- User commenting on News
+
 ## UX-structure
 
+- _Navigation_: Logo, search function, shop, fixtures, account and basket to facilitate browsing the site. On mobile devices the navigation collapses to a familiar hamburger icon which the user will find familiar. 
+
+- _Search Feature_: searches the club kit items for sale with placeholder text of 'shop club kit' for user clarity. 
+
+- _Menu Items_: Navigation menu items allwo the user to navigate intuitively through the site. 
+
+- _News Section_: The news section of the home page displays the 10 most recent news articles (with most recent first). The Club News heading is a clickable link with eye catching hover css to ensure clear user understanding. 
+
+- _Bag Page_: This is broken up to display subs section and products seperately. with appropriate details and buttons for both. The products quantity can be updated or deleted while the individual subs lines can be removed from the bag. 
+
 - 
-
-**Logo**
-
-Is constantly displayed at the top of every page to allow users a quick return to the homepage. 
-
-**Navigation**
-
-I have decided to use a traditional navigation bar with links displaying to the relevant users.
-
-
-The Navigation bar collapses into a hamburger icon which users are familiar with on mobile devices. 
-
-**Footer**
-
 
 
 **Data Structure**
 
-![Data Structure](media/wireframes/data-model/seansdb.png)
-
-
+![Data Structure](media/doc-images/data-model/seansdb.png)
 
 **Security**
 
@@ -293,8 +281,33 @@ You can fork this repository by using the following steps:
 
 
 **Code**
+- I ran into a bug with the date field and i found the solution code [here](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django)
+
+One of the comments suggested 
+
+`target_Date = forms.DateField(widget=forms.TextInput(attrs={'min': today, 'value': today, 'type': 'date'}), required=True)`
+
+As I had already set the min date to today in the model I ended up using 
+
+`date = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}), required=True)`
+
+- I tried many different ways of implimenting the subs into the exisiting payment/order/product models I had built. I saw MVP as not requiring the subs model but it was a feature I wanted to impliment as I felt it was needed for the club. I googled/read/followed many ways of implimenting each of which ran into more issues. 
+
+Some of the articles
+
+1. [saaspegasus.com](https://www.saaspegasus.com/guides/django-stripe-integrate/)
+2. [stripe docs](https://docs.stripe.com/billing/subscriptions/build-subscriptions?ui=stripe-hosted#create-session)
+3. I also searched slack 
+4. Asked AI both [perplexity.ai](www.perplexity.ai) and [chatgpt](chat.openai.com) (Which I found frustrating and unhelpful due to the narrow answers)
+
+In truth none of it worked and I reversed back and started from scratch breaking the code and fixing it as I went step by step. Truthfully I have probably subconciously taken inspiration from code I learnt as I researched and havent documented but I implimented the final fixes by breaking and fixing the code as I worked through it step by step. 
 
 
+https://docs.djangoproject.com/en/5.0/ref/templates/builtins/#
+
+**Images**
+
+I would like to thank my brother in law Ashley Maguire who is treasurer of the club who inspired this project for providing all the images. 
 
 **Advice**
 

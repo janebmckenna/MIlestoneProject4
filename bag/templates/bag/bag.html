@@ -44,13 +44,14 @@
                                             <td class="p3 w-20">{{ item.period }}</td>
                                             <td class="p3 w-20">£{{ item.price }}</td>
                                             <td class="p3 w-20"><a class="remove-subscription text-danger text-uppercase" id="remove_{{ item.item_id }}" data-item_id="{{ item.item_id }}" data-csrf_token="{{ csrf_token }}" data-player_name="{{ item.player_name }}"><small>Remove</small></a></td>
-                                        </tr>    
+                                        </tr>
                                     {% endif %}
-                                {% empty %}
-                                    <p class="text-muted text-uppercase">No Subscriptions</p>
                                 {% endfor %}
                             </tbody>
                         </table>
+                        {% if subs_count == 0 %}
+                            <p class="text-muted text-uppercase">No Subscriptions</p>
+                        {% endif %}
                     </div>
                     <hr>
                     <div class="table-responsive rounded">

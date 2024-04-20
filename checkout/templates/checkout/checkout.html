@@ -45,11 +45,12 @@
                             £{{ item.price }}
                         </div>
                             {% endif %}
-                    {% empty %}
-                    <div class="col-7 offset-2">
-                        <p class="text-muted text-uppercase">No Subscriptions</p>
-                    </div>
                     {% endfor %}
+                    {% if subs_count == 0 %}
+                        <div class="col-7 offset-2">
+                            <p class="text-muted text-uppercase">No Subscriptions</p>
+                        </div>
+                    {% endif %}
                 </div>
                 <hr>
                 <h6>PRODUCTS</h6>
