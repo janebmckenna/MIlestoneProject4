@@ -2,7 +2,7 @@
 [View live project Here](https://the-club-77a7b1e1e156.herokuapp.com/)
 ***
 
-Project explanation
+The Club is the online home of The Seans GAA Club Threemilehouse. The club allows users, players and members of the community to purchase club gear, pay player subs, catch up on club and community news and view upcoming fixtures. The admin views also allow the managers and board of the club to manage and view sub payments, list games, news etc. 
 
 ![Mock Up](static/Images/mockup.png)
 
@@ -22,21 +22,37 @@ Project explanation
 
 ## UX-strategy
 
-The goal 
+The goal of the project is to provide a one stop shop for the local community to interact with their club. In an increasingly cashless society paying for club subs and gear has become a chore. The Club allows users to pay subs online and administrators still have the ability to add subs manually. As a not for profit community orgainsation the additional revenue generated from sales of club merchandise are used to further enhance the club for the community. Social Media has in recent years become the primary platform to communicate club news and fixtures. The Club brings that communication back to a central point which is owned and operated by the club but also provides the oportunity for additional revenue generation. 
 
 **Developer Goals**
 
+- Build portfolio.
+- Develop my technical skills.
+- Deliver a real world project which I will be able to give to my community club. 
 
 **User Goals**
 
 
 **User Stories**
 
-_As a FIRST TIME user of the site I want to be able to:_
+[Full User Stories](https://docs.google.com/spreadsheets/d/1QvcKgmC9WbiC6ZFg4j-qCKpRea_9rqwP6MOy0nx6mpA/edit?usp=sharing)
 
+_As a FIRST TIME user of the site I want to be able to:_
+- Intuitively and easily navigate the site
+- Browse club items for sale
+- Purchase club gear
+- Read news
+- Find upcoming fixture
+- Register as a user
+- Logout of the site
 
 _As a RETURNING user of the site I want to be able to:_
-
+- Log in and out of the site
+- Pay subs
+- Browse club items for sale
+- Purchase club gear
+- Review most recent news easily
+- See updated fixtures
 
 _As an admin of the site I want to be able to:_
 

@@ -12,7 +12,7 @@ from .forms import FixtureForm
 def fixtures(request):
     """ 
     Show all fixtures
-    """
+    """    
     today = date.today()
     fixtures = Fixture.objects.all().order_by('date')
 
