@@ -46,6 +46,15 @@
 
 ## Lighthouse Audit
 ![Lighthouse Audit]()
+The lighthouse audit threw up alot of issues. Some of which I could solve
+- I converted my site images from png to webp
+- Added a meta description
+- Reviewed the contrast on the product page
+
+
+Some of which I couldn't
+- Reviewed where lighthouse claimed alt attributes where missing from images
+- 3rd Party Cookies
 
 
 
