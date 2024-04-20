@@ -9,7 +9,7 @@ class SubsForm(forms.ModelForm):
 
     class Meta:
         model = TeamSubs
-        exclude = ('order', 'is_paid', 'price',)
+        exclude = ('product','order', 'is_paid', 'price',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

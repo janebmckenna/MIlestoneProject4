@@ -53,8 +53,18 @@ _As a RETURNING user of the site I want to be able to:_
 - Purchase club gear
 - Review most recent news easily
 - See updated fixtures
+- Search for specific fixtures
+
+**Admins**
+
+I considered that there may be two types of admin for a site such as this. Community volenteers, coaches etc and then admin of the overall site. I wanted to create an easy UI for more casual administrators making it easy for them to administer everyday tasks on the site without utilising the built in Django admin. 
 
 _As an admin of the site I want to be able to:_
+- Manage News (add, edit, delete)
+- Manage Fixtures (add, edit, delete)
+- Manage Players (add, edit, delete)
+- Manage Subs (add, edit, delete)
+
 
 
 
