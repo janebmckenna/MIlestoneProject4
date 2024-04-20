@@ -24,7 +24,8 @@
   </div>
 </div>
 {% endblock %}
-{% block scripts %}
+{% block postloadjs %}
+{{ block.super }}
 <script>
   // Five second timeout to return to home page
   setTimeout(function() {
