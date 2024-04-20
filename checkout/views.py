@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -28,8 +29,9 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry your payment cannot be processed at this time.\
-             Please try again later.')
+        messages.error(request, '''Sorry your payment
+            cannot be processed at this time.\
+            Please try again later.''')
         return HttpResponse(content=e, status=400)
 
 
@@ -45,7 +47,7 @@ def checkout(request):
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
             'house_number': request.POST['house_number'],
-            'street': request.POST['street'], 
+            'street': request.POST['street'],
             'town_or_city': request.POST['town_or_city'],
             'county': request.POST['county'],
             'country': request.POST['country'],
@@ -60,7 +62,7 @@ def checkout(request):
             order.save()
             for item_id, item_data in bag.items():
                 product = Product.objects.get(id=item_id)
-                if 'subs' in item_data:  
+                if 'subs' in item_data:
                     for sub in item_data['subs']:
                         order_line_item = OrderLineItem(
                             order=order,
@@ -71,8 +73,10 @@ def checkout(request):
                             quantity=sub['quantity']
                         )
                         order_line_item.save()
-                        player = get_object_or_404(Player, name=sub['player_name'])
-                        team = get_object_or_404(Team, team_name=sub['team_name'] )
+                        player = get_object_or_404(
+                            Player, name=sub['player_name'])
+                        team = get_object_or_404(
+                           Team, team_name=sub['team_name'])
                         team_subs = TeamSubs(
                             product=product,
                             order=order,
@@ -93,7 +97,8 @@ def checkout(request):
                             )
                             order_line_item.save()
                         else:
-                            for size, quantity in item_data['items_by_size'].items():
+                            for size, quantity in (
+                                 item_data['items_by_size'].items()):
                                 order_line_item = OrderLineItem(
                                     order=order,
                                     product=product,
@@ -103,21 +108,25 @@ def checkout(request):
                                 order_line_item.save()
                     except Product.DoesNotExist:
                         messages.error(request, (
-                            "One of the products in your bag wasn't found in our database."
-                            "Please contact us for assistance!")
+                            '''One of the products in your bag wasn't
+                            found in our database.
+                            Please contact us for assistance!''')
                         )
                         order.delete()
                         return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information')
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(request, '''
+                There's nothing in your bag at the moment
+                ''')
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -133,16 +142,16 @@ def checkout(request):
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
-                'full_name' : profile.default_full_name,
-                'email' : profile.default_email, 
-                'phone_number' : profile.default_phone_number, 
-                'house_number' : profile.default_house_number, 
-                'street' : profile.default_street , 
-                'town_or_city' : profile.default_town_or_city, 
-                'county' : profile.default_county, 
-                'country' : profile.default_country,
-                'postcode' : profile.default_postcode,
-                })
+                    'full_name': profile.default_full_name,
+                    'email': profile.default_email,
+                    'phone_number': profile.default_phone_number,
+                    'house_number': profile.default_house_number,
+                    'street': profile.default_street,
+                    'town_or_city': profile.default_town_or_city,
+                    'county': profile.default_county,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
@@ -176,15 +185,15 @@ def checkout_success(request, order_number):
 
         if save_info:
             profile_data = {
-                'default_full_name' : order.full_name,
-                'default_email' : order.email, 
-                'default_phone_number' : order.phone_number, 
-                'default_house_number' : order.house_number, 
-                'default_street' : order.street , 
-                'default_town_or_city' : order.town_or_city, 
-                'default_county' : order.county, 
-                'default_country' : order.country,
-                'default_postcode' : order.postcode,
+                'default_full_name': order.full_name,
+                'default_email': order.email,
+                'default_phone_number': order.phone_number,
+                'default_house_number': order.house_number,
+                'default_street': order.street,
+                'default_town_or_city': order.town_or_city,
+                'default_county': order.county,
+                'default_country': order.country,
+                'default_postcode': order.postcode,
             }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
