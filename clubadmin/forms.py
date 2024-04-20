@@ -15,28 +15,29 @@ class NewsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         news_categories = NewsCategory.objects.all()
-        friendly_names = [(c.id, c.get_news_friendly_name()) for c in news_categories]
+        friendly_names = [(
+            c.id, c.get_news_friendly_name()) for c in news_categories]
         teams = Team.objects.all()
-        
 
         self.fields['news_category'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'news-form'
-    
+
     def save(self, commit=True):
         instance = super().save(commit=False)
         # Ensure that the date field is updated to the current date and time
-        instance.date = timezone.now()  # Import timezone if not already imported
+        instance.date = timezone.now()
         if commit:
             instance.save()
         return instance
+
 
 class PlayerForm(forms.ModelForm):
 
     class Meta:
         model = Player
         fields = "__all__"
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         teams = Team.objects.all()

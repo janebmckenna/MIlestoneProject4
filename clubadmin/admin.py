@@ -31,7 +31,6 @@ class PlayerAdmin(admin.ModelAdmin):
     ordering = ('display_name',)
 
 
-
 admin.site.register(Team, TeamAdmin)
 admin.site.register(News, NewsAdmin)
 admin.site.register(NewsCategory, NewsCategoryAdmin)

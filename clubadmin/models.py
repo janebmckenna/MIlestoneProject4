@@ -6,7 +6,8 @@ from kit.models import Product
 class Team(models.Model):
 
     team_name = models.CharField(max_length=254)
-    friendly_team_name = models.CharField(max_length=254, null=True, blank=True)
+    friendly_team_name = models.CharField(
+        max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.team_name
@@ -35,8 +36,10 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = 'News'
 
-    news_category = models.ForeignKey('NewsCategory', null=True, blank=True, on_delete=models.SET_NULL)
-    team = models.ForeignKey('Team', null=True, blank=True, on_delete=models.SET_NULL)
+    news_category = models.ForeignKey(
+        'NewsCategory', null=True, blank=True, on_delete=models.SET_NULL)
+    team = models.ForeignKey(
+        'Team', null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=254, null=False, blank=False)
     news = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
@@ -49,9 +52,11 @@ class News(models.Model):
 
 class Player(models.Model):
 
-    team = models.ForeignKey('Team', null=False, blank=False, on_delete=models.CASCADE)
+    team = models.ForeignKey(
+        'Team', null=False, blank=False, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, null=False, blank=False)
-    display_name = models.CharField(max_length=50, null=False, blank=False, default='')
+    display_name = models.CharField(
+        max_length=50, null=False, blank=False, default='')
 
     def __str__(self):
         return self.name
