@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
+    <div class="container">
         <div class="row h-100">
             <div class="col-10 offset-1 col-md-5 home-page-overlay">
                 <h1 class="display-4 logo-font text-white text-uppercase font-weight-bold">
@@ -36,10 +36,10 @@
             </div>
         </div>
         <div class="row h-100">
-            <div class="col-12 col-md-10 offset-md-1 home-page-overlay">
+            <div class="col home-page-overlay">
                 <a class="nav-link mb-3" href="{% url 'all_news' %}">
                     <div class="row mb-2">
-                        <h1 class="display-4 logo-font text-white text-uppercase mb-2 font-weight-bold">
+                        <h1 class="display-4 logo-font text-white text-uppercase mb-2">
                              Club News
                         </h1>
                         <hr>
@@ -49,7 +49,7 @@
                     {% if news|length > 0 %}
                         {% for n in news %}
                             <div class="col-12 col-md-6">
-                            <div class="card mx-5 mb-5 news-image" >
+                            <div class="card mb-5 news-image" >
                                 {% if n.image %}
                                     <img class="card-img-top img-fluid" src="{{ n.image.url }}" alt="{{ n.title }}">
                                 {% else %}

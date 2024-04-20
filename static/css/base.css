@@ -70,6 +70,9 @@ body {
     font-size: 1.25rem;
 
 }
+.dropdown-nav{
+    background-color: #01260E; 
+}
 .product-filters{
     list-style: none;
 }
@@ -102,6 +105,7 @@ body {
     background-color: #01260E;
     color: white;
     border-radius: 1px;
+    min-height: 300px;
 }
 
 .news-image img{
