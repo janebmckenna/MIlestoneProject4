@@ -137,6 +137,30 @@ class StripeWH_Handler:
                     )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
+                    if 'subs' in item_data:
+                        for sub in item_data['subs']:
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                product=product,
+                                player_name=sub['player_name'],
+                                team_name=sub['team_name'],
+                                period=sub['period'],
+                                quantity=sub['quantity']
+                            )
+                            order_line_item.save()
+                            player = get_object_or_404(
+                                Player, name=sub['player_name'])
+                            team = get_object_or_404(
+                                Team, team_name=sub['team_name'])
+                            team_subs = TeamSubs(
+                                product=product,
+                                order=order,
+                                player=player,
+                                period=sub['period'],
+                                team=team,
+                                is_paid=True,
+                            )
+                            team_subs.save()
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,

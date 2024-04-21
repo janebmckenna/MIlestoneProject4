@@ -1,15 +1,13 @@
 from django.urls import path
 from . import views
-from .webhooks import webhook
-
 
 urlpatterns = [
-    path('', views.checkout, name='checkout'),
+    path('', views.view_bag, name='view_bag'),
+    path('add/<item_id>/', views.add_to_bag, name='add_to_bag'),
+    path('adjust/<item_id>/', views.adjust_bag, name='adjust_bag'),
+    path('remove/<item_id>/', views.remove_from_bag, name='remove_from_bag'),
+    path('addsubs/<item_id>/', views.add_subs_to_bag, name='add_subs_to_bag'),
     path(
-         'checkout_success/<order_number>/',
-         views.checkout_success, name='checkout_success'),
-    path(
-        'cache_checkout_data/',
-        views.cache_checkout_data, name='cache_checkout_data'),
-    path('wh/', webhook, name='webhook'),
+        'removesubs/<item_id>/',
+        views.remove_subs_from_bag, name='remove_subs_from_bag'),
 ]
