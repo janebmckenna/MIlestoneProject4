@@ -41,15 +41,8 @@
   <body>
     <header class="container-fluid fixed-top header-container">
         <div class="row">
-            <div class="col-10 col-lg-3 my-auto py1 py-lg-0 text-center text-lg-left text-uppercase">
-                <a href="{% url 'home' %}" class="nav-link logo">
-                    <i class="fa-solid fa-volleyball fa-lg"></i><h4 class="d-inline"> The Club</h4>
-                </a>
-            </div>
             {% include 'includes/main-nav.html' %}
-            <div class="col-12 float-right">
-                {% include 'includes/mobile-top-header.html' %}
-            </div>
+            {% include 'includes/mobile-top-header.html' %}
         </div>
     </header>
 

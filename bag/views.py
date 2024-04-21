@@ -5,13 +5,11 @@ from django.contrib import messages
 from kit.models import Product
 
 
-# Create your views here.
 def view_bag(request):
     """
     A view that returns the shopping bag contents page
     """
     bag = request.session.get('bag', {})
-    print(bag)
     return render(request, 'bag/bag.html')
 
 
