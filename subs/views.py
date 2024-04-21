@@ -9,9 +9,8 @@ from clubadmin.models import Team, Player
 from kit.models import Product
 
 
-# Create your views here.
 def subs(request):
-    """ 
+    """
     View for add subs page
     """
     teams = Team.objects.all()
@@ -19,7 +18,7 @@ def subs(request):
     products = Product.objects.all()
 
     template = 'subs/subs.html'
-    context ={
+    context = {
         'teams': teams,
         'players': players,
         'products': products,
@@ -30,20 +29,21 @@ def subs(request):
 
 @login_required
 def all_subs(request):
-    """ 
+    """
     Admin screen view all subs
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     players = Player.objects.all()
     teams = Team.objects.all()
     subs = TeamSubs.objects.all().order_by('date')
     on_admin_page = True
-    
+
     context = {
-        "players" : players,
+        "players": players,
         "teams": teams,
         "subs": subs,
         'on_admin_page': on_admin_page,
@@ -53,14 +53,15 @@ def all_subs(request):
 
 @login_required
 def add_subs(request):
-    """ 
+    """
     View for add subs page (manually)
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
-    on_admin_page = True 
+    on_admin_page = True
 
     if request.method == 'POST':
         form = SubsForm(request.POST, request.FILES)
@@ -69,11 +70,13 @@ def add_subs(request):
             messages.success(request, 'Subs added successfully!')
             return redirect(reverse('club_admin'))
         else:
-            messages.error(request, 'New Subs have not been added. Please check the form is valid')
+            messages.error(request, '''
+                New Subs have not been added.
+                Please check the form is valid''')
     else:
         form = SubsForm()
     template = 'subs/add_subs.html'
-    context ={
+    context = {
         'form': form,
         'on_admin_page': on_admin_page,
     }

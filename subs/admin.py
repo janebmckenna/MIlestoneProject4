@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import  TeamSubs
+from .models import TeamSubs
 from clubadmin.models import Team
 
 
