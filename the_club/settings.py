@@ -21,16 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if os.path.exists("env.py"):
-    import env
-# SECRET_KEY = os.environ.get('SECRET_KEY', '')
-SECRET_KEY = 'we50g=+8qzn5(nj%bi^d+aei^x2*hgoayp)isa*qaiud!0_83b'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['the-club-77a7b1e1e156.herokuapp.com', 
-                 '8000-janebmckenn-milestonepr-79eldaln52x.ws-eu110.gitpod.io',]
+ALLOWED_HOSTS = ['the-club-77a7b1e1e156.herokuapp.com',
+                 '8000-janebmckenn-milestonepr-79eldaln52x.ws-eu110.gitpod.io']
 
 
 # Application definition
@@ -55,7 +52,7 @@ INSTALLED_APPS = [
     'clubadmin',
     'fixtures',
 
-    #Other
+    # Other
     'crispy_forms',
     'storages',
 ]
@@ -130,8 +127,8 @@ WSGI_APPLICATION = 'the_club.wsgi.application'
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(
+            os.environ.get('DATABASE_URL'))
     }
 else:
     DATABASES = {
@@ -190,7 +187,7 @@ if 'USE_AWS' in os.environ:
         'CacheControl': 'max-age=9460800',
     }
 
-    # AWS S3 Bucket Configeration 
+    # AWS S3 Bucket Configeration
     AWS_STORAGE_BUCKET_NAME = 'the-club-77a7b1e1e156'
     AWS_S3_REGION_NAME = 'eu-west-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')

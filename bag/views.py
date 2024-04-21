@@ -140,9 +140,7 @@ def add_subs_to_bag(request, item_id):
     """
 
     if request.method == 'POST':
-        product = get_object_or_404(Product, pk=item_id)
         quantity = int(request.POST.get('quantity'))
-        redirect_url = request.POST.get('redirect_url')
         player_name = request.POST.get('player_name')
         team_name = request.POST.get('team')
         period = int(request.POST.get('period'))
@@ -174,7 +172,6 @@ def remove_subs_from_bag(request, item_id):
     Removes subs from the bag
     """
     try:
-        product = get_object_or_404(Product, pk=item_id)
         player_name = request.POST.get('player_name')
         bag = request.session.get('bag', {})
 

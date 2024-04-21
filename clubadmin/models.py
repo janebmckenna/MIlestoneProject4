@@ -1,7 +1,5 @@
 from django.db import models
 
-from kit.models import Product
-
 
 class Team(models.Model):
 

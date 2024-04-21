@@ -3,7 +3,7 @@ from django.shortcuts import (
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import News, NewsCategory, Team, Player
+from .models import News, Player
 from .forms import NewsForm, PlayerForm
 from kit.models import Product, Category
 

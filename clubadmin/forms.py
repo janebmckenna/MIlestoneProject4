@@ -2,8 +2,6 @@ from django import forms
 from django.utils import timezone
 
 from .models import Team, NewsCategory, News, Player
-from subs.models import TeamSubs
-from kit.models import Category
 
 
 class NewsForm(forms.ModelForm):
@@ -17,7 +15,6 @@ class NewsForm(forms.ModelForm):
         news_categories = NewsCategory.objects.all()
         friendly_names = [(
             c.id, c.get_news_friendly_name()) for c in news_categories]
-        teams = Team.objects.all()
 
         self.fields['news_category'].choices = friendly_names
         for field_name, field in self.fields.items():

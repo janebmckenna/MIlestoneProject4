@@ -1,6 +1,5 @@
 from django.db import models
 
-from kit.models import Product
 from checkout.models import Order
 from kit.models import Product
 from clubadmin.models import Team, Player

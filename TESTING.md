@@ -73,7 +73,14 @@ I validated my CSS by direct input as the libaries used were causing one error f
 [JSHint](jshint.com)
 I validated my code using jshint. Due to the use of jQuery $ was undefined and I had missed a semi colon the code passed without any other errors. 
 
-[CI Python Linter](https://pep8ci.herokuapp.com/)
+**Python Validation**
+
+The code was validated using Pythons own Flake8 utility using the command `python3 -m flake8`
+
+![Flake 8](media/doc-images/flake8.png)
+I did not attempt to resolve the E501 errors where they were created by migrations. 
+
+I also passed the indivaidual py files through [CI Python Linter](https://pep8ci.herokuapp.com/)
 
 
 
