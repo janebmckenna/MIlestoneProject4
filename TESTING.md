@@ -36,6 +36,43 @@
 
 |**Feature**     |**Action**     |**Expected Behaviour**     |**Result**     |
 |----------------|---------------|---------------------------|---------------|
+|Nav Bar|Click Logo|Navigates to home page|Pass|
+|Nav Bar|Click Search|Opens Search Box|Pass|
+|Nav Bar|Click Shop|Opens shop drop down|Pass|
+|Nav Bar|Click Fixtures|Opens Fixtures dropdown|Pass|
+|Nav Bar|Click My Account|Opens Account dropdown (logged in) My Profile and Logout shown|Pass|
+|Nav Bar|Click My Account|Opens Account dropdown (superuser logged in)Club Admin, My Profile and Logout shown|Pass|
+|Nav Bar|Click My Account|Opens Account dropdown(logged out) Login and Register shown|Pass|
+|Nav Bar|Click Basket|Opens bag.html|Pass|
+|Search Function|Search for item click Enter|Returns appropriate product items on kit page|Pass|
+|Search Function|Search for item click Search icon|Returns appropriate  product items on kit page|Pass|
+|Nav Bar-Shop Icon|Click Shop Cub Kit|Navigates to kit page|Pass|
+|Nav Bar-Shop Icon|Click Pay Club Subs|Navigates to subs page|Pass|
+|Nav Bar - Fixtures|Click All Fixtures|Navigates to fixtures page|Pass|
+|Nav Bar - My Account|Click Club Admin|Navigates to home page|Pass|
+|Nav Bar - My Account|Click My Profile|Navigates to my profile page|Pass|
+|Nav Bar - My Account|Click Logout|Navigates to logout page|Pass|
+|Nav Bar - My Account|Click Login|Navigates to login page|Pass|
+|Nav Bar - My Account|Click Register|Navigates to registration page|Pass|
+|Nav Bar - Mobile|Click hamburger icon|Expands Navigation on in row below Nav aligned right|Pass|
+|Mobile Nav Bar|Click Logo|Navigates to home page|Pass|
+|Mobile Nav Bar|Click Search|Opens Search Box|Pass|
+|Mobile Nav Bar|Click Shop|Opens shop drop down|Pass|
+|Mobile Nav Bar|Click Fixtures|Opens Fixtures dropdown|Pass|
+|Mobile Nav Bar|Click My Account|Opens Account dropdown (logged in) My Profile and Logout shown|Pass|
+|Mobile Nav Bar|Click My Account|Opens Account dropdown (superuser logged in)Club Admin, My Profile and Logout shown|Pass|
+|Mobile Nav Bar|Click My Account|Opens Account dropdown(logged out) Login and Register shown|Pass|
+|Mobile Nav Bar|Click Basket|Opens bag.html|Pass|
+|Mobile Search Function|Search for item click Enter|Returns appropriate product items on kit page|Pass|
+|Mobile Search Function|Search for item click Search icon|Returns appropriate  product items on kit page|Pass|
+|Mobile Nav Bar-Shop Icon|Click Shop Cub Kit|Navigates to kit page|Pass|
+|Mobile Nav Bar-Shop Icon|Click Pay Club Subs|Navigates to subs page|Pass|
+|Mobile Nav Bar - Fixtures|Click All Fixtures|Navigates to fixtures page|Pass|
+|Mobile Nav Bar - My Account|Click Club Admin|Navigates to home page|Pass|
+|Mobile Nav Bar - My Account|Click My Profile|Navigates to my profile page|Pass|
+|Mobile Nav Bar - My Account|Click Logout|Navigates to logout page|Pass|
+|Mobile Nav Bar - My Account|Click Login|Navigates to login page|Pass|
+|Mobile Nav Bar - My Account|Click Register|Navigates to registration page|Pass|
 
 
 ## User Story Validation

@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="overlay container-fluid"></div>
-    <div class="continer-fluid">
+    <div class="continer-fluid  mb-5 pb-5">
         <div class="product-title">
             <div class="row">
                 <div class="col text-center mt-3">
@@ -51,8 +51,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="ml-3 pt-3">
-                                                        <a href="{% url 'edit_player' player.id %}" class="edit-btn detail-background">Edit</a>
-                                                        <a href="{% url 'delete_player' player.id %}" class="delete-btn detail-background">Delete</a>
+                                                        <a href="{% url 'edit_player' player.id %}" class="btn btn-sm btn-dark rounded-0 mb-2">Edit</a>
+                                                        <a href="{% url 'delete_player' player.id %}" class="btn btn-sm btn-dark rounded-0 mb-2">Delete</a>
                                                     </div>
                                                 </td>
                                             </tr>

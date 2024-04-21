@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="overlay container-fluid"></div>
-    <div class="continer-fluid">
+    <div class="continer-fluid mb-5 pb-5">
         <div class="product-title">
             <div class="row">
                 <div class="col text-center mt-3">
@@ -22,73 +22,73 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col text-center admin-btn mb-5">
+                <div class="col text-center admin-btn">
                     <a href="{% url 'add_fixture' %}" class="btn btn-outline-dark rounded-0">Add New Fixture</a>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="product-container col-10 offset-1">
-                <div class="row">
-                    <div class="col-12">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Team</th>
-                                    <th scope="col">Opponent</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Edit/Delete</th>
-                                </tr>
-                                {% for f in fixtures %}
-                                    {% if f.date > today %}
-                                        <tr>
-                                            <td class="py-3">
-                                                <p class="my-0">{{ f.team }}</p>
-                                            </td>
-                                            <td class="py-3">
-                                                <p class="my-0">{{ f.opponent }}</p>
-                                            </td>
-                                            <td class="py-3">
-                                                <p class="my-0">{{ f.date }}</p>
-                                            </td>
-                                            <td class="py-3">
-                                                <p class="my-0">{{ f.time }}</p>
-                                            </td>
-                                            <td class="py-3">
-                                                <p class="my-0">{{ f.location }}</p>
-                                            </td>
-                                            <td>
-                                                <div class="ml-3 pt-3">
-                                                    <a href="{% url 'edit_fixture' f.id %}" class="edit-btn detail-background">Edit</a>
-                                                    <a href="{% url 'delete_fixture' f.id %}" class="delete-btn detail-background">Delete</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    {% endif %}
-                                {% endfor %}
-                            </thead>
-                        </table>
+            <div class="row">
+                <div class="col-9 offset-1">
+                    <div class="row mt-1 mb-2">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-right">
-                        <a href="{% url 'club_admin' %}" class="btn rounded-0 btn-dark">
-                            <span>
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="text-uppercase">Back to Admin</span>
-                        </a>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">Team</th>
+                                <th scope="col">Opponent</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">ADMIN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for f in fixtures %}
+                                {% if f.date > today %}
+                                    <tr>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ f.team }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ f.opponent }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ f.date }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ f.time }}</p>
+                                        </td>
+                                        <td class="py-3">
+                                            <p class="my-0">{{ f.location }}</p>
+                                        </td>
+                                        <td>
+                                            <div class="pt-3 ">
+                                                <a href="{% url 'edit_fixture' f.id %}" class="btn btn-sm btn-dark rounded-0 mb-2">Edit</a>
+                                                <a href="{% url 'delete_fixture' f.id %}" class="btn btn-sm btn-dark rounded-0 mb-2">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <a href="{% url 'club_admin' %}" class="btn rounded-0 btn-dark">
+                                <span>
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Back to Admin</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="btt-button shaddow-sm rounded-1 border border-black text-center">
-        <a class="btt-link d-flex h-100">
-            <i class="fas fa-arrow-up mx-auto my-auto"></i>
-        </a>
+        <div class="btt-button shaddow-sm rounded-1 border border-black text-center">
+            <a class="btt-link d-flex h-100">
+                <i class="fas fa-arrow-up mx-auto my-auto"></i>
+            </a>
+        </div>
     </div>
 {% endblock %}
 

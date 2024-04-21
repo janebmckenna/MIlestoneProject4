@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="overlay container-fluid"></div>
-    <div class="continer-fluid">
+    <div class="continer-fluid mb-5 pb-5">
         <div class="product-title">
             <div class="row">
                 <div class="col text-center mt-3">
@@ -21,16 +21,15 @@
                     <hr class="w-50 mb-2">
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-4 col-lg-3 offset-lg-1 admin-btn">
-                <a href="{% url 'add_subs' %}" class="btn btn-outline-dark rounded-0">Manually Add Subs</a>
+            <div class="row">
+                <div class="col text-center admin-btn">
+                    <a href="{% url 'add_subs' %}" class="btn btn-outline-dark rounded-0">Manually Add Subs</a>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
-
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -55,7 +54,6 @@
                             </tbody>
                         </table>
                     </div>
-                    </a>
                 </div>
                 <div class="row">
                     <div class="col-12 text-right">
