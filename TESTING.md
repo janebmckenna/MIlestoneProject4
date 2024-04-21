@@ -62,11 +62,13 @@ Some of which I couldn't
 
 [W3C HTML validator](https://validator.w3.org/)
 
-![validator]()
+![validator](media/doc-images/info-trailing-slash.png)
+I tested all pages by URL due to Django templating. I had a few errors which I resolved. On some pages I was left with an interesting info from void elements regarding the closing /. 
 
 [CSS validator Jigsaw](https://jigsaw.w3.org/css-validator/)
 
-![CSS validator]()
+![CSS validator](media/doc-images/css-validation.png)
+I validated my CSS by direct input as the libaries used were causing an error from font awesome and 806 warnings.
 
 
 [JSHint](jshint.com)

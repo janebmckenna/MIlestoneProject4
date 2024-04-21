@@ -78,16 +78,18 @@
         {% block content %}
         {% endblock %}
     </div>
+    <footer class="footer mt-auto">
+        <div class="container-fluid m-0 p-0">
+            <p class="footer-copyright float-right pr-1">Sean McDermotts © 2024.</p>
+        </div>
+      </footer>
+      
+      {% block postloadjs %}
+      {{ block.super }}
+        <script>
+            $('.toast').toast('show');
+        </script>
+      {% endblock %}
   </body>
-  <footer class="footer mt-auto">
-    <div class="container-fluid m-0 p-0">
-        <p class="footer-copyright float-right pr-1">Sean McDermotts © 2024.</p>
-    </div>
-  </footer>
 
-  {% block postloadjs %}
-    <script type="text/javascript">
-        $('.toast').toast('show');
-    </script>
-  {% endblock %}
 </html>

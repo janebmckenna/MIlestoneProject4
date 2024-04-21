@@ -1,11 +1,3 @@
-/*
-    Core logic/payment flow for this comes from here:
-    https://stripe.com/docs/payments/accept-a-payment
-
-    CSS from here: 
-    https://stripe.com/docs/stripe-js
-*/
-
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
@@ -53,9 +45,6 @@ form.addEventListener('submit', function(ev) {
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
-    setTimeout(function() {
-        console.log('Actions after timeout');
-    }, 5000); 
     
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
     // From using {% csrf_token %} in the form

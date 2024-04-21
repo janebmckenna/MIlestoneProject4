@@ -29,7 +29,7 @@
                 <form action="{% url 'profile' %}" method="POST" class="mt-3" id="profile_update_form">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button id="submit-button" class="btn btn-outline-dark rounded-1 text-uppercase float-right">
+                    <button id="submit-button" class="btn btn-dark rounded-0 text-uppercase float-right">
                         <span class="text-uppercase"> Save</span>
                         <span class="icon">
                             <i class="fa-regular fa-floppy-disk"> </i>
