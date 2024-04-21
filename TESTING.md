@@ -49,7 +49,7 @@
 The lighthouse audit threw up alot of issues. Some of which I could solve
 - I converted my site images from png to webp
 - Added a meta description
-- Reviewed the contrast on the product page
+- Reviewed the contrast on the product page and adjust the hex slightly to improve contrast using [this site](app.contrast-finder.org/)
 
 
 Some of which I couldn't

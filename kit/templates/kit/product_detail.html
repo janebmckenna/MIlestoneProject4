@@ -99,9 +99,9 @@
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% if request.user.is_superuser %}
                             <div class="row mt-2 ml-2">
-                                <small class="ml-3">
-                                    <a href="{% url 'edit_product' product.id %}" class="edit-btn detail-background">Edit</a>
-                                    <a href="{% url 'delete_product' product.id %}" class="delete-btn detail-background">Delete</a>
+                                <small>
+                                    <a href="{% url 'edit_product' product.id %}" class="btn rounded-0 btn-sm btn-outline-dark">Edit</a>
+                                    <a href="{% url 'delete_product' product.id %}" class="btn rounded-0 btn-sm btn-outline-dark">Delete</a>
                                 </small>
                             </div>
                             {% endif %}

@@ -100,10 +100,11 @@ body {
 .all-products-link,
 #all-products-link,
 #clothing-link,
+#products,
 .product-item{
     display: inline-block;
     list-style-type: none;
-    color: #266B73;
+    color: #216265;
     font-size: 1.5rem;
 }
 
@@ -115,7 +116,7 @@ body {
 
 .product-card,
 .product-card p{
-    background-color: #266B73;
+    background-color: #216265;
     color: white;
 }
 
@@ -162,7 +163,7 @@ body {
 }
 
 .category-link{
-    color: #01260E;
+    color: white;
 }
 
 .btt-button{
