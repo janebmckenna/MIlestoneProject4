@@ -73,6 +73,66 @@
 |Mobile Nav Bar - My Account|Click Logout|Navigates to logout page|Pass|
 |Mobile Nav Bar - My Account|Click Login|Navigates to login page|Pass|
 |Mobile Nav Bar - My Account|Click Register|Navigates to registration page|Pass|
+|Kit - All Products Page|Click All Products|Filters to All products (except subs)|Pass|
+|Kit - All Products Page|Click Sort|Displays sort options|Pass|
+|Kit - All Products Page|Click Occassion|Displays occassion options|Pass|
+|Sort Options|Click by price|Filters by price|Pass|
+|Sort Options|Click by category|Filters by category |Pass|
+|Sort Options|Click All products|Filters All products|Pass|
+|Occassion Options|Click by match kit|Filters by match kit|Pass|
+|Occassion Options|Click by training kit|Filters by training kit |Pass|
+|Occassion Options|Click supporters kit|Filters supporters kit|Pass|
+|Kit - All products Page|Click product|Opens Product details page|Pass|
+|Kit - All products Page (superuser)|Click edit|Opens Edit product Page|Pass|
+|Kit - All products Page (superuser)|Click delete|Deletes product and redirects to admin panel|Pass|
+|Kit - All products Page|Click product category|Filters to product category clicked|Pass|
+|Kit - Product Detail Page (superuser)|Click edit|Opens Edit product Page|Pass|
+|Kit - Product Detail Page (superuser)|Click delete|Deletes product and redirects to admin panel|Pass|
+|Kit - Product Detail Page|Click product category|Filters to all products of category clicked|Pass|
+|Kit - Product Detail Page|Click Product sizes|Opens dropdown of choices|Pass|
+|Kit - Product Detail Page|Toggle Quantity up and down|Quanity Toggles between 1-99|Pass|
+|Kit - Product Detail Page|Click Keep Shopping|Navigates to all kit|Pass|
+|Kit - Product Detail Page|Click Add to Bag|Adds item to bag and success message appears|Pass|
+|Home Page|Click Club News|Navigates to all club News|Pass|
+|Home Page|Click Full Story|Navigates to News Story|Pass|
+|All Club News Page|Click Full Story|Navigates to News Story|Pass|
+|News Story Page|Click home|Navigates Home|Pass|
+|Pay Club Subs Page|Click Add to Bag|Adds subs to bag and success message appears|Pass|
+|Pay Club Subs Page|Click Cancel|Navigates to home page|Pass|
+|Fixtures Page|Search fixtures press enter|Filters to search term|Pass|
+|Fixtures Page|Search fixtures click search icon|Filters to search term|Pass|
+|Fixtures Page|Click All fixtures|Resets to all fixtures|Pass|
+|Fixtures Page|Click Home|Navigates to Home|Pass|
+|Fixtures Page|Click back to top bottom|Returns to the top of the screen|Pass|
+|Shopping Bag Page| Click Remove on subs item|Single line of subs is removed total updates|Pass|
+|Shopping Bag Page| Toggle Quantity up and down|Quanity Toggles between 1-99|Pass|
+|Shopping Bag Page| Click Remove on Product item|Product is removed  total updates|Pass|
+|Shopping Bag Page| Click Update after toggling the quantity Product item|total updates|Pass|
+|Shopping Bag Page| Click add subs payment|Navigates to add subs page|Pass|
+|Shopping Bag Page| Click Keep Shopping|Navigates to products page|Pass|
+|Shopping Bag Page| Click Secure checkout|Navigates to checkout page|Pass|
+|Checkout Page|Click Adjust Bag|Navigates bag to Bag|Pass|
+|Checkout Page|Fail to enter valid email|Form validation prompt appears|Pass|
+|Checkout Page|Fail to enter name|Form validation prompt appears|Pass|
+|Checkout Page|Fail to enter required address details|Form validation prompt appears|Pass|
+|Checkout Page|Fail to enter valid card|Error appears below Card Div|Pass|
+|Checkout Page|Enter expired card details|Error appears below Card Div|Pass|
+|Checkout Page|Click Complete Order|Processes Order and displays conformation|Pass|
+|Confirmation Page|Click Club News|Navigates to Club News|Pass|
+|Confirmation Page|Click Upcoming Fixtures|Navigates to Upcoming Fixtures|Pass|
+|My Profile Page|Click Order Number|Navigates to Order Number|Pass|
+|My Profile Page|Click Save|Details saved and success notification appears |Pass|
+|Logout Page|CLick Home|Navigates to Home|Pass|
+|Logout Page|Click Sign Out|Signs out the user, shows success message and navigates to Home|Pass|
+|Login Page|Click Home|Navigates to Home|Pass|
+|Login Page|Click Sign in|Signs out the user, shows success message and navigates to Home|Pass|
+|Login Page|Click Sign up|Navigates to the registration page|Pass|
+|Login Page|Click Forgot Password|Navigates to the forgot password Page|Pass|
+|Login Page|Click Sign in -no details|Form validation displays|Pass|
+|Login Page|Click Sign in -correct details|Naviagtes to Home and displays success message|Pass|
+
+
+
 
 
 ## User Story Validation
