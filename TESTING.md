@@ -16,7 +16,10 @@
 
 |**Testing** |**iPhone12 safari** |**iPad Pro 9.7" safari**|**MacBook Air Chrome**|**MacBook Air Safari**|**Lenovo MS OS Edge**|**Lenovo MS OS Edge**|**Chrome Developer Tools**|
 |-----|-----|-----|-----|-----|-----|-----|-----|
-|Responsive|
+|Responsive|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Delete/Edit buttons visible only to superuser|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Forms won't submit without appropriate information|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Toast Messages appear|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 
 
 |**Additional Devices Tested Using Chrome Developer Tools**|**Responsive Observations**

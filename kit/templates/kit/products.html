@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="overlay container-fluid"></div>
-    <div class="continer-fluid">
+    <div class="continer">
         <div class="product-title">
             <div class="row">
                 {% include 'includes/product-filters.html' %}
@@ -27,9 +27,6 @@
         </div>
         <div class="row">
             <div class="product-container col-10 offset-1">
-                <div class="row mt-1 mb-2">
-
-                </div>
                 <div class="row">
                     {% for product in products %}
                         {% if product.is_sub == False %}
