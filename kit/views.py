@@ -9,7 +9,7 @@ from .forms import ProductForm, CategoryForm
 
 
 def all_products(request):
-    """ 
+    """
     A view to show all products page
     """
 
@@ -38,7 +38,6 @@ def all_products(request):
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -46,42 +45,44 @@ def all_products(request):
                     request, "You didn't enter any search parameters!")
                 return redirect(reverse('kit'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
-    
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
-        "products" : products,
-        'search_term' : query,
-        'current_categories' : categories,
+        "products": products,
+        'search_term': query,
+        'current_categories': categories,
     }
     return render(request, 'kit/products.html', context)
 
 
 def product_detail(request, product_id):
-    """ 
+    """
     A view to show individual product detail page
     """
 
     product = get_object_or_404(Product, pk=product_id)
 
     context = {
-        "product" : product,
+        "product": product,
     }
     return render(request, 'kit/product_detail.html', context)
 
 
 @login_required
 def add_product(request):
-    """ 
+    """
     Add a product to the shop
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
-    on_admin_page = True 
+    on_admin_page = True
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -90,11 +91,12 @@ def add_product(request):
             messages.success(request, 'Product added successfully!')
             return redirect(reverse('club_admin'))
         else:
-            messages.error(request, 'Product has not been added. Please check the form is valid')
+            messages.error(request, '''
+                Product has not been added. Please check the form is valid''')
     else:
         form = ProductForm()
     template = 'kit/add_product.html'
-    context ={
+    context = {
         'form': form,
         'on_admin_page': on_admin_page,
     }
@@ -104,11 +106,12 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ 
+    """
     Edit an exisiting product
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -119,13 +122,14 @@ def edit_product(request, product_id):
             messages.success(request, f'{product.name} successfully updated')
             return redirect(reverse('club_admin'))
         else:
-            messages.error(request, 'Product has not been updated, please check form is valid.')
+            messages.error(request, '''
+                Product has not been updated, please check form is valid.''')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
 
     template = 'kit/edit_product.html'
-    context ={
+    context = {
         'form': form,
         'product': product,
         'on_admin_page': True,
@@ -136,11 +140,12 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ 
+    """
     Delete an exisiting product
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
@@ -152,14 +157,15 @@ def delete_product(request, product_id):
 
 @login_required
 def add_category(request):
-    """ 
+    """
     Add a Product category
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
-    on_admin_page = True 
+    on_admin_page = True
 
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
@@ -168,11 +174,12 @@ def add_category(request):
             messages.success(request, 'Category added successfully!')
             return redirect(reverse('home'))
         else:
-            messages.error(request, 'Category has not been added. Please check the form is valid')
+            messages.error(request, '''
+                Category has not been added. Please check the form is valid''')
     else:
         form = CategoryForm()
     template = 'kit/add_category.html'
-    context ={
+    context = {
         'form': form,
         'on_admin_page': on_admin_page,
     }
@@ -182,11 +189,12 @@ def add_category(request):
 
 @login_required
 def delete_category(request, category_id):
-    """ 
+    """
     Delete an exisiting category
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     category = get_object_or_404(Category, pk=category_id)
@@ -198,11 +206,12 @@ def delete_category(request, category_id):
 
 @login_required
 def edit_category(request, category_id):
-    """ 
+    """
     Edit an exisiting category
     """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry. This action requires club admin access')
+        messages.error(request, '''
+            Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
     category = get_object_or_404(Category, pk=category_id)
@@ -213,13 +222,14 @@ def edit_category(request, category_id):
             messages.success(request, f'{category.name} successfully updated')
             return redirect(reverse('manage_categories'))
         else:
-            messages.error(request, 'Category has not been updated, please check form is valid.')
+            messages.error(request, '''
+                Category has not been updated, please check form is valid.''')
     else:
         form = CategoryForm(instance=category)
         messages.info(request, f'You are editing {category.name}')
 
     template = 'kit/edit_category.html'
-    context ={
+    context = {
         'form': form,
         'category': category,
         'on_admin_page': True,

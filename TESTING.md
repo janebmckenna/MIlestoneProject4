@@ -68,17 +68,13 @@ I tested all pages by URL due to Django templating. I had a few errors which I r
 [CSS validator Jigsaw](https://jigsaw.w3.org/css-validator/)
 
 ![CSS validator](media/doc-images/css-validation.png)
-I validated my CSS by direct input as the libaries used were causing an error from font awesome and 806 warnings.
-
+I validated my CSS by direct input as the libaries used were causing one error from font awesome and 806 warnings in total.
 
 [JSHint](jshint.com)
 I validated my code using jshint. Due to the use of jQuery $ was undefined and I had missed a semi colon the code passed without any other errors. 
 
-
-
 [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-![linter image]()
 
 
 
