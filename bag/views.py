@@ -31,7 +31,6 @@ def add_to_bag(request, item_id):
         if item_id in list(bag.keys()):
             if size in bag[item_id]['items_by_size'].keys():
                 bag[item_id]['items_by_size'][size] += quantity
-                print(bag)
                 messages.success(
                     request, f'''
                     Updated size {size.upper()} {product.name}
@@ -60,7 +59,6 @@ def add_to_bag(request, item_id):
             messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
-    print(bag)
     return redirect(redirect_url)
 
 
@@ -157,7 +155,6 @@ def add_subs_to_bag(request, item_id):
                 'period': period,
                 'quantity': quantity
             })
-            print(bag)
             messages.success(request, 'Added subs to the bag')
         else:
             bag[item_id] = {'subs': [{
@@ -166,7 +163,6 @@ def add_subs_to_bag(request, item_id):
                 'period': period,
                 'quantity': quantity
             }]}
-            print(bag)
             messages.success(request, 'Added Subs to your bag')
 
         request.session['bag'] = bag

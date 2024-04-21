@@ -18,22 +18,33 @@
         <p class="text-uppercase py-1">Your Bag ({{ product_count }})</p>
         <div class="bag-notification-wrapper">
           {% for item in bag_items %}
+            {% if item.period == True %}
             <div class="row">
-              <div class="col-3 my-1">
-                {% if item.product.image %}
-                  <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-100">
-                {% else %}
-                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}" class="w-100">
-                {% endif %}
-              </div>
-              <div class="col-9">
-                <p class="my-0 text-uppercase"><strong>{{ item.product.name }}</strong></p>
-                {% if item.product.has_sizes %}
-                  <p class="my-0 text-uppercase">{{ item.size }}</p>
-                {% endif %}
-                <p class="my-0 text-uppercase">Qty: {{ item.quantity }}</p>
+              <div class="col-12 my-1">
+                <p>
+                  Subs {{ item.player_name|upper }} for
+                  {{ item.period }}month
+                </p>
               </div>
             </div>
+            {% else %}
+              <div class="row">
+                <div class="col-3 my-1">
+                  {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-100">
+                  {% else %}
+                      <img src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}" class="w-100">
+                  {% endif %}
+                </div>
+                <div class="col-9">
+                  <p class="my-0 text-uppercase"><strong>{{ item.product.name }}</strong></p>
+                  {% if item.product.has_sizes %}
+                    <p class="my-0 text-uppercase">{{ item.size }}</p>
+                  {% endif %}
+                  <p class="my-0 text-uppercase">Qty: {{ item.quantity }}</p>
+                </div>
+              </div>
+            {% endif %}
           {% endfor %}
         </div>
         <div class="row">
