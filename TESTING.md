@@ -72,9 +72,7 @@ I validated my CSS by direct input as the libaries used were causing an error fr
 
 
 [JSHint](jshint.com)
-
-
-[jsfiddle](https://jsfiddle.net/)
+I validated my code using jshint. Due to the use of jQuery $ was undefined and I had missed a semi colon the code passed without any other errors. 
 
 
 

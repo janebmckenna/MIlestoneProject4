@@ -190,7 +190,7 @@
             $('.update-link').click(function(e) {
                 var form = $(this).closest('td').find('.update-form');
                 form.submit();
-            })
+            });
 
             // Remove item from bag on click
             $('.remove-item').click(function(e) {
@@ -204,13 +204,12 @@
                  .done(function() {
                     location.reload();
                  });
-            })
+            });
             // Remove subscription from bag on click
             $('.remove-subscription').click(function(e){
             var itemId = $(this).data('item_id');
             var playerName = $(this).data('player_name');
             var url = `/bag/removesubs/${itemId}/`;
-            console.log(itemId)
             var csrfToken = $(this).data('csrf_token');
             var data = {
                 'csrfmiddlewaretoken': csrfToken,
@@ -223,7 +222,6 @@
                 location.reload();
              });
         });
-        })
-        
+        });
     </script>
 {% endblock %}
