@@ -6,7 +6,6 @@ The Club is the online home of The Seans GAA Club Threemilehouse. The club allow
 
 ![Mock Up](media/doc-images/mockup.png)
 
-- [Blog Website](#blog-website)
 - [User Experience UX](#user-experience-ux)
   - [UX-strategy](#ux-strategy)
   - [UX-scope](#ux-scope)
@@ -40,6 +39,7 @@ The goal of the project is to provide a one stop shop for the local community to
 **User Stories**
 
 [Full User Stories](https://docs.google.com/spreadsheets/d/1QvcKgmC9WbiC6ZFg4j-qCKpRea_9rqwP6MOy0nx6mpA/edit?usp=sharing)
+
 ![User Stories](media/doc-images/user-stories.png)
 
 _As a FIRST TIME user of the site I want to be able to:_
