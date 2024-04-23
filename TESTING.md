@@ -211,11 +211,11 @@
 |Manually Add Subs Page|Click Add Subs (valid form)|Navigates to view subs and success message appears|Pass|
 |Manually Add Subs Page|Click back to admin|Navigates to club admin |Pass|
 
-
 ## User Story Validation
 
-![User outcomes](media/doc-images/user-outcomes.png)
 [User Outcomes Google Docs](https://docs.google.com/spreadsheets/d/1QvcKgmC9WbiC6ZFg4j-qCKpRea_9rqwP6MOy0nx6mpA/edit?usp=sharing)
+
+![User outcomes](media/doc-images/user-outcomes.png)
 
 |**User Story**|**Outcome**|**Screengrabs**|
 |-----|-----|-----|
@@ -230,7 +230,7 @@
 |**_RETURNING user_**|
 |Log in and out of the site|Logging in and out of the site is easy and password reset is possible|![signin](media/doc-images/sigin-in.png)|
 |Pay subs|You can easily pay for club subs by choosing the appropriate player|![subs](media/doc-images/subs.png) |
-Browsing Club items for sale is easy and intuitive, you can search, scroll or filter by occasion or price. | ![Shop](media/doc-images/product-page.png)|
+|Browse club items for sale|Browsing Club items for sale is easy and intuitive, you can search, scroll or filter by occasion or price. | ![Shop](media/doc-images/product-page.png)|
 |Purchase club gear|You can purchase club gear|![checkout](media/doc-images/checkout.png)|
 |Review most recent news easily|News on the home page is filtered to the 10 most recent items and on the all news page is reverse chronological order|![club news](media/doc-images/club-news.png) |
 |See updated fixtures|fixtures are filtered so that future dated fixtures appear|![fixtures](media/doc-images/fixtures.png)|
