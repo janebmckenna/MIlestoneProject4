@@ -15,25 +15,23 @@
     <div class="overlay container-fluid"></div>
     <div class="continer  mb-5 pb-5">
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-4 offset-md-2">
                 <div class="row">
-                    <div class="col-8 col-md-6 col-lg-4 offset-2">
-                        <div class="image-container my-5">
-                            {% if product.image %}
-                                <a href="{{ product.image.url }}" target="_blank">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                </a>
-                            {% else %}
-                                <a href="">
-                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="card-img-top img-fluid">
-                                </a>
-                            {% endif %}
-                        </div>
+                    <div class="image-container my-5">
+                        {% if product.image %}
+                            <a href="{{ product.image.url }}" target="_blank">
+                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                            </a>
+                        {% else %}
+                            <a href="">
+                                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="card-img-top img-fluid">
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
                 {% if request.user.is_superuser %}
                     <div class="row">
-                        <div class="col-8 col-md-6 col-lg-4 offset-2">
+                        <div class="ml-5"
                             <small>
                                 <a href="{% url 'edit_product' product.id %}" class="btn rounded-0 btn-sm btn-dark">Edit</a>
                             <small>
@@ -43,85 +41,83 @@
                         </div>
                     </div>
                 {% endif %}
+            </div>
+            <div class="col-12 col-md-4">
                 <div class="row">
-                    <div class="col-10 col-md-8 offset-md-2 pl-5">
-                        <div class="product-details-container mt-5">
-                            <p class="mb-0">{{ product.name }}</p>
-                            <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                            {% if product.category %}
-                                <p class="small">
-                                    <a href="{% url 'kit' %}?category={{ product.category.name }}" class="text-muted">
-                                        <i class="fa-solid fa-shirt"></i> {{ product.category.friendly_name }}
-                                    </a>
-                                </p>
-                            {% endif %}
-                            <p class="mb-0">{{ product.description }}</p>
-                        </div>
+                    <div class="product-details-container mt-5 ml-5">
+                        <p class="mb-0">{{ product.name }}</p>
+                        <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                        {% if product.category %}
+                            <p class="small">
+                                <a href="{% url 'kit' %}?category={{ product.category.name }}" class="text-muted">
+                                    <i class="fa-solid fa-shirt"></i> {{ product.category.friendly_name }}
+                                </a>
+                            </p>
+                        {% endif %}
+                        <p class="mb-0">{{ product.description }}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-8 offset-md-2 pl-5">
-                        <div class="product-details-container mb-5">
-                            <form action="{% url 'add_to_bag' product.id %}" method="POST" class="form">
-                                {% csrf_token %}
-                                <div class="form-row">
-                                    {% with product.has_sizes as s %}
-                                    {% if s %}
-                                        <div class="col">
-                                            <p><strong>Size:</strong></p>
-                                            <select name="product_size" id="id_product_size" class="form-control rounded-0 w-50">
-                                                <option value="kids-s6">Kids age 6 - 8</option>
-                                                <option value="kids-s8">Kids age 8 - 10</option>
-                                                <option value="kids-s10">Kids age 10 - 12</option>
-                                                <option value="kids-s13">Kids age 13 - 15</option>
-                                                <option value="ladies-s8">Ladies size 8 - 10</option>
-                                                <option value="ladies-s12">Ladies size 12 - 14</option>
-                                                <option value="ladies-s16">Ladies size 16 - 18</option>
-                                                <option value="mens-s">Mens size S</option>
-                                                <option value="mens-m" selected>Mens size M</option>
-                                                <option value="mens-l">Mens size L</option>
-                                            </select>
-                                        </div>
-                                    {% endif %}
-                                    {% endwith %}
-                                    <div class="col-12">
-                                        <p class="mt-3"><strong>Quantity:</strong></p>
-                                        <div class="form-group w-50">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button class="decrement-qty" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
-                                                        <span class="icon">
-                                                            <i class="fas fa-minus"></i>
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <input class="form-control qty_input" type="number"
-                                                    name="quantity" value="1" min="1" max="99"
-                                                    data-item_id="{{ product.id }}"
-                                                    id="id_qty_{{ product.id }}">
-                                                <div class="input-group-append">
-                                                    <button class="increment-qty" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
-                                                        <span class="icon">
-                                                            <i class="fas fa-plus"></i>
-                                                        </span>
-                                                    </button>
-                                                </div>
+                    <div class="product-details-container mb-5 ml-5">
+                        <form action="{% url 'add_to_bag' product.id %}" method="POST" class="form">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                {% with product.has_sizes as s %}
+                                {% if s %}
+                                    <div class="col">
+                                        <p><strong>Size:</strong></p>
+                                        <select name="product_size" id="id_product_size" class="form-control rounded-0 w-50">
+                                            <option value="kids-s6">Kids age 6 - 8</option>
+                                            <option value="kids-s8">Kids age 8 - 10</option>
+                                            <option value="kids-s10">Kids age 10 - 12</option>
+                                            <option value="kids-s13">Kids age 13 - 15</option>
+                                            <option value="ladies-s8">Ladies size 8 - 10</option>
+                                            <option value="ladies-s12">Ladies size 12 - 14</option>
+                                            <option value="ladies-s16">Ladies size 16 - 18</option>
+                                            <option value="mens-s">Mens size S</option>
+                                            <option value="mens-m" selected>Mens size M</option>
+                                            <option value="mens-l">Mens size L</option>
+                                        </select>
+                                    </div>
+                                {% endif %}
+                                {% endwith %}
+                                <div class="col-12">
+                                    <p class="mt-3"><strong>Quantity:</strong></p>
+                                    <div class="form-group w-50">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty" data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control qty_input" type="number"
+                                                name="quantity" value="1" min="1" max="99"
+                                                data-item_id="{{ product.id }}"
+                                                id="id_qty_{{ product.id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty" data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <a href="{% url 'kit' %}" class="btn rounded-0 btn-lg btn-outline-dark">
-                                            <span>
-                                                <i class="fas fa-chevron-left"></i>
-                                            </span>
-                                            <span class="text-uppercase">Keep Shopping</span>
-                                        </a>
-                                        <input type="submit" class="btn rounded-0 btn-lg btn-dark text-uppercase" value="Add to Bag">
-                                    </div>
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-12">
+                                    <a href="{% url 'kit' %}" class="btn rounded-0 btn-lg btn-outline-dark">
+                                        <span>
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Keep Shopping</span>
+                                    </a>
+                                    <input type="submit" class="btn rounded-0 btn-lg btn-dark text-uppercase" value="Add to Bag">
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

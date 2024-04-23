@@ -231,7 +231,7 @@ I replied heavily on a combination bootstrap and media queries to ensure the sit
 - **Heroku:** was used to deploy the app. 
 
 # Testing 
-[View Testing Documentation](testing.md)
+[View Testing Documentation](TESTING.md)
 
 # Deployment
 The Website has been deployed using Heroku [Here](https://the-club-77a7b1e1e156.herokuapp.com/) using the method below:
@@ -304,14 +304,14 @@ If you use gmail as your service provider for email then you will also need to s
 
 You can clone the repository by following these steps:
 
-1. Go to the [GitHub repository](https://github.com/janebmckenna/MilestoneProject3/tree/main) 
+1. Go to the [GitHub repository](https://github.com/janebmckenna/MilestoneProject4) 
 2. Locate the Code button above the list of files and click it 
 3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
 4. Open Git shell or Terminal
 5. Change the current working directory to the one where you want the cloned directory
 6. In your IDE Terminal, type the following command to clone my repository:
   
-   `git clone https://github.com/janebmckenna/MilestoneProject3.git`
+   `git clone https://github.com/janebmckenna/MilestoneProject4.git`
 7. Press Enter to create your local clone.
 
 #### Forking
