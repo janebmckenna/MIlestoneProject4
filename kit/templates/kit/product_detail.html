@@ -107,13 +107,13 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <a href="{% url 'kit' %}" class="btn rounded-0 btn-lg btn-outline-dark">
+                                    <a href="{% url 'kit' %}" id="keep-shopping" class="btn rounded-0 btn-lg btn-outline-dark mb-2 product-page">
                                         <span>
                                             <i class="fas fa-chevron-left"></i>
                                         </span>
                                         <span class="text-uppercase">Keep Shopping</span>
                                     </a>
-                                    <input type="submit" class="btn rounded-0 btn-lg btn-dark text-uppercase" value="Add to Bag">
+                                    <input type="submit" id="add-basket" class="btn rounded-0 btn-lg btn-dark text-uppercase mb-2 product-page" value="Add to Bag">
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             </div>
