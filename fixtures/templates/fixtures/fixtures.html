@@ -55,14 +55,20 @@
                                     <td class="py-3">
                                         <p class="my-0">{{ f.team }}</p>
                                     </td>
-                                    <td class="py-3">
+                                    <td class="py-3 d-none d-md-table-cell">
                                         <p class="my-0">Versus</p>
+                                    </td>
+                                    <td class="py-3 d-table-cell d-md-none">
+                                        <p class="my-0">V</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">{{ f.opponent }}</p>
                                     </td>
-                                    <td class="py-3">
+                                    <td class="py-3 d-none d-md-table-cell">
                                         <p class="my-0">{{ f.date }}</p>
+                                    </td>
+                                    <td class="py-3 d-table-cell d-md-none">
+                                        <p class="my-0">{{ f.date|date:"j M" }}</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">{{ f.time }}</p>

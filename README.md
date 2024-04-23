@@ -257,9 +257,125 @@ I replied heavily on a combination bootstrap and media queries to ensure the sit
 [View Testing Documentation](TESTING.md)
 
 # Deployment
-The Website has been deployed using Heroku [Here](https://the-club-77a7b1e1e156.herokuapp.com/) using the method below:
+The Website has been deployed using Heroku [Here](https://the-club-77a7b1e1e156.herokuapp.com/) with ElephantSQL hosting the PostgreSQL database and AWS hosting the static using the method below:
+
+**Project Preparation in Your IDE**
+
+1. **Install Required Packages**
+
+Open your IDE and execute the following commands in your terminal:
+
+`pip3 install dj_database_url==0.5.0 psycopg2`
 
 
+- `dj_database_url` facilitates connecting to various databases using their URL.
+- `psycopg2` is a PostgreSQL adapter for Python.
+
+2. **Update Requirements**
+
+Update your `requirements.txt` to include the newly installed packages.
+
+```
+pip freeze > requirements.txt
+```
+
+3. **Modify `settings.py`**
+
+In your `settings.py`, import `dj_database_url` under the import for `os`.
+
+```
+import os
+import dj_database_url
+```
+
+### Setting up the ElephantSQL Database
+
+Log into ElephantSQL and create database instance.
+1. Click on "Create New Instance".
+2. Input an instance name.
+3. Select the free Tiny Turtle plan.
+4. Leave the tags field blank.
+5. Select a region closest to you for the data center.
+6. Review your instance details and confirm by creating the instance.
+7. Copy the URL of the newly created database instance for later use.
+
+### Setting up an Amazon S3 Bucket for Static Website Hosting
+
+This guide will walk you through the process of setting up an Amazon S3 bucket for hosting a static website, including necessary permissions and security configurations using AWS IAM.
+
+**Creating and Configuring the S3 Bucket**
+
+1. **Create an AWS Account**:
+   - Sign up or log into your Amazon AWS account.
+
+2. **Create a New S3 Bucket**:
+   - Navigate to the S3 service in the AWS Management Console.
+   - Click "Create bucket".
+   - Provide a unique bucket name and select an appropriate region.
+   - Uncheck "Block all public access" under the permissions settings to allow public access.
+   - Acknowledge the warning that the bucket will be publicly accessible.
+
+3. **Enable Static Website Hosting**:
+   - Go to the "Properties" tab for your bucket.
+   - Activate "Static website hosting".
+   - Set 'index.html' as the index document.
+   - Click "Save".
+
+4. **Configure CORS**:
+   - Move to the "Permissions" tab and click on "CORS configuration".
+   - Input the following JSON and save:
+     ```json
+     [
+       {
+         "AllowedHeaders": ["Authorization"],
+         "AllowedMethods": ["GET"],
+         "AllowedOrigins": ["*"],
+         "ExposeHeaders": []
+       }
+     ]
+     ```
+
+5. **Set Up Bucket Policy**:
+   - Still under the "Permissions" tab, click "Bucket Policy".
+   - Generate a Bucket Policy using the policy generator:
+     - Select "S3 Bucket Policy" as the type.
+     - Set principal to "*".
+     - Paste the ARN from your bucket.
+     - Add the statement and generate the policy.
+   - Copy and paste the generated policy JSON into the bucket policy editor.
+   - Save your changes.
+
+6. **Adjust Access Control List (ACL)**:
+   - Under "Access control list (ACL)", grant "List" permissions to "Everyone (public access)".
+   - Confirm to acknowledge public access.
+   - Save the configuration.
+
+**Configuring AWS IAM for Secure Access**
+
+1. **Create an IAM User Group**:
+   - From the IAM dashboard, select "User Groups".
+   - Create a new group (e.g., `manage-theclub`).
+   - Proceed without adding a policy directly; create the group.
+
+2. **Create and Attach a Policy**:
+   - Select "Policies" and then "Create policy".
+   - Use the JSON tab to import the "AmazonS3FullAccess" managed policy.
+   - Modify the resource block to include your bucket's ARN, like so:
+     ```json
+     "Resource": [
+       "arn:aws:s3:::theclub",
+       "arn:aws:s3:::theclub/*"
+     ]
+     ```
+   - Name your policy (e.g., `theclub-policy`) and create it.
+
+3. **Attach Policy to Group**:
+   - Go back to your user group, select it, and attach the newly created policy under "Permissions".
+
+4. **Create an IAM User**:
+   - In "Users", create a new user (e.g., `manage-theclub-user`) with "Programmatic access".
+   - Add this user to the group you created.
+   - Finalize user creation and download the .csv file containing their access key and secret. This is crucial as it cannot be downloaded again later.
 
 ### Heroku Deployment
 
@@ -270,9 +386,76 @@ The Website has been deployed using Heroku [Here](https://the-club-77a7b1e1e156.
 - I then clicked on settings and updated the config variables. 
 - I navigated back to the deploy and enabled automatic deployment. 
 
-Heroku needs two additional files in order to deploy properly.
-- requirements.txt
-- Procfile
+
+**Update DATABASE Setting**
+
+Comment out the original SQLite connection and add a new connection to use ElephantSQL.
+
+
+DATABASES = {
+    'default': dj_database_url.parse('your-database-url-here')
+}
+
+
+**_Important_:** Do not commit this change with your database URL. This step is temporary for migration purposes.
+
+4. **Verify Database Connection**
+
+Run the following command to ensure you're connected to the external database:
+
+`python3 manage.py showmigrations`
+
+You should see a list of migrations none of which are applied yet.
+
+5. **Migrate Database Models**
+
+Execute the migrate command to apply database models to your new database:
+
+`python3 manage.py migrate`
+
+6. **Create a Superuser**
+
+Create a superuser for your new database:
+
+`python3 manage.py createsuperuser`
+
+
+Follow the prompts to set up your superuser's username, password, and email (optional).
+
+7. **Revert `settings.py` Changes**
+
+To prevent exposing our database URL, revert the `DATABASES` setting in `settings.py` to use the local SQLite database again.
+
+`
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}`
+
+#### Cloning
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/janebmckenna/MilestoneProject4) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git shell or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+  
+   `git clone https://github.com/janebmckenna/MilestoneProject4.git`
+7. Press Enter to create your local clone.
+
+#### Forking
+
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
+You can fork this repository by using the following steps:
+
+1. Login to GitHub and locate the [GitHub Repository](https://github.com/janebmckenna/MilestoneProject4)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 You can install this project's **requirements** (where applicable) using:
 - `pip3 install -r requirements.txt`
@@ -319,32 +502,6 @@ If you use gmail as your service provider for email then you will also need to s
     `EMAIL_HOST_USER 
     EMAIL_HOST_PASSWORD 
     DEFAULT_FROM_EMAIL`
-
-
-
-
-#### Cloning
-
-You can clone the repository by following these steps:
-
-1. Go to the [GitHub repository](https://github.com/janebmckenna/MilestoneProject4) 
-2. Locate the Code button above the list of files and click it 
-3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
-4. Open Git shell or Terminal
-5. Change the current working directory to the one where you want the cloned directory
-6. In your IDE Terminal, type the following command to clone my repository:
-  
-   `git clone https://github.com/janebmckenna/MilestoneProject4.git`
-7. Press Enter to create your local clone.
-
-#### Forking
-
-By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
-You can fork this repository by using the following steps:
-
-1. Login to GitHub and locate the [GitHub Repository](https://github.com/janebmckenna/MilestoneProject4)
-2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
-3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
 
 # Credits
