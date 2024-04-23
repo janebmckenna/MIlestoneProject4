@@ -156,7 +156,7 @@ Profile page includes the ability to update standard delivery information as wel
 
 ![Club Admin](media/doc-images/club-admin.png)
 
-- CRUD Functionality for Player, Products, Product Categories, News, and Fixtures. As well ability to view and add subs. I made the choice not to add edit and delete subs into this UI for admin purposely. The functionality still exisits within teh built in django admin panel but I wouldn't envisage the community admins of this page to require that access as items may get deleted accidentally. 
+- CRUD Functionality for Player, Products, Product Categories, News, and Fixtures. As well ability to view and add subs. I made the choice not to add edit and delete subs into this UI for admin purposely. The functionality still exists within the built in Django admin panel but I wouldn't envisage the community admins of this page to require that access as items may get deleted accidentally. 
 
 ![add fixture](media/doc-images/addfixture.png)
 ![edit news](media/doc-images/edit-delete-news.png)
@@ -359,7 +359,7 @@ You can fork this repository by using the following steps:
 
 **Code**
 
-- When working on the Project I refered back to the course material and my written code from Boutique Ado walk though. I found this to be a great learning experience as my confidence and ease with the material grew as the project progressed. 
+- When working on the Project I referred back to the course material and my written code from Boutique Ado walk though. I found this to be a great learning experience as my confidence and ease with the material grew as the project progressed. 
 
 - I ran into a bug with the date field and i found the solution code [here](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django)
 
@@ -394,4 +394,3 @@ Some of the advice I am particularly thankful for was:
 - Talking through the subs model integration with me. 
 
 I would also like to thank Amy my cohort facilitator for very similar reasons. For reviewing and reassuring me of my progress. Lastly thank you to my peers, friends and family for interacting with my project during the testing phase. 
-
