@@ -273,4 +273,6 @@ I also passed the indivaidual py files through [CI Python Linter](https://pep8ci
 
 hiding table cells depending on screen size https://getbootstrap.com/docs/4.6/utilities/display/
 
+submitting form not passing on_admin_page therefore displaying bag items
+
 [Return to README](README.md)

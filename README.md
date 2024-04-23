@@ -79,68 +79,90 @@ Further administrative features are provided by the built in Django Admin Panel.
 
 **Home Page**
 
-![homepage LoggedOut]()
+![homepage](media/doc-images/home.png)
 
 **Nav Bar**
 
-Links available within the navbar vary dependent on access. 
-
-_Logged Out_
-
-![Nav LoggedOut]()
-
-_Logged In_
-
-![Nav LoggedIn]()
-
-_Admin_
-
-![Nav Admin]()
+![Nav Bar](media/doc-images/nav.png)
 
 **Logo**
 
-![Logo]()
+![Logo](media/doc-images/logo.png)
 
-**Search Shop Feature**
+**Shop and Search/Filter Features**
 
-![Search]()
+Shop items can be searched from the main nav, browsed in the shop or filtered by category or price etc. Individual product pages then allow the user to add the item to their basket
+
+![Shop](media/doc-images/shop.png)
+
+![Search](media/doc-images/home.png)
+
+![filtering](media/doc-images/shop-filtering.png)
+
+![Product Page](media/doc-images/product-page.png)
+
+**Basket**
+
+The basket icon in the Nav keeps a running total of the items the user has added to the basket. 
+
+![Basket](media/doc-images/dropdown-baskettotal.png)
+
+**Checkout and Stripe Payments**
+
+Having added items to their basket the user can checkout and pay for their items 
+
+![checkout](media/doc-images/checkout.png)
+![stripe](media/doc-images/stripe.png)
+
+**Order Confirmation**
+
+![order confirmation](media/doc-images/order-confirm.png)
 
 **Club News**
 
-![Club News]()
+Club News can be accesed from teh home page as well as a prompt from the order confirmation page. Admin users have CRUD functionality for News. 
+
+![Club News](media/doc-images/club-news.png)
+
+**Fixtures**
+
+Fixtures can be accessed and searched for the relevant fixture or team the user wants to find
+
+![fixtures](media/doc-images/fixtures.png)
 
 **Footer**
 
-![Footer]()
+![Footer](media/doc-images/footer.png)
 
 **Register Page**
 
-![registration form]()
+![registration form](media/doc-images/register.png)
 
 **Login Page**
 
-![Login]()
+![Login](media/doc-images/sigin-in.png)
 
 **Profile Page**
 
-![profile]()
+Profile page includes the ability to update standard delivery information as well as view historical orders. 
+![profile](media/doc-images/profile.png)
 
 **Logout**
 
-![Logout]()
+![Logout](media/doc-images/sign-out.png)
 
-- **Contact page**
-
-![Contact]()
 
 **Administrator Features**
-- Add Club News
 
-![club news]()
+![Club Admin](media/doc-images/club-admin.png)
 
-- Add Shop Items
+- CRUD Functionality for Player, Products, Product Categories, News, and Fixtures. As well ability to view and add subs. I made the choice not to add edit and delete subs into this UI for admin purposely. The functionality still exisits within teh built in django admin panel but I wouldn't envisage the community admins of this page to require that access as items may get deleted accidentally. 
 
-![new shop item]()
+![add fixture](media/doc-images/addfixture.png)
+![edit news](media/doc-images/edit-delete-news.png)
+![manage fixtures](media/doc-images/manage-fixtures.png)
+![subs](media/doc-images/subs.png)
+
 
 _**404/500 Error Pages:**_
 
@@ -191,6 +213,7 @@ Some of the additional defensive choices I made during coding this project were 
 ## UX-skeleton
 
 **Design Choices**
+
 I choose a modern visually appealing style for the site, using a cohesive color palette and modern font. The colors used on the site were derived from the background image on the home page. 
 
 
@@ -335,6 +358,9 @@ You can fork this repository by using the following steps:
 - [djecrety](https://djecrety.ir/) was used to generate a new secret key for deployment.
 
 **Code**
+
+- When working on the Project I refered back to the course material and my written code from Boutique Ado walk though. I found this to be a great learning experience as my confidence and ease with the material grew as the project progressed. 
+
 - I ran into a bug with the date field and i found the solution code [here](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django)
 
 One of the comments suggested 

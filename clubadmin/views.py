@@ -65,12 +65,12 @@ def add_news(request):
     """
     Add a News Story
     """
+    on_admin_page = True
+
     if not request.user.is_superuser:
         messages.error(request, '''
             Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
-
-    on_admin_page = True
 
     if request.method == 'POST':
         form = NewsForm(request.POST, request.FILES)
@@ -86,7 +86,7 @@ def add_news(request):
     template = 'clubadmin/add_news.html'
     context = {
         'form': form,
-        'on_admin_page': on_admin_page,
+        'on_admin_page': True,
     }
 
     return render(request, template, context)
