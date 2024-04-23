@@ -67,7 +67,7 @@ def add_subs(request):
         if form.is_valid():
             subs = form.save()
             messages.success(request, 'Subs added successfully!')
-            return redirect(reverse('club_admin'))
+            return redirect(reverse('all_subs'))
         else:
             messages.error(request, '''
                 New Subs have not been added.

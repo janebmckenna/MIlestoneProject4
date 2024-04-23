@@ -120,19 +120,96 @@
 |Checkout Page|Click Complete Order|Processes Order and displays conformation|Pass|
 |Confirmation Page|Click Club News|Navigates to Club News|Pass|
 |Confirmation Page|Click Upcoming Fixtures|Navigates to Upcoming Fixtures|Pass|
-|My Profile Page|Click Order Number|Navigates to Order Number|Pass|
+|My Profile Page|Click Order Number|Navigates to the Order Number order detail|Pass|
+|Historical Order|Click on my profile|Naviagtes back to the profile page|Pass|
 |My Profile Page|Click Save|Details saved and success notification appears |Pass|
 |Logout Page|CLick Home|Navigates to Home|Pass|
 |Logout Page|Click Sign Out|Signs out the user, shows success message and navigates to Home|Pass|
 |Login Page|Click Home|Navigates to Home|Pass|
-|Login Page|Click Sign in|Signs out the user, shows success message and navigates to Home|Pass|
+|Login Page|Click Sign in|Signs in the user, shows success message and navigates to Home|Pass|
 |Login Page|Click Sign up|Navigates to the registration page|Pass|
 |Login Page|Click Forgot Password|Navigates to the forgot password Page|Pass|
 |Login Page|Click Sign in -no details|Form validation displays|Pass|
 |Login Page|Click Sign in -correct details|Naviagtes to Home and displays success message|Pass|
-
-
-
+|Register Page|Click Sign in|Navigates to the sign in page|Pass|
+|Register Page|Click home|Navigates Home|Pass|
+|Register Page|Fail to enter valid email|Form validation prompt appears|Pass|
+|Register Page|Fail to enter matching email|Form validation prompt appears|Pass|
+|Register Page|Enter email already in use|Form validation prompt appears|Pass|
+|Register Page|Enter username already in use|Form validation prompt appears|Pass|
+|Register Page|Enter passwords that do not match|Form validation prompt appears|Pass|
+|Register Page|Enter all valid information and click sign up|Navigates to Home page and success message appears|Pass|
+|Club Admin Page|Click Add New Product |Naviagtes to Add New Product|Pass|
+|Club Admin Page|Click Edit/Delete Product|Naviagtes to Edit/Delete Product|Pass|
+|Club Admin Page|Click Manage Categories|Naviagtes to Manage Categories|Pass|
+|Club Admin Page|Click Add News |Naviagtes to Add News|Pass|
+|Club Admin Page|Click Edit/Delete News|Naviagtes to Edit/Delete News|Pass|
+|Club Admin Page|Click Update Fixtures |Naviagtes to Update Fixtures|Pass|
+|Club Admin Page|Click Manage Players|Naviagtes to Manage Players|Pass|
+|Club Admin Page|Click View Subs|Naviagtes to All Subs|Pass|
+|Add Product Page|Submit invalid form|Form validation displays |Pass|
+|Add Product Page|Click Choose File|Pop up to choose media file appears|Pass|
+|Add Product Page|Click All products|Navigates to All products|Pass|
+|Add Product Page|Click list product|Navigates to club admin and success message displays|Pass|
+|Add Product Page|Click back to admin|Navigates to club admin |Pass|
+|Edit/Delete Kit Page|Click Edit button on a product|Naviagtes to Edit Product page with appropriate product detail loaded|Pass|
+|Edit/Delete Kit Page|Click Delete button on a product|Deletes product form list and displays success message|Pass|
+|Edit/Delete Kit Page|Click back to admin|Navigates to club admin |Pass|
+|Edit Product Page|Submit invalid form|Form validation displays |Pass|
+|Edit Product Page|Click Choose File|Pop up to choose media file appears|Pass|
+|Edit Product Page|Click Cancel|Navigates to All products|Pass|
+|Edit Product Page|Click update product|Navigates to club admin and success message displays|Pass|
+|Edit Product Page|Click back to admin|Navigates to club admin |Pass|
+|Manage Cateogories Page|Click Add New Cateogry |Naviagtes to Add New Cateogry|Pass|
+|Manage Cateogories Page|Click Edit on Category| Naviagtes to Edit screen with appropriate data loaded, displays message that you are editing the category 'name'|Pass
+|Manage Cateogories Page|Click Delete button on a category|Deletes category form list and displays success message|Pass|
+|Manage Cateogories Page|Click back to admin|Navigates to club admin |Pass|
+|Add New Category Page|Click Cancel|Navigates to All products|Pass|
+|Add New Category Page|Submit invalid form|Form validation displays |Pass|
+|Add New Category Page|Click Add Category|Naviagtes to Club admin and success message displays|Pass|
+|Add New Category Page|Click back to admin|Navigates to club admin |Pass|
+|Edit Category Page|Click Cancel|Navigates to manage categories|Pass|
+|Edit Category Page|Submit invalid form|Form validation displays |Pass|
+|Edit Category Page|Click Edit Category|Naviagtes to Club admin and success message displays|Pass|
+|Edit Category Page|Click back to admin|Navigates to club admin |Pass|
+|Add News Page|Submit invalid form|Form validation displays |Pass|
+|Add News Page|Click Choose File|Pop up to choose media file appears|Pass|
+|Add News Page|Click Cancel|Navigates to club admin|Pass|
+|Add News Page|Click add news|Navigates to club admin and success message displays|Pass|
+|Add News Page|Click back to admin|Navigates to club admin |Pass|
+|Edit/Delete News|Click Edit button on a news item|Naviagtes to Edit news page with appropriate news detail loaded|Pass|
+|Edit/Delete News|Click Delete button on a news item|Deletes news form list and displays success message|Pass|
+|Edit/Delete News|Click back to admin|Navigates to club admin |Pass|
+|Manage Fixtures|Click Add New Fixture|Naviagtes to Add New Fixture|Pass|
+|Manage Fixtures|Click Edit button on a fixture item|Naviagtes to Edit fixture page with appropriate fixture detail loaded|Pass|
+|Manage Fixtures|Click Delete button on a fixture item|Deletes fixture form list and displays success message|Pass|
+|Manage Fixtures|Click back to admin|Navigates to club admin |Pass|
+|Add New Fixture Page|Click Cancel|Navigates to manage fixtures|Pass|
+|Add New Fixture Page|Submit invalid form|Form validation displays |Pass|
+|Add New Fixture Page|Click Add Fixture|Naviagtes to Club admin and success message displays|Pass|
+|Add New Fixture Page|Click back to admin|Navigates to club admin |Pass|
+|Edit Fixture Page|Click Cancel|Navigates to manage fixtures|Pass|
+|Edit Fixture Page|Submit invalid form|Form validation displays |Pass|
+|Edit Fixture Page|Click Edit fixture|Naviagtes to manage fixtures and success message displays|Pass|
+|Edit Fixture Page|Click back to admin|Navigates to club admin |Pass|
+|Manage Players Page|Click Add New Player|Naviagtes to Add New Player|Pass|
+|Manage Players Page|Click Edit button on a Player item|Naviagtes to Edit Player page with appropriate fixture detail loaded|Pass|
+|Manage Players Page|Click Delete button on a Player item|Deletes Player form list and displays success message|Pass|
+|Manage Players Page|Click back to admin|Navigates to club admin |Pass|
+|Add New Player Page|Click Cancel|Navigates to manage Players|Pass|
+|Add New Player Page|Submit invalid form|Form validation displays |Pass|
+|Add New Player Page|Click Add Player|Naviagtes to manage players and success message displays|Pass|
+|Add New Player Page|Click back to admin|Navigates to club admin |Pass|
+|Edit Player Page|Click Cancel|Navigates to Manage Players|Pass|
+|Edit Player Page|Submit invalid form|Form validation displays |Pass|
+|Edit Player Page|Click Edit Player|Naviagtes to manage players and success message displays|Pass|
+|Edit Player Page|Click back to admin|Navigates to club admin |Pass|
+|View Subs Page|Click manually add subs|Naviagte to manually add subs|Pass|
+|View Subs Page|Click back to admin|Navigates to club admin |Pass|
+|Manually Add Subs Page|Click Cancel|Navigates to View Subs page|Pass|
+|Manually Add Subs Page|Submit form without providing information|Validation for minimum period 1 and must choose team appears|Pass|
+|Manually Add Subs Page|Click Add Subs (valid form)|Navigates to view subs and success message appears|Pass|
+|Manually Add Subs Page|Click back to admin|Navigates to club admin |Pass|
 
 
 ## User Story Validation
@@ -186,16 +263,14 @@ I also passed the indivaidual py files through [CI Python Linter](https://pep8ci
 
 
 
-## Bugs
+## Interesting Bugs
 
 |**Bug**|**Resolution**|
 |-----|-----|
-
-trailing , resulting in a tuple on the save_info WH
-
-production versus deployed DB - heroku comand line
-
-datepicker https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django
+|Tuple being created on save_info in webhook| I had left a trailing , in the code|
+|On deployed version of the site I was getting 500 server errors, I traced this back to when the code was interacting with any news model|It appeared to be caused by new migrations I had made since inital deployment. My Postgres DB wasn't being updated during the build on heroku. Some research led me to the comand line on heroku, once I ran the bash comand I was then able to run the migrations which fixed the issue.|
+|On the fixtures form the date picker wasnt being displyed but then due to the open text field the form validation wasn't allowing submission as the date wasn't in the correct format.|I found [this](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django) solution which worked|
+|On the manually add subs form, as a player name loaded in the form automatically it was allowing a form to be submitted without providing the team or period information|On searching for a solution I [came across](https://stackoverflow.com/questions/60298923/what-are-the-differences-between-using-self-add-error-and-raising-a-validation) the clean() method and with some more reading made it work. The documentation can be found [here](https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/)|
 
 
 [Return to README](README.md)

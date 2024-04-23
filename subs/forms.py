@@ -20,6 +20,17 @@ class SubsForm(forms.ModelForm):
         self.fields['player'].choices = display_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'subs-form'
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        period = cleaned_data.get('period')
+        team = cleaned_data.get('team')
+
+        if period < 1:
+            self.add_error('period', "Period must be at least 1.")
+
+        if not team:
+            self.add_error('team', "Please select a team.")
 
     def save(self, commit=True):
         instance = super().save(commit=False)

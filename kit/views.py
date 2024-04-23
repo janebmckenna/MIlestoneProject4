@@ -173,7 +173,7 @@ def add_category(request):
         if form.is_valid():
             category = form.save()
             messages.success(request, 'Category added successfully!')
-            return redirect(reverse('home'))
+            return redirect(reverse('club_admin'))
         else:
             messages.error(request, '''
                 Category has not been added. Please check the form is valid''')
