@@ -175,6 +175,8 @@ _**404/500 Error Pages:**_
 
 - User commenting on News
 - Training schedules
+- Subs payment histrory (aside from order history)
+- Subs filter by player
 
 ## UX-structure
 
@@ -202,6 +204,8 @@ _**404/500 Error Pages:**_
 **Data Structure**
 
 ![Data Structure](media/doc-images/data-model/seansdb.png)
+
+I choose to leave the Fixtures Model unrelated to the Team Model to allow for additional flexibility of Friendly and Charity Match adhoc teams. 
 
 **Security**
 
