@@ -24,7 +24,7 @@
 
 |**Additional Devices Tested Using Chrome Developer Tools**|**Responsive Observations**
 |-----|-----|
-|Galaxy S9+| below 375 profile blogs and new blog appear slightly squashed observed on S9+. - media query added|
+|Galaxy S9+| |
 |Galaxy S20 Ultra|
 |Pixel 7|
 |iPad Air|
@@ -178,6 +178,7 @@ I validated my code using jshint. Due to the use of jQuery $ was undefined and I
 The code was validated using Pythons own Flake8 utility using the command `python3 -m flake8`
 
 ![Flake 8](media/doc-images/flake8.png)
+
 I did not attempt to resolve the E501 errors where they were created by migrations. 
 
 I also passed the indivaidual py files through [CI Python Linter](https://pep8ci.herokuapp.com/)

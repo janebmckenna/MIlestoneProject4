@@ -17,12 +17,26 @@
     <div class="overlay container-fluid"></div>
     <div class="container mb-5 pb-5">
         <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="mb-2 text-uppercase heading">Thank you</h2>
-                <hr>
-                <p class="text-uppercase">Thank you for your order and supporting your local club. A confirmation email will be sent to {{ order.email }}</p>
-            </div>
+            {% if from_profile %}
+                <div class="col">
+                    <hr>
+                    <h2 class="mb-2 text-uppercase heading" id="order_heading" data-toggle="tooltip" data-placement="bottom" title="{{ order.order_number}}">Order History for {{ order.order_number|truncatechars:6 }}</h2>
+                    <hr>
+                    <a href="{% url 'profile' %}" class="btn btn-dark my-2 rounded-0">
+                        <span class="icon mr-2">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+                        <span>Back to Profile</span>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col">
+                    <hr>
+                    <h2 class="mb-2 text-uppercase heading">Thank you</h2>
+                    <hr>
+                    <p class="text-uppercase">Thank you for your order and supporting your local club. A confirmation email will be sent to {{ order.email }}</p>
+                </div>
+            {% endif %}
         </div>
         <div class="row">
             <div class="col-12 col-lg-7">
