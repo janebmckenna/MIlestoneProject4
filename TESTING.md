@@ -271,4 +271,6 @@ I also passed the indivaidual py files through [CI Python Linter](https://pep8ci
 |On the manually add subs form, as a player name loaded in the form automatically it was allowing a form to be submitted without providing the team or period information|On searching for a solution I [came across](https://stackoverflow.com/questions/60298923/what-are-the-differences-between-using-self-add-error-and-raising-a-validation) the clean() method and with some more reading made it work. The documentation can be found [here](https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/)|
 
 
+hiding table cells depending on screen size https://getbootstrap.com/docs/4.6/utilities/display/
+
 [Return to README](README.md)

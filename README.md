@@ -1,4 +1,4 @@
-# Life in Blog
+# The Club
 [View live project Here](https://the-club-77a7b1e1e156.herokuapp.com/)
 ***
 
