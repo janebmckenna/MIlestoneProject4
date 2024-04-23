@@ -214,11 +214,34 @@
 
 ## User Story Validation
 
+![User outcomes](media/doc-images/user-outcomes.png)
+[User Outcomes Google Docs](https://docs.google.com/spreadsheets/d/1QvcKgmC9WbiC6ZFg4j-qCKpRea_9rqwP6MOy0nx6mpA/edit?usp=sharing)
+
 |**User Story**|**Outcome**|**Screengrabs**|
 |-----|-----|-----|
 |**_FIRST TIME User_**|
-
+|Intuitively and easily navigate the site|Layout is traditional and intuitive with a familiar navigational layout. Searching is available directly from the nav. On mobile devices a familiar hamburger icon is used.|![Home](media/doc-images/home.png)|
+|Browse club items for sale|Browisng Club items for sale is easy and intuitve, you can search, scroll or filter by occassion or price. | ![Shop](media/doc-images/product-page.png)|
+|Purchase club gear|You can purchase club gear|![checkout](media/doc-images/checkout.png) |
+|Read news|News can be read via the home page with an additional prompt after purchase|![club news](media/doc-images/club-news.png) |
+|Find upcoming fixture|Fixtures can be found via the main Nav and are searchable|![fixtures](media/doc-images/fixtures.png) |
+|Register as a user|Registration as a user is possible|![register](media/doc-images/register.png)|
+|Logout of the site|Logour process is easy and quick.|![logout](media/doc-images/sign-out.png) |
 |**_RETURNING user_**|
+|Log in and out of the site|Loginng in and out of the site is easy and password reset is possible|![signin](media/doc-images/sigin-in.png)|
+|Pay subs|You can easily pay for club subs by choosing the appropriate player|![subs](media/doc-images/subs.png) |
+Browisng Club items for sale is easy and intuitve, you can search, scroll or filter by occassion or price. | ![Shop](media/doc-images/product-page.png)|
+|Purchase club gear|You can purchase club gear|![checkout](media/doc-images/checkout.png)|
+|Review most recent news easily|News on the home page is filtered to the 10 most recent items and on the all news page is reverse cronological order|![club news](media/doc-images/club-news.png) |
+|See updated fixtures|fixtures are filtered so that future dated fixtures appear|![fixtures](media/doc-images/fixtures.png)|
+|Search for specific fixtures|search is available on fixtures|![fixtures](media/doc-images/fixtures.png)|
+|**_ADMIN user_**|
+|Manage Product Categories (add, edit, delete) |You can manage Product Categories via the club admin Panel |![club admin](media/doc-images/club-admin.png) ![manage categories](media/doc-images/manage-categories.png) |
+|Manage Products (add, edit, delete) |You can manage Product via the club admin Panel |![manage products](media/doc-images/manage-products.png) |
+|Manage News (add, edit, delete) |You can manage News via the club admin Panel |![edit delete news](media/doc-images/edit-delete-news.png) |
+|Manage Fixtures (add, edit, delete) |You can manage Fixtures via the club admin Panel |![add fixture](media/doc-images/addfixture.png) |
+|Manage Players (add, edit, delete) |You can manage Players via the club admin Panel |![add player](media/doc-images/add-player.png) |
+|Manage Subs (view and add) |You can manage Subs via the club admin Panel |![all subs](media/doc-images/all-subs.png) |
 
 
 ## Lighthouse Audit
@@ -276,6 +299,6 @@ I worked through a lot of bugs naturally as I coded this project. I have include
 
 
 
-submitting form not passing on_admin_page therefore displaying bag items
+submitting form not passing on_admin_page therefore displaying bag items on message
 
 [Return to README](README.md)

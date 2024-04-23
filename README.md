@@ -40,6 +40,7 @@ The goal of the project is to provide a one stop shop for the local community to
 **User Stories**
 
 [Full User Stories](https://docs.google.com/spreadsheets/d/1QvcKgmC9WbiC6ZFg4j-qCKpRea_9rqwP6MOy0nx6mpA/edit?usp=sharing)
+![User Stories](media/doc-images/user-stories.png)
 
 _As a FIRST TIME user of the site I want to be able to:_
 - Intuitively and easily navigate the site

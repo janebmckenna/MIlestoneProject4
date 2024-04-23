@@ -83,8 +83,6 @@ def add_product(request):
             Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
-    on_admin_page = True
-
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -99,7 +97,7 @@ def add_product(request):
     template = 'kit/add_product.html'
     context = {
         'form': form,
-        'on_admin_page': on_admin_page,
+        'on_admin_page': True,
     }
 
     return render(request, template, context)
@@ -166,8 +164,6 @@ def add_category(request):
             Sorry. This action requires club admin access''')
         return redirect(reverse('home'))
 
-    on_admin_page = True
-
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
@@ -182,7 +178,7 @@ def add_category(request):
     template = 'kit/add_category.html'
     context = {
         'form': form,
-        'on_admin_page': on_admin_page,
+        'on_admin_page': True,
     }
 
     return render(request, template, context)

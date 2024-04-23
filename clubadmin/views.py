@@ -65,7 +65,6 @@ def add_news(request):
     """
     Add a News Story
     """
-    on_admin_page = True
 
     if not request.user.is_superuser:
         messages.error(request, '''
