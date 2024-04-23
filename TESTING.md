@@ -221,18 +221,18 @@
 |-----|-----|-----|
 |**_FIRST TIME User_**|
 |Intuitively and easily navigate the site|Layout is traditional and intuitive with a familiar navigational layout. Searching is available directly from the nav. On mobile devices a familiar hamburger icon is used.|![Home](media/doc-images/home.png)|
-|Browse club items for sale|Browisng Club items for sale is easy and intuitve, you can search, scroll or filter by occassion or price. | ![Shop](media/doc-images/product-page.png)|
+|Browse club items for sale|Browsing Club items for sale is easy and intuitive, you can search, scroll or filter by occasion or price. | ![Shop](media/doc-images/product-page.png)|
 |Purchase club gear|You can purchase club gear|![checkout](media/doc-images/checkout.png) |
 |Read news|News can be read via the home page with an additional prompt after purchase|![club news](media/doc-images/club-news.png) |
 |Find upcoming fixture|Fixtures can be found via the main Nav and are searchable|![fixtures](media/doc-images/fixtures.png) |
 |Register as a user|Registration as a user is possible|![register](media/doc-images/register.png)|
-|Logout of the site|Logour process is easy and quick.|![logout](media/doc-images/sign-out.png) |
+|Logout of the site|Logout process is easy and quick.|![logout](media/doc-images/sign-out.png) |
 |**_RETURNING user_**|
-|Log in and out of the site|Loginng in and out of the site is easy and password reset is possible|![signin](media/doc-images/sigin-in.png)|
+|Log in and out of the site|Logging in and out of the site is easy and password reset is possible|![signin](media/doc-images/sigin-in.png)|
 |Pay subs|You can easily pay for club subs by choosing the appropriate player|![subs](media/doc-images/subs.png) |
-Browisng Club items for sale is easy and intuitve, you can search, scroll or filter by occassion or price. | ![Shop](media/doc-images/product-page.png)|
+Browsing Club items for sale is easy and intuitive, you can search, scroll or filter by occasion or price. | ![Shop](media/doc-images/product-page.png)|
 |Purchase club gear|You can purchase club gear|![checkout](media/doc-images/checkout.png)|
-|Review most recent news easily|News on the home page is filtered to the 10 most recent items and on the all news page is reverse cronological order|![club news](media/doc-images/club-news.png) |
+|Review most recent news easily|News on the home page is filtered to the 10 most recent items and on the all news page is reverse chronological order|![club news](media/doc-images/club-news.png) |
 |See updated fixtures|fixtures are filtered so that future dated fixtures appear|![fixtures](media/doc-images/fixtures.png)|
 |Search for specific fixtures|search is available on fixtures|![fixtures](media/doc-images/fixtures.png)|
 |**_ADMIN user_**|
@@ -245,15 +245,15 @@ Browisng Club items for sale is easy and intuitve, you can search, scroll or fil
 
 
 ## Lighthouse Audit
-![Lighthouse Audit]()
+![Lighthouse Audit](media/doc-images/lighthouse.png)
+![Lighthouse Audit](media/doc-images/lighthouse-kit.png)
 
 The lighthouse audit threw up a lot of issues. Some of which I could solve
 - I converted my site images from png to webp
 - Added a meta description
 - Reviewed the contrast on the product page and adjust the hex slightly to improve contrast using [this site](app.contrast-finder.org/)
 
-Some of which I couldn't
-- Reviewed where lighthouse claimed alt attributes where missing from images
+Some of which I couldn't in relation to best practice
 - 3rd Party Cookies
 
 ## Validator Audit
@@ -295,10 +295,8 @@ I worked through a lot of bugs naturally as I coded this project. I have include
 |On deployed version of the site I was getting 500 server errors, I traced this back to when the code was interacting with any news model|It appeared to be caused by new migrations I had made since initial deployment. My Postgres DB wasn't being updated during the build on heroku. Some research led me to the command line on heroku, once I ran the bash command I was then able to run the migrations which fixed the issue.|
 |On the fixtures form the date picker wasn’t being displayed but then due to the open text field the form validation wasn't allowing submission as the date wasn't in the correct format.|I found [this](https://stackoverflow.com/questions/61077802/how-to-use-a-datepicker-in-a-modelform-in-django) solution which worked|
 |On the manually add subs form, as a player name loaded in the form automatically it was allowing a form to be submitted without providing the team or period information|On searching for a solution I [came across](https://stackoverflow.com/questions/60298923/what-are-the-differences-between-using-self-add-error-and-raising-a-validation) the clean() method and with some more reading made it work. The documentation can be found [here](https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/)|
-|I had some side scroll issues due to table sizes on some of the admin pages and the all news page, when I used bootstrap to hide certain collums/elements the result was the cells were misaligned when they were displayed |I found the solution in the bootstrap documentation [here](https://getbootstrap.com/docs/4.6/utilities/display/) instead of using d-inline to use d-table-cell|
-
-
-
-submitting form not passing on_admin_page therefore displaying bag items on message
+|I had some side scroll issues due to table sizes on some of the admin pages and the all news page, when I used bootstrap to hide certain colums/elements the result was the cells were misaligned when they were displayed |I found the solution in the bootstrap documentation [here](https://getbootstrap.com/docs/4.6/utilities/display/) instead of using d-inline to use d-table-cell|
+|submitting form not passing on_admin_page therefore displaying bag items on message|On the form versions it wont pass as 'on_admin_page'= on_admin_page needs to be 'on_admin_page'= True in the context but you cannot define 'on_admin_page'= True in the view above or it doesn’t work. I will have to research further why but this solution has worked. |
 
 [Return to README](README.md)
+
